@@ -1,0 +1,18 @@
+const express= require('express'),
+	 path = require('path');
+
+const app =express();
+
+
+app.use(express.static('./dist/havka-dostavka'));
+
+app.get('/*', (req,res)=>{
+    
+res.sendFile(path.join(__dirname,'/dist/havka-dostavka/index.html'));
+
+});
+
+app.listen(process.env.PORT || 8080, ()=>{
+console.log('Server started');
+})
+
