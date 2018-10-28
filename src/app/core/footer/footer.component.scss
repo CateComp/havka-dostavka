@@ -1,0 +1,18 @@
+@import '../../../global-variables.scss';
+.item__icon {
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  text-align: center;
+  font-size: $iconSize;
+}
+
+.footer__wrapper {
+  padding: 2rem;
+}
+
+.contacts-list__item {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
