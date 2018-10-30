@@ -2,10 +2,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "src",
-    "paths": {
-      "@footer/*": ["app/shared/layout/footer/*"],
-      "@global-variables": ["assets/scss/global-variables.scss"]
-    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
