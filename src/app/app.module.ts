@@ -1,20 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+// Imported bootstrap
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+// Imported components
 import { AppComponent } from './app.component';
-import { FooterComponent } from 'app/shared/layout/footer/footer.component';
-import { HeaderComponent } from 'app/shared/layout/header/header.component';
+// Imported custom modules
+import { SharedModule } from './shared/shared.module';
+import { ModulesModule } from './modules/modules.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    FooterComponent,
-    HeaderComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    NgbModule.forRoot()// add routes
+    NgbModule.forRoot(),
+    SharedModule,
+    ModulesModule// add routes
   ],
   providers: [],
   bootstrap: [AppComponent]
