@@ -11,7 +11,8 @@ import { HomeComponent } from 'app/modules/home/home.component';
 import { CartComponent } from 'app/modules/cart/cart.component';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: 'menu', component: MenuComponent },
   { path: 'news', component: NewsComponent },
   { path: 'delivery', component: DeliveryComponent },
