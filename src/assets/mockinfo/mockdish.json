@@ -1,0 +1,41 @@
+[
+    {
+        "id": 1,
+        "title": "Borshch",
+        "ingredients": [ "tomato", "onion", "shosTamShche"],
+        "weight" : 500,
+        "image": "../../../assets/pictures/pexels-photo-372882.jpeg",
+        "price": 22
+    },
+    {
+        "id": 2,
+        "title": "Potato for villagers",
+        "ingredients": [ "potato", "onion", "carrot"],
+        "weight" : 600,
+        "image": "../../../assets/pictures/pexels-photo-616404.jpeg",
+        "price": 13
+    },
+    {
+        "id": 3,
+        "title": "Zupa",
+        "ingredients": [ "chicken", "carrot", "shosTamShche"],
+        "weight" : 400,
+        "image": "../../../assets/pictures/pexels-photo-616404.jpeg",
+        "price": 32
+    },
+    {
+        "id": 4,
+        "title": "Fish in some souse",
+        "ingredients": [ "Fish", "souse", "shosTamShche"],
+        "weight" : 300,
+        "image": "../../../assets/pictures/pexels-photo-372882.jpeg",
+        "price": 41
+    },
+    {
+        "id": 5,
+        "title": "Do not shown",
+        "ingredients": [ "ogo", "nu", "hz"],
+        "weight" : 200,
+        "image": "../../../assets/pictures/pexels-photo-372882.jpeg"
+    }
+]
