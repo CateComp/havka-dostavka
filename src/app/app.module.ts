@@ -9,14 +9,12 @@ import { SharedModule } from './shared/shared.module';
 import { ModulesModule } from './modules/modules.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
     SharedModule,
-    ModulesModule// add routes
+    ModulesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,9 +4,15 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { LayoutComponent } from './layout/layout.component';
+
+import { AppRoutingModule  } from 'app/core/app-routing/app-routing.module';
+
+
+
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    AppRoutingModule
   ],
   declarations: [
     HeaderComponent,
