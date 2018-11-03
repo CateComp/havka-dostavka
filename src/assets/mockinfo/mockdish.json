@@ -4,38 +4,48 @@
         "title": "Borshch",
         "ingredients": [ "tomato", "onion", "shosTamShche"],
         "weight" : 500,
-        "image": "../../../assets/pictures/pexels-photo-372882.jpeg",
-        "price": 22
+        "image": "../../../assets/pictures/borshch.jpg",
+        "price": 22, 
+        "rating": 4.9,
+        "orders": 1
     },
     {
         "id": 2,
-        "title": "Potato for villagers",
+        "title": "Potato Wedges",
         "ingredients": [ "potato", "onion", "carrot"],
         "weight" : 600,
-        "image": "../../../assets/pictures/pexels-photo-616404.jpeg",
-        "price": 13
+        "image": "../../../assets/pictures/potato_wedges.jpg",
+        "price": 13,
+        "rating": 4.1,
+        "orders": 2
     },
     {
         "id": 3,
-        "title": "Zupa",
+        "title": "Chicken Soup",
         "ingredients": [ "chicken", "carrot", "shosTamShche"],
         "weight" : 400,
-        "image": "../../../assets/pictures/pexels-photo-616404.jpeg",
-        "price": 32
+        "image": "../../../assets/pictures/chicken_soup.jpg",
+        "price": 32,
+        "rating": 3.8,
+        "orders": 3
     },
     {
         "id": 4,
-        "title": "Fish in some souse",
-        "ingredients": [ "Fish", "souse", "shosTamShche"],
+        "title": "Fish with Lemon Butter Sauce",
+        "ingredients": [ "Fish", "butter", "lemon"],
         "weight" : 300,
-        "image": "../../../assets/pictures/pexels-photo-372882.jpeg",
-        "price": 41
+        "image": "../../../assets/pictures/fish_with_lemonbutter_sauce.jpg",
+        "price": 41,
+        "rating": 4.6,
+        "orders": 10
     },
     {
         "id": 5,
         "title": "Do not shown",
         "ingredients": [ "ogo", "nu", "hz"],
         "weight" : 200,
-        "image": "../../../assets/pictures/pexels-photo-372882.jpeg"
+        "image": "../../../assets/pictures/pexels-photo-372882.jpeg",
+        "rating": 2.5,
+        "orders": 1
     }
 ]
