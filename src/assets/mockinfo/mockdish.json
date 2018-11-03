@@ -4,7 +4,7 @@
         "title": "Borshch",
         "ingredients": [ "tomato", "onion", "shosTamShche"],
         "weight" : 500,
-        "image": "../../../assets/pictures/borshch.jpg",
+        "image": "assets/pictures/borshch.jpg",
         "price": 22, 
         "rating": 4.9,
         "orders": 1
@@ -14,7 +14,7 @@
         "title": "Potato Wedges",
         "ingredients": [ "potato", "onion", "carrot"],
         "weight" : 600,
-        "image": "../../../assets/pictures/potato_wedges.jpg",
+        "image": "assets/pictures/potato_wedges.jpg",
         "price": 13,
         "rating": 4.1,
         "orders": 2
@@ -24,7 +24,7 @@
         "title": "Chicken Soup",
         "ingredients": [ "chicken", "carrot", "shosTamShche"],
         "weight" : 400,
-        "image": "../../../assets/pictures/chicken_soup.jpg",
+        "image": "assets/pictures/chicken_soup.jpg",
         "price": 32,
         "rating": 3.8,
         "orders": 3
@@ -34,7 +34,7 @@
         "title": "Fish with Lemon Butter Sauce",
         "ingredients": [ "Fish", "butter", "lemon"],
         "weight" : 300,
-        "image": "../../../assets/pictures/fish_with_lemonbutter_sauce.jpg",
+        "image": "assets/pictures/fish_with_lemonbutter_sauce.jpg",
         "price": 41,
         "rating": 4.6,
         "orders": 10
@@ -44,7 +44,7 @@
         "title": "Do not shown",
         "ingredients": [ "ogo", "nu", "hz"],
         "weight" : 200,
-        "image": "../../../assets/pictures/pexels-photo-372882.jpeg",
+        "image": "assets/pictures/pexels-photo-372882.jpeg",
         "rating": 2.5,
         "orders": 1
     }
