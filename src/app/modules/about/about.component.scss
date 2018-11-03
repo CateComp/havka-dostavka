@@ -1,0 +1,37 @@
+.container {
+    margin-bottom: 200px;
+}
+
+.main-title {
+    margin: 30px;
+    font-size: 25px;
+    text-align: center;
+}
+
+.article {
+    margin: 50px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.article:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+
+.article-photo img {
+    max-width: 450px;
+}
+
+.article-content {
+    margin: 0 20px;
+}
+
+.article-title {
+    font-size: 22px;
+    text-align: center;
+}
+
+.article-description {
+    text-indent: 25px;
+    text-align: justify;
+}
