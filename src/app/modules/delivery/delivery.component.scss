@@ -1,8 +1,12 @@
+$black: #000;
+$grey: #999999;
+$light-blue: #f0f5f5;
+
 .container {
-  color: #000;
+  color: $black;
 
   hr {
-    width: 1px solid #999999;
+    width: 1px solid $grey;
     margin-top: 30px;
     margin-bottom: 30px;
   }
@@ -35,8 +39,9 @@
   }
 
   .contact-info {
-    margin-top: 40px;
-    background-color: #f0f5f5;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: $light-blue;
     height: 120px;
     display: flex;
     flex-direction: column;
