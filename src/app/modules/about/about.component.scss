@@ -1,15 +1,24 @@
+$container-margin-bottom: 200px;
+$main-title-margin: 30px;
+$main-title-font: 25px;
+$article-margin: 50px 20px;
+$img-max-width: 450px;
+$article-content-margin: 0 20px;
+$article-title-font: 22px;
+$article-descrp-text-indent: 25px;
+
 .container {
-    margin-bottom: 200px;
+    margin-bottom: $container-margin-bottom;
 }
 
 .main-title {
-    margin: 30px;
-    font-size: 25px;
+    margin: $main-title-margin;
+    font-size: $main-title-font;
     text-align: center;
 }
 
 .article {
-    margin: 50px 20px;
+    margin: $article-margin;
     display: flex;
     justify-content: space-between;
 }
@@ -19,19 +28,19 @@
 }
 
 .article-photo img {
-    max-width: 450px;
+    max-width: $img-max-width;
 }
 
 .article-content {
-    margin: 0 20px;
+    margin: $article-content-margin;
 }
 
 .article-title {
-    font-size: 22px;
+    font-size: $article-title-font;
     text-align: center;
 }
 
 .article-description {
-    text-indent: 25px;
+    text-indent: $article-descrp-text-indent;
     text-align: justify;
 }
