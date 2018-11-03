@@ -1,0 +1,60 @@
+.container {
+  color: #000;
+
+  hr {
+    width: 1px solid #999999;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .inner-delivery {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .picture-container {
+      width: 450px;
+      height: 300px;
+
+      img {
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .delivery-content {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+
+      h3 {
+        text-align: center;
+      }
+    }
+  }
+
+  .contact-info {
+    margin-top: 40px;
+    background-color: #f0f5f5;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    ul {
+      margin-top: 10px;
+      list-style-type: none;
+
+      li {
+        text-align: center;
+
+        img {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+  }
+}
