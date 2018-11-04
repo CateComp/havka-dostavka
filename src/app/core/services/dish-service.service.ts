@@ -10,11 +10,19 @@ import { Observable } from 'rxjs';
 export class DishServiceService {
 
   public currentUrl;
-  private _url: string = "/assets/mockinfo/mockdish.json";
+  private _url = '/assets/mockinfo/mockdish.json';
 
   constructor(private http: HttpClient) { }
 
-  getDishes():Observable<Dish[]> {
+  getDishes(): Observable<Dish[]> {
     return this.http.get<Dish[]>(this._url);
+  }
+
+  sortByRating(arr) {
+    const sortedArr = arr.slice(0);
+    sortedArr.sort(function(a, b) {
+        return a.rating - b.rating;
+    });
+    return sortedArr.reverse();
   }
 }
