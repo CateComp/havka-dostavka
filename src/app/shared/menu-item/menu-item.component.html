@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="row d-flex flex-nowrap">
-    <div class="col-3 m-2" *ngFor="let dish of dishes">
+  <div class="row d-flex">
+    <div class="col-md-6 col-xl-3 my-2" *ngFor="let dish of dishes">
       <div class="card h-100">
-        <img class="card-img-top h-50"  src="{{dish.image}}" alt="Card image cap">
+        <img class="card-img-top menu-item__image"  src="{{dish.image}}" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title text-center">{{dish.title}}</h5>
-          <div class="row d-flex text-center flex-nowrap">
+          <h5 class="card-title text-center my-2">{{dish.title}}</h5>
+          <div class="row d-flex text-center flex-nowrap my-4">
             <div class="col-6">
               {{dish.price}}$
             </div>
