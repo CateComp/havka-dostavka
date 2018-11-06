@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row d-flex flex-nowrap">
-    <div class="col-3 m-2" *ngFor="let dish of dishes; let i=index">
-      <div class="card h-100" *ngIf="i<limitItems">
+    <div class="col-3 m-2" *ngFor="let dish of dishes">
+      <div class="card h-100">
         <img class="card-img-top h-50"  src="{{dish.image}}" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title text-center">{{dish.title}}</h5>
