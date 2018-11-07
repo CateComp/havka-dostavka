@@ -12,7 +12,6 @@ export class MenuWrapperComponent implements OnInit {
 
   ngOnInit() {
     this.homePageDishes = this.dishes;
-    console.log(this.homePageDishes, 'I get from /home');
   }
 
 }
