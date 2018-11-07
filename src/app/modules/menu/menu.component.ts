@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from 'app/core/services/firebase.service'
 
 @Component({
   selector: 'app-menu',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-
-  constructor() { }
+  menu: any;
+  constructor(private firebaseServise: FirebaseService) { }
 
   ngOnInit() {
+    this.firebaseServise.getItems('menu').subscribe(items => {
+      this.menu = items;
+    })
   }
 
 }

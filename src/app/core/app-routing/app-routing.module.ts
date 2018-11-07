@@ -9,6 +9,8 @@ import { TrackingComponent } from 'app/modules/tracking/tracking.component';
 import { AboutComponent } from 'app/modules/about/about.component';
 import { HomeComponent } from 'app/modules/home/home.component';
 import { CartComponent } from 'app/modules/cart/cart.component';
+import { LoginComponent } from 'app/modules/login/login.component';
+
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -18,7 +20,8 @@ const appRoutes: Routes = [
   { path: 'delivery', component: DeliveryComponent },
   { path: 'tracking', component: TrackingComponent },
   { path: 'about-us', component: AboutComponent },
-  { path: 'cart', component: CartComponent }
+  { path: 'cart', component: CartComponent },
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
