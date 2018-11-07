@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DishServiceService } from 'app/core/services/dish-service.service';
+import { DishService } from 'app/core/services/dish.service';
+import { Subscription } from 'rxjs';
+// import { HttpService } from 'app/core/services/http.service';
 
 @Component({
   selector: 'app-home',
@@ -8,16 +10,18 @@ import { DishServiceService } from 'app/core/services/dish-service.service';
 })
 export class HomeComponent implements OnInit {
   public dishes = [];
-  constructor(private _dishService: DishServiceService) {
+  private subscription: Subscription;
+
+  constructor(private _dishService: DishService) {
+    this.dishes = this._dishService.sortDishesByRating();
   }
 
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
   ngOnInit() {
-    this._dishService.getDishes()
-      .subscribe(data => {
-        this._dishService.sortByRating(data).forEach((element, index) => {
-          return index < 4 ? this.dishes.push(element) : false;
-        });
-      });
+    console.log("home ", this._dishService.sortDishesByRating())
+    this.subscription = this._dishService.getDishes();
   }
 
 }

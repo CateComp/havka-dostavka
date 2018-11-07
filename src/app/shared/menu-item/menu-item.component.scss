@@ -1,8 +1,14 @@
+@import 'styles.scss';
+
 .menu-item__title {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .menu-item__image {
-  height: 16rem;
+  height: $Imageheight;
+}
+
+.menu-item__ingredients {
 }

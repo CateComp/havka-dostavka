@@ -13,7 +13,7 @@ import { MenuWrapperComponent } from 'app/shared/menu-wrapper/menu-wrapper.compo
 import { MenuItemComponent } from 'app/shared/menu-item/menu-item.component';
 
 // services
-import { DishServiceService } from 'app/core/services/dish-service.service';
+import { DishService } from 'app/core/services/dish.service';
 // help modules
 import { AppRoutingModule } from 'app/core/app-routing/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -36,7 +36,7 @@ import { from } from 'rxjs';
     MenuWrapperComponent,
     MenuItemComponent
   ],
-  providers: [DishServiceService],
+  providers: [DishService],
   exports: [MenuComponent, NewsComponent, DeliveryComponent, TrackingComponent, AboutComponent, CartComponent, HomeComponent]
 })
 export class ModulesModule { }

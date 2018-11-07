@@ -1,8 +1,24 @@
 <div class="container">
   <div class="row d-flex">
-    <div class="col-md-6 col-xl-3 my-2" *ngFor="let dish of dishes">
+    <div class="col-md-6 col-xl-3 my-2" *ngFor="let dish of dishes; let i = index;">
       <div class="card h-100">
-        <img class="card-img-top menu-item__image"  src="{{dish.image}}" alt="Card image cap">
+        <img
+        alt="Card image cap"
+        class="card-img-top menu-item__image"
+        src="{{dish.image}}"
+        (mouseover)="mouseHovering(i)"
+        (mouseout)="mouseLeaving(i)">
+          <div
+          class="container d-flex flex-column align-items-center position-absolute "
+          *ngIf="!dish.isHovered">
+            <div class="row d-flex">
+              <ul>
+                <li *ngFor="let ingr of dish.ingredients">
+                  {{ingr}}
+                </li>
+              </ul>
+            </div>
+          </div>
         <div class="card-body">
           <h5 class="card-title text-center my-2">{{dish.title}}</h5>
           <div class="row d-flex text-center flex-nowrap my-4">
