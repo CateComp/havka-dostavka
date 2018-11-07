@@ -1,14 +1,26 @@
-$black: #000;
-$grey: #999999;
-$light-blue: #f0f5f5;
+@import "./src/assets/scss/variables.scss";
+
+$hr-width: 1px;
+$hr-margin-top: 30px;
+$hr-margin-bottom: 30px;
+$lviv-picture-container-width: 450px;
+$lviv-picture-container-height: 300px;
+$city-lviv-photo-width: 100%;
+$city-lviv-photo-height: 100%;
+$contact-info-margin-top: 30px;
+$contact-info-margin-bottom: 30px;
+$contact-info-height: 120px;
+$list-info-margin-top: 10px;
+$contact-info-icons-width: 30px;
+$contact-info-icons-height: 30px;
 
 .container {
   color: $black;
 
   hr {
-    width: 1px solid $grey;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    width: $hr-width solid $grey;
+    margin-top: $hr-margin-top;
+    margin-bottom: $hr-margin-bottom;
   }
 
   .inner-delivery {
@@ -17,13 +29,13 @@ $light-blue: #f0f5f5;
     justify-content: space-around;
 
     .picture-container {
-      width: 450px;
-      height: 300px;
+      width: $lviv-picture-container-width;
+      height: $lviv-picture-container-height;
 
       .city_lviv_photo {
         background-size: cover;
-        width: 100%;
-        height: 100%;
+        width: $city-lviv-photo-width;
+        height: $city-lviv-photo-height;
       }
     }
 
@@ -39,25 +51,25 @@ $light-blue: #f0f5f5;
   }
 
   .contact-info {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: $contact-info-margin-top;
+    margin-bottom: $contact-info-margin-bottom;
     background-color: $light-blue;
-    height: 120px;
+    height: $contact-info-height;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
     .list-info {
-      margin-top: 10px;
+      margin-top: $list-info-margin-top;
       list-style-type: none;
 
       li {
         text-align: center;
 
         .icons {
-          width: 30px;
-          height: 30px;
+          width: $contact-info-icons-width;
+          height: $contact-info-icons-height;
         }
       }
     }
