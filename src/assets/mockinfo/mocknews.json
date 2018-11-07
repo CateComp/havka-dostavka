@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "title": "Our company in the new region",
+        "description": "some discriptionNew discription New discription New discription New discription New discription New discription New discription New discription New discription New discription",
+        "time": "30/12/2018",
+        "photo": "assets/pictures/news/news-2.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Cool dish",
+        "description": "New discriptionNew discription New discription New discription New discription New discription New discription New discription New discription New discription New discription",
+        "time": "12/11/2018",
+        "photo": "assets/pictures/news/news-1.jpg"
+    },
+    {
+        "id": 3,
+        "title": "New delivery place",
+        "description": "New discription New discription New discription New discription New discription New discription New discription New discription New discription New discriptionNew discription New discription New discription New discription New discription",
+        "time": "15/09/2018",
+        "photo": "assets/pictures/chicken_soup.jpg"
+    },
+    {
+        "id": 4,
+        "title": "New dish",
+        "description": "New discription New discription New discription New discription New discription New discription New discription New discription New discription New discription",
+        "time": "02/11/2018",
+        "photo": "assets/pictures/news/news-2.jpg"
+    },
+    {
+        "id": 5,
+        "title": "Hiring a delivery man",
+        "description": "New discription New discription New discription New discription New discriptionNew discription New discription New discription New discription New discription New discription New discription New discription New discription New discription",
+        "time": "30/09/2018",
+        "photo": "assets/pictures/borshch.jpg"
+    },
+    {
+        "id": 6,
+        "title": "One year of the company",
+        "description": "New discription New discription New discription New discription New discriptionNew discription New discription New discription New discription New discription New discription New discription New discription New discription New discription",
+        "time": "30/09/2018",
+        "photo": "assets/pictures/news/news-2.jpg"
+    }
+]
