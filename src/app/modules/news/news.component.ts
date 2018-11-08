@@ -9,9 +9,8 @@ import { Router } from '@angular/router';
 })
 export class NewsComponent implements OnInit {
 
-  public news = [];
-  public currentUrl;
-  public limitItems: number;
+  public news: any[] = [];
+  public currentUrl: any;
 
   constructor(private _newsService: NewsService, private _router: Router) {
     _router.events.subscribe((url: any) => this.currentUrl = url);
