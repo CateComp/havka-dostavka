@@ -4,7 +4,7 @@
 <ul>
   <li *ngFor="let item of menu">
     {{item.name}}
-   
-    {{item.price}} $
+    <img src="{{item.img}}" alt="salad" height="250px" width="300px">
+    <p> {{item.weight}}/{{item.price}} $</p>
   </li>
 </ul>

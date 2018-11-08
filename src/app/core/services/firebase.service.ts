@@ -1,26 +1,26 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { FirebaseItem } from 'app/core/interfaces/firebase-item'
 
-export interface Item { 
-  name?: string;
-  price?: number;
-  description?: string;
-}
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
-  itemsCollection: AngularFirestoreCollection<Item>;
+  itemsCollection: AngularFirestoreCollection<FirebaseItem>;
   
-  items: Observable<Item[]>;
+  items: Observable<FirebaseItem[]>;
   collName:string;
+  name:string;
   constructor(private afs: AngularFirestore) { }
   getItems(collName) {
-    this.itemsCollection = this.afs.collection<Item>(collName);
-    // this.itemsCollection.add(item);
+    this.itemsCollection = this.afs.collection<FirebaseItem>(collName);
     this.items = this.itemsCollection.valueChanges();
     return this.items
+  }
+  addItem(name) {
+    this.itemsCollection.add(name)
   }
 }
