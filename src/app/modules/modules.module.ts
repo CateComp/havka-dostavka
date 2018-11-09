@@ -10,6 +10,11 @@ import { HomeComponent } from 'app/modules/home/home.component';
 import { CartComponent } from './cart/cart.component';
 
 import { AppRoutingModule } from 'app/core/app-routing/app-routing.module';
+<<<<<<< Updated upstream
+=======
+import { from } from 'rxjs';
+import { LoginComponent } from './login/login.component';
+>>>>>>> Stashed changes
 
 @NgModule({
   imports: [

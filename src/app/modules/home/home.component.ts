@@ -10,6 +10,12 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+<<<<<<< Updated upstream
+=======
+    this._dishService.showConfigResponse();
+    this._dishService.getAllDishes();
+    this._dishService.getDishesSortedByRating(this.dishes);
+>>>>>>> Stashed changes
   }
 
 }
