@@ -7,11 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MenuWrapperComponent implements OnInit {
   @Input() dishes;
-  public homePageDishes;
   constructor() { }
 
   ngOnInit() {
-    this.homePageDishes = this.dishes;
   }
 
 }

@@ -1,34 +1,24 @@
 import { Injectable } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
 import { HttpService } from './http.service';
-import { Dish } from '../interfaces/dish';
-import { Observable } from 'rxjs';
-
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DishService {
 
-  public dishes = [];
+  constructor(private _http: HttpService) { }
 
-  constructor(private _http: HttpService) {
+  getDishes(arr) {
+    this._http.getAllDishes()
+            .subscribe(data => arr.push(...data));
   }
 
-  getDishes() {
-    return this._http.getAllDishes()
-            .subscribe(data => {
-              data.forEach((element, index) => {
-              return index < 4 ? this.dishes.push(element) : false;
-            })
-          })
-  }
-
-  sortDishesByRating() {
-    const sortedArr = this.dishes.slice(0);
-
-    sortedArr.sort((a, b) => a.rating - b.rating);
-
-    return sortedArr.reverse();
+  getDishesSortedByRating(arr) {
+    this._http.getAllDishes()
+            .pipe(map(data => data.sort((a, b) => a.rating - b.rating)))
+            .pipe(map(data => data.reverse()))
+            .pipe(map(data => data.slice(0, 4)))
+            .subscribe(data => arr.push(...data));
   }
 }

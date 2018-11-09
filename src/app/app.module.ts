@@ -7,6 +7,12 @@ import { AppComponent } from './app.component';
 // Imported custom modules
 import { SharedModule } from './shared/shared.module';
 import { ModulesModule } from './modules/modules.module';
+// Imported firebase
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { FirebaseService } from 'app/core/services/firebase.service';
+
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,9 +20,11 @@ import { ModulesModule } from './modules/modules.module';
     BrowserModule,
     NgbModule.forRoot(),
     SharedModule,
-    ModulesModule
+    ModulesModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
   ],
-  providers: [],
+  providers: [FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

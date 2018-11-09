@@ -18,6 +18,7 @@ import { DishService } from 'app/core/services/dish.service';
 import { AppRoutingModule } from 'app/core/app-routing/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { from } from 'rxjs';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { from } from 'rxjs';
     CartComponent,
     HomeComponent,
     MenuWrapperComponent,
-    MenuItemComponent
+    MenuItemComponent,
+    LoginComponent
   ],
   providers: [DishService],
   exports: [MenuComponent, NewsComponent, DeliveryComponent, TrackingComponent, AboutComponent, CartComponent, HomeComponent]

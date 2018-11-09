@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DishService } from 'app/core/services/dish.service';
 
 @Component({
   selector: 'app-menu-item',
@@ -8,7 +7,7 @@ import { DishService } from 'app/core/services/dish.service';
 })
 export class MenuItemComponent implements OnInit {
   @Input() dishes;
-  isHovered;
+  public isHovered: boolean;
 
   mouseHovering(i) {
     return this.dishes[i].isHovered = true;
@@ -18,10 +17,9 @@ export class MenuItemComponent implements OnInit {
     return this.dishes[i].isHovered = false;
   }
 
-  constructor(private _dishesService: DishService) {}
+  constructor() {}
 
   ngOnInit() {
-    console.log(this.dishes)
   }
 
 }

@@ -10,5 +10,14 @@
   height: $Imageheight;
 }
 
-.menu-item__ingredients {
+.ingredients__list {
+  list-style: none;
+  font-family: $FontDefault;
+  font-size: $FontLarge;
+  transition: $TransitionMedium;
+}
+
+.menu__item-hovered {
+  opacity: $OpacityLarge;
+  transition: $TransitionMedium;
 }
