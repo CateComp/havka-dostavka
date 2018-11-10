@@ -1,0 +1,23 @@
+@import 'styles.scss';
+
+.menu-item__title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu-item__image {
+  height: $Imageheight;
+}
+
+.ingredients__list {
+  list-style: none;
+  font-family: $FontDefault;
+  font-size: $FontLarge;
+  transition: $TransitionMedium;
+}
+
+.menu__item-hovered {
+  opacity: $OpacityLarge;
+  transition: $TransitionMedium;
+}
