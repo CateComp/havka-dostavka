@@ -1,43 +1,30 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument  } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { FirebaseItem } from 'app/core/interfaces/firebase-item';
-import { map } from 'rxjs/operators';
+import { Dish } from '../interfaces/dish';
+import { map } from 'rxjs/operators'
 
-<<<<<<< HEAD
+
 export interface Doc { name: string; }
-=======
-export interface Item {
-  name?: string;
-  price?: number;
-  description?: string;
-}
->>>>>>> develop
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
-<<<<<<< HEAD
-  itemsCollection: AngularFirestoreCollection<FirebaseItem>;
+  itemsCollection: AngularFirestoreCollection<Dish>;
 
   private itemDoc: AngularFirestoreDocument<Doc>;
-  doc: Observable<Doc>;
+  doc: any;
   
-  items: Observable<FirebaseItem[]>;
+  items: Observable<Dish[]>;
+
 
   name:string;
-=======
-  itemsCollection: AngularFirestoreCollection<Item>;
-
-  items: Observable<Item[]>;
-  collName: string;
->>>>>>> develop
-  constructor(private afs: AngularFirestore) { }
-  getItems(collName:string) {
-    this.itemsCollection = this.afs.collection<FirebaseItem>(collName);
+  constructor(private afs: AngularFirestore) {  }
+  getItems(collName:string):Observable<Dish[]> {
+    this.itemsCollection = this.afs.collection<Dish>(collName);
     this.items = this.itemsCollection.valueChanges();
-    return this.items;
+    return this.items
   }
 
   getDoc(docName:string) {
@@ -45,5 +32,21 @@ export class FirebaseService {
     this.doc = this.itemDoc.valueChanges();
     return this.doc
   }
-
+  getDoc1():Observable<Dish[]> {
+    this.itemsCollection = this.afs.collection<Dish>('salads');
+      // .snapshotChanges() returns a DocumentChangeAction[], which contains
+      // a lot of information about "what happened" with each change. If you want to
+      // get the data and the id use the map operator.
+      this.items = this.itemsCollection.snapshotChanges().pipe(
+        map(actions => {
+          actions.map(a => {
+            console.log('a', a)
+            const data = a.payload.doc.data() as Dish;
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          })
+          return actions;
+        }))
+        return this.items;
+  }
 }
