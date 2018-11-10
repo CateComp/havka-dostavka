@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-menu-wrapper',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu-wrapper.component.scss']
 })
 export class MenuWrapperComponent implements OnInit {
-
+  @Input() dishes;
   constructor() { }
 
   ngOnInit() {

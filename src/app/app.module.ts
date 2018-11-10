@@ -10,7 +10,10 @@ import { ModulesModule } from './modules/modules.module';
 // Imported firebase
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+<<<<<<< HEAD
 import { AngularFireAuthModule } from '@angular/fire/auth';
+=======
+>>>>>>> develop
 import { FirebaseService } from 'app/core/services/firebase.service';
 
 import { environment } from '../environments/environment';
