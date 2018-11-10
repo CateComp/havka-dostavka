@@ -1,7 +1,7 @@
 export interface FirebaseItem {
     name?: string,
     price?: number,
-    weigth?: number,
+    weight?: number,
     description?: string,
     img?: string
 }
