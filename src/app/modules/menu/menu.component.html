@@ -1,1 +1,24 @@
-<app-menu-wrapper [dishes]='menu'></app-menu-wrapper>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-secondary" (click)="todayMenu()">Todays menu</button>
+      <button type="button" class="btn btn-secondary" (click)="allDishes()">All menu</button>
+      <button type="button" class="btn btn-secondary" (click)="complexMenu()">Complex</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <ul>
+        <li *ngFor="let type of filterProp"><input type="checkbox" (change)="addType(type)" id="{{type}}" name="{{type}}" value="{{type}}"><label for="{{type}}">{{type}}</label></li>
+      </ul>
+    </div>
+    <div class="col-9" *ngIf="!isComplex">
+      <app-menu-wrapper [dishes]="menu" [type]="name"></app-menu-wrapper>
+    </div>
+  </div>
+  <div class="container" *ngIf="isComplex">
+    <div class="row" *ngFor="let comp of complex" >
+      <app-menu-wrapper [dishes]="comp"></app-menu-wrapper>
+    </div>
+  </div>
+</div>
