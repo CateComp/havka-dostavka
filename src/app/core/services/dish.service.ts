@@ -1,24 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpService } from './http.service';
 import { map } from 'rxjs/operators';
+import { FirebaseService } from 'app/core/services/firebase.service';
+import { Dish } from 'app/core/interfaces/dish';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DishService {
 
-  constructor(private _http: HttpService) { }
+  constructor(private _firebase: FirebaseService) { }
 
-  getDishes(arr) {
-    this._http.getAllDishes()
-            .subscribe(data => arr.push(...data));
-  }
-
-  getDishesSortedByRating(arr) {
-    this._http.getAllDishes()
+  getDishesSortedByRating(): Observable<Dish[]> {
+   return this._firebase.getItems()
             .pipe(map(data => data.sort((a, b) => a.rating - b.rating)))
             .pipe(map(data => data.reverse()))
-            .pipe(map(data => data.slice(0, 4)))
-            .subscribe(data => arr.push(...data));
+            .pipe(map(data => data.slice(0, 4)));
   }
 }
