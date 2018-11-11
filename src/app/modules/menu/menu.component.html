@@ -1,8 +1,1 @@
-<ul>
-  <li *ngFor="let item of menu">
-    {{item.name}}
-    <img src="{{item.img}}" alt="salad" height="250px" width="300px">
-    <p> {{item.weight}}/{{item.price}} $</p>
-    <p> {{item.id}}</p>
-  </li>
-</ul>
+<app-menu-wrapper [dishes]='menu'></app-menu-wrapper>
