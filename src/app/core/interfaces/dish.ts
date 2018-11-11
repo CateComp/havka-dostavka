@@ -1,9 +1,10 @@
 export interface Dish {
-    id?: number;
+    id: string;
     name: string;
     info: string;
     weight: string;
-    img: string;
+    image: string;
+    type: string;
     price: number;
     rating?: number;
     orders?: number;

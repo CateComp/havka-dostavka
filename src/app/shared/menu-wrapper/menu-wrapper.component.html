@@ -1,1 +1,12 @@
-<app-menu-item [dishes]='dishes'></app-menu-item>
+<div class="container">
+  <div *ngFor='let dish of dishesHomePage; let i=index'>
+    <app-menu-item 
+    [name]='dish.name'
+    [price]='dish.price'
+    [image]='dish.image'
+    [hover]='dish.isHovered'
+    [ingredients]='dish.info'
+    >
+  </app-menu-item>
+  </div>
+</div>  

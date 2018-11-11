@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DishHome } from 'app/core/interfaces/dish-home';
 
 @Component({
   selector: 'app-menu-item',
@@ -6,17 +7,20 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./menu-item.component.scss']
 })
 export class MenuItemComponent implements OnInit {
-  @Input() dishes;
-  public isHovered: boolean;
+  @Input() image: string;
+  @Input() hover: boolean;
+  @Input() ingredients: string;
+  @Input() price: number;
+  @Input() name: string;
 
-  mouseHovering(i) {
-    return this.dishes[i].isHovered = true;
-  }
 
-  mouseLeaving(i) {
-    return this.dishes[i].isHovered = false;
-  }
+mouseHovering(i) {
+ this.hover = true;
+}
 
+mouseLeaving(i) {
+  this.hover = false;
+}
   constructor() {}
 
   ngOnInit() {

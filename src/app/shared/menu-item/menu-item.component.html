@@ -1,30 +1,26 @@
 <div class="container">
   <div class="row d-flex">
-    <div class="col-md-6 col-xl-3 my-2" *ngFor="let dish of dishes; let i = index;">
+    <div class="col-md-6 col-xl-3 my-2">
       <div class="card h-100"
-      (mouseover)="mouseHovering(i)"
-      (mouseout)="mouseLeaving(i)">
+      (mouseover)="mouseHovering()"
+      (mouseout)="mouseLeaving()">
         <img
         alt="Card image cap"
         class="card-img-top menu-item__image"
-        [ngClass]="{ 'menu__item-hovered' : dish.isHovered }"
-        src="{{dish.image}}">
+        [ngClass]="{ 'menu__item-hovered' : dishesHomePage.isHovered }"
+        src="{{image}}">
           <div
           class="container d-flex flex-column align-items-center position-absolute "
-          *ngIf="dish.isHovered">
+          *ngIf="hover">
             <div class="row d-flex">
-              <ul class="ingredients__list">
-                <li *ngFor="let ingr of dish.ingredients">
-                  {{ingr}}
-                </li>
-              </ul>
+              {{ingredients}}
             </div>
           </div>
         <div class="card-body">
-          <h5 class="card-title text-center my-2">{{dish.title}}</h5>
+          <h5 class="card-title text-center my-2">{{name}}</h5>
           <div class="row d-flex text-center flex-nowrap my-4">
             <div class="col-6">
-              {{dish.price}}$
+              {{price}}$
             </div>
             <div class="col-6">
               <button type="button" class="btn btn-success">Success</button>

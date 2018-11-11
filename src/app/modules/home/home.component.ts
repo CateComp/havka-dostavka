@@ -13,7 +13,8 @@ export class HomeComponent implements OnInit {
   constructor(private _dishService: DishService) { }
 
   ngOnInit() {
-    this._dishService.getDishesSortedByRating(this.dishes);
+    this._dishService.getDishesSortedByRating()
+    .subscribe(data => this.dishes.push(...data));
   }
 
 }

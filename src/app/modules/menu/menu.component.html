@@ -1,11 +1,8 @@
-<p>
-  menu works!
-</p>
 <ul>
-  <li *ngFor="let item of menu; let i=index">
+  <li *ngFor="let item of menu">
     {{item.name}}
     <img src="{{item.img}}" alt="salad" height="250px" width="300px">
     <p> {{item.weight}}/{{item.price}} $</p>
-    <p> {{docs[i].payload.doc.id}}</p>
+    <p> {{item.id}}</p>
   </li>
 </ul>
