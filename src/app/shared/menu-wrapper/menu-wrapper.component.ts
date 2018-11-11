@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DishHome } from 'app/core/interfaces/dish-home';
-
+import { Dish } from 'app/core/interfaces/dish';
 
 @Component({
   selector: 'app-menu-wrapper',
@@ -8,8 +7,9 @@ import { DishHome } from 'app/core/interfaces/dish-home';
   styleUrls: ['./menu-wrapper.component.scss']
 })
 export class MenuWrapperComponent implements OnInit {
-  @Input() dishesHomePage: DishHome[];
-  constructor() { }
+  @Input() dishes: Dish[];
+
+  constructor() {}
 
   ngOnInit() {
   }

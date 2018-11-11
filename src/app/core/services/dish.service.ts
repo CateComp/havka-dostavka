@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { FirebaseService } from './firebase.service';
-import { Dish } from '../interfaces/dish';
+import { FirebaseService } from 'app/core/services/firebase.service';
+import { Dish } from 'app/core/interfaces/dish';
 import { Observable } from 'rxjs';
 
 @Injectable({

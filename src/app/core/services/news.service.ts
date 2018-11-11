@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { News } from '../interfaces/news';
+import { News } from 'app/core/interfaces/news';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class NewsService {
 
-  private _url = ';assets/mockinfo/mocknews.json';
+  private _url = 'assets/mockinfo/mocknews.json';
 
   constructor(private http: HttpClient) { }
 

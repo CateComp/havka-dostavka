@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { Dish } from '../interfaces/dish';
+import { Dish } from 'app/core/interfaces/dish';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -21,7 +21,7 @@ export class FirebaseService {
           return data.map(e => {
             const id = e.payload.doc.id;
             const dataObj = e.payload.doc.data() as Dish;
-            return { id: id, ...dataObj};
+            return { id, ...dataObj };
           });
         })
       );

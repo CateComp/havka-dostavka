@@ -11,10 +11,10 @@
 }
 
 .ingredients__list {
-  list-style: none;
   font-family: $FontDefault;
   font-size: $FontLarge;
   transition: $TransitionMedium;
+  padding: $PaddingX3;
 }
 
 .menu__item-hovered {

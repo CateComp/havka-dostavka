@@ -7,19 +7,14 @@ import { DishHome } from 'app/core/interfaces/dish-home';
   styleUrls: ['./menu-item.component.scss']
 })
 export class MenuItemComponent implements OnInit {
-  @Input() image: string;
-  @Input() hover: boolean;
-  @Input() ingredients: string;
-  @Input() price: number;
-  @Input() name: string;
+  @Input() dish: DishHome;
 
-
-mouseHovering(i) {
- this.hover = true;
+mouseHovering() {
+ this.dish.isHovered = true;
 }
 
-mouseLeaving(i) {
-  this.hover = false;
+mouseLeaving() {
+  this.dish.isHovered = false;
 }
   constructor() {}
 
