@@ -6,13 +6,13 @@
       <button type="button" class="btn btn-secondary" (click)="complexMenu()">Complex</button>
     </div>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="!isComplex">
     <div class="col-3">
       <ul>
-        <li *ngFor="let type of filterProp"><input type="checkbox" (change)="addType(type)" id="{{type}}" name="{{type}}" value="{{type}}"><label for="{{type}}">{{type}}</label></li>
+        <li *ngFor="let type of filterProp"><input type="checkbox" (change)="addType(type.isChecked ? type : type)" [(ngModel)]="type.isChecked" id="{{type.name}}" name="{{type.name}}" value="{{type.name}}"><label for="{{type}}">{{type.name}}</label></li>
       </ul>
     </div>
-    <div class="col-9" *ngIf="!isComplex">
+    <div class="col-9">
       <app-menu-wrapper [dishes]="menu" [type]="name"></app-menu-wrapper>
     </div>
   </div>
