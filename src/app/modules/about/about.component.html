@@ -1,34 +1,17 @@
 <div class="container">
-  <h1 class="main-title">About our company</h1>
+  <h1 class="main-title text-center h4 m-4">About our company</h1>
   
-  <div class="article">
-    <div class="article-photo">
-      <img src="assets/pictures/pexels-photo-372882.jpeg" alt="Foundation">
-    </div>
-    <div class="article-content">
-      <h2 class="article-title">Heading</h2>
-      <p class="article-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt ante eu ligula imperdiet, vitae maximus arcu lacinia. Praesent tortor quam, consectetur tincidunt egestas in, faucibus venenatis diam. Donec tincidunt efficitur rhoncus. Duis at leo id diam porttitor iaculis sit amet porta ex. Duis porta massa et elit ultrices, vitae mollis lacus vehicula. Vestibulum pharetra justo id tortor tincidunt, at imperdiet turpis ultrices. Phasellus ac viverra sapien. Nulla eu imperdiet dolor. Ut eleifend porttitor leo. Proin ac erat eget ligula malesuada tempor. Phasellus semper purus ante, eu lacinia neque semper quis. Pellentesque tempus posuere magna, eget pulvinar massa dapibus id. In elit nulla, euismod interdum tempus ut, lobortis ac ante.</p>
-    </div>
-  </div>
-  
-  <div class="article">
-    <div class="article-photo">
-      <img src="assets/pictures/pexels-photo-372882.jpeg" alt="Founder">
-    </div>
-    <div class="article-content">
-      <h2 class="article-title">Heading</h2>
-      <p class="article-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt ante eu ligula imperdiet, vitae maximus arcu lacinia. Praesent tortor quam, consectetur tincidunt egestas in, faucibus venenatis diam. Donec tincidunt efficitur rhoncus. Duis at leo id diam porttitor iaculis sit amet porta ex. Duis porta massa et elit ultrices, vitae mollis lacus vehicula. Vestibulum pharetra justo id tortor tincidunt, at imperdiet turpis ultrices. Phasellus ac viverra sapien. Nulla eu imperdiet dolor. Ut eleifend porttitor leo. Proin ac erat eget ligula malesuada tempor. Phasellus semper purus ante, eu lacinia neque semper quis. Pellentesque tempus posuere magna, eget pulvinar massa dapibus id. In elit nulla, euismod interdum tempus ut, lobortis ac ante.</p>
-    </div>
-  </div>
-  
-  <div class="article">
-    <div class="article-photo">
-      <img src="assets/pictures/pexels-photo-372882.jpeg" alt="Team">
-    </div>
-    <div class="article-content">
-      <h2 class="article-title">Heading</h2>
-      <p class="article-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt ante eu ligula imperdiet, vitae maximus arcu lacinia. Praesent tortor quam, consectetur tincidunt egestas in, faucibus venenatis diam. Donec tincidunt efficitur rhoncus. Duis at leo id diam porttitor iaculis sit amet porta ex. Duis porta massa et elit ultrices, vitae mollis lacus vehicula. Vestibulum pharetra justo id tortor tincidunt, at imperdiet turpis ultrices. Phasellus ac viverra sapien. Nulla eu imperdiet dolor. Ut eleifend porttitor leo. Proin ac erat eget ligula malesuada tempor. Phasellus semper purus ante, eu lacinia neque semper quis. Pellentesque tempus posuere magna, eget pulvinar massa dapibus id. In elit nulla, euismod interdum tempus ut, lobortis ac ante.</p>
-    </div>
-  </div>
+  <div class="article-container">
+    <div class="article row m-4 pt-4" *ngFor="let article of articles">
 
+      <div class="article-photo col-sm-12 col-lg-5 p-0 text-center">
+        <img src="{{article.photo}}" alt="Foundation">
+      </div>
+    
+      <div class="article-content col-sm-12 col-lg-7 text-center">
+        <p class="article-description pt-4">{{article.description}}</p>
+      </div>
+  
+    </div>
+  </div>
 </div>
