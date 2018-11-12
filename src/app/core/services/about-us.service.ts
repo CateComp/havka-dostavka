@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AboutUs } from 'app/core/interfaces/about-us';
-import { map } from 'rxjs/operators';
 import { FirebaseService } from 'app/core/services/firebase.service';
 import { Observable } from 'rxjs/internal/Observable';
 
