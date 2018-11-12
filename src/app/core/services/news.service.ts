@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { News } from 'app/core/interfaces/news';
+import { FirebaseService } from 'app/core/services/firebase.service';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
@@ -8,11 +8,9 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class NewsService {
 
-  private _url = 'assets/mockinfo/mocknews.json';
+  constructor(private _firebase: FirebaseService) { }
 
-  constructor(private http: HttpClient) { }
-
-  getNews(): Observable<News[]> {
-    return this.http.get<News[]>(this._url);
+  getCurrentNews(): Observable<News[]> {
+    return this._firebase.getNews();
   }
 }
