@@ -1,13 +1,13 @@
 import { PipeTransform, Pipe } from '@angular/core';
+import { Dish } from '../interfaces/dish';
 
 @Pipe({
-  name: 'filter'
+  name: 'menuFilter'
 })
 export class MenuPipe implements PipeTransform {
-transform(items: any, filter: any, filterItems: Array<any>, isAnd: boolean): any {
+transform(items: Dish[], filter: any): Dish[] {
   console.log('Filtering ..');
-  console.log('filter', filter);
- return items.filter(item => {
+ return items.filter((item: Dish) => {
    return filter === 0 || !filter ? items : filter.indexOf(item.type) !== -1 ;
  })
 }
