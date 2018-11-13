@@ -1,0 +1,172 @@
+@import "./src/assets/scss/variables.scss";
+
+$wrapper-width: 90%;
+$wrapper-margin: 50px;
+$basket-picture-width: 50px;
+$basket-picture-height: 50px;
+$main-container-cart-padding-top: 20px;
+$main-container-cart-padding-bottom: 20px;
+$image-container-width: 420px;
+$image-container-height: 300px;
+$image-container-margin-right: 20px;
+$food-picture-height: 100%;
+$food-picture-width: 100%;
+$name-products-container-margin-left: 20px;
+$name-products-container-margin-right: 20px;
+$name-products-container-width: 30%;
+$name-of-product-font-size: 25px;
+$quantity-remove-basket-margin-left: 20px;
+$subtract-quantity-height: 40px;
+$subtract-quantity-width: 40px;
+$border: 1px;
+$subtract-quantity-font-size: 25px;
+$number-of-quantity-height: 40px;
+$number-of-quantity-width: 50px;
+$number-of-quantity-font-size: 22px;
+$add-quantity-height: 40px;
+$add-quantity-width: 40px;
+$add-quantity-font-size: 25px;
+$remove-basket-margin-left: 20px;
+$remove-basket-icon-width: 30px;
+$remove-basket-icon-height: 30px;
+$all-products-price-margin-top: 15px;
+$all-products-price-margin-bottom: 30px;
+$order-width: 15%;
+$order-height: 2em;
+$order-border-radius: 5px;
+$order-font-size: 21px;
+$cancel-height: 2em;
+$cancel-width: 15%;
+$cancel-border-radius: 7px;
+$cancel-font-size: 21px;
+
+.wrapper {
+  width: $wrapper-width;
+  margin: $wrapper-margin auto;
+
+  .basket-header {
+    text-align: center;
+  }
+
+  .header-container-cart {
+    .basket-picture {
+      width: $basket-picture-width;
+      height: $basket-picture-height;
+    }
+  }
+
+  .main-container-cart {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: $main-container-cart-padding-top;
+    padding-bottom: $main-container-cart-padding-bottom;
+
+    .image-container {
+      width: $image-container-width;
+      height: $image-container-height;
+      margin-right: $image-container-margin-right;
+
+      .food-picture {
+        height: $food-picture-height;
+        width: $food-picture-width;
+        background-size: cover;
+      }
+    }
+
+    .name-products-container {
+      margin-left: $name-products-container-margin-left;
+      margin-right: $name-products-container-margin-right;
+      width: $name-products-container-width;
+
+      .name-of-product {
+        font-size: $name-of-product-font-size;
+      }
+    }
+
+    .quantity-remove-basket-container {
+      display: flex;
+      flex-direction: row;
+      margin-left: $quantity-remove-basket-margin-left;
+
+      .quantity {
+        display: flex;
+        flex-direction: row;
+
+        .subtract-quantity {
+          height: $subtract-quantity-height;
+          width: $subtract-quantity-width;
+          border: $border solid $black;
+          text-align: center;
+          font-size: $subtract-quantity-font-size;
+        }
+        .number-of-quantity {
+          border: $border solid $black;
+          height: $number-of-quantity-height;
+          width: $number-of-quantity-width;
+          text-align: center;
+          font-size: $number-of-quantity-font-size;
+        }
+        .add-quantity {
+          border: $border solid $black;
+          height: $add-quantity-height;
+          width: $add-quantity-width;
+          text-align: center;
+          font-size: $add-quantity-font-size;
+        }
+      }
+
+      .remove-basket {
+        margin-left: $remove-basket-margin-left;
+
+        .remove-basket-icon {
+          width: $remove-basket-icon-width;
+          height: $remove-basket-icon-height;
+        }
+      }
+    }
+  }
+
+  #all-products-price {
+    text-align: center;
+    margin-top: $all-products-price-margin-top;
+    margin-bottom: $all-products-price-margin-bottom;
+  }
+
+  .footer-container-cart {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .order {
+      width: $order-width;
+      height: $order-height;
+      border-radius: $order-border-radius;
+      box-shadow: 0 7px 30px 0 $strong-orange;
+      border: none;
+      color: $white;
+      font-size: $order-font-size;
+      background-color: $orange;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .cancel {
+      height: $cancel-height;
+      width: $cancel-width;
+      border-radius: $cancel-border-radius;
+      background-color: $pink;
+      box-shadow: 0 7px 30px 0 $strong-red;
+      border: none;
+      color: $white;
+      font-size: $cancel-font-size;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
