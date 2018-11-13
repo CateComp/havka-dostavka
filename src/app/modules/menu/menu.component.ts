@@ -16,17 +16,17 @@ export class MenuComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   public isComplex: boolean;
   public filterProp = [
-    {name :'dessert',
+    {name: 'dessert',
     isChecked: false},
-    {name :'first',
+    {name: 'first',
     isChecked: false},
-    {name :'second',
+    {name: 'second',
     isChecked: false},
-    {name :'salads',
+    {name: 'salads',
     isChecked: false},
-    {name :'drink',
+    {name: 'drink',
     isChecked: false},
-    {name :'pizza',
+    {name: 'pizza',
     isChecked: false}
   ];
 
@@ -53,8 +53,8 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
   addType(event): void {
-    let _changedArr:string[] = this.name.split(' ');
-    if (!event.isChecked){
+    let _changedArr: string[] = this.name.split(' ');
+    if (!event.isChecked) {
       let index: number = _changedArr.indexOf(event.name);
       _changedArr.splice(index, 1);
       this.name = _changedArr.join();

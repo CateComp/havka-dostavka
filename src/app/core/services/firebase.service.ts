@@ -29,6 +29,15 @@ export class FirebaseService {
       );
   }
 
+  addDish(dish: Dish): void {
+    console.log('Adding the dishes...');
+
+    this.afs.collection<Dish>('menu')
+    .add(dish)
+    .then((docRef) => console.log('Dish added with id: ', docRef.id))
+    .catch(error => console.log('Error adding the dish: ', error));
+  }
+
   getAboutUs(): Observable<AboutUs[]> {
     return this.afs.collection<AboutUs>('about-us')
     .snapshotChanges()

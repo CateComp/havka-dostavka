@@ -10,6 +10,7 @@ import { AboutComponent } from 'app/modules/about/about.component';
 import { HomeComponent } from 'app/modules/home/home.component';
 import { CartComponent } from 'app/modules/cart/cart.component';
 import { LoginComponent } from 'app/modules/login/login.component';
+import { AdminPageComponent } from 'app/modules/admin-page/admin-page.component';
 
 
 const appRoutes: Routes = [
@@ -21,7 +22,8 @@ const appRoutes: Routes = [
   { path: 'tracking', component: TrackingComponent },
   { path: 'about-us', component: AboutComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'admin', component: AdminPageComponent }
 ];
 
 @NgModule({

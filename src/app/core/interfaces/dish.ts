@@ -1,6 +1,6 @@
 export interface Dish {
-    complex: string;
-    id: string;
+    complex?: string;
+    id?: string;
     info: string;
     img: string;
     name: string;
