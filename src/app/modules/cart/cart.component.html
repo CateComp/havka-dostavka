@@ -1,3 +1,31 @@
-<p>
-  cart works!
-</p>
+<div class="wrapper">
+  <h2 class="basket-header">Кошик</h2>
+  <hr>
+  <div class="main-container-cart" *ngFor="let list of products">
+    <div class="image-container">
+      <img src="{{ list.product_img }}" class="food-picture" alt="pizza">
+    </div>
+    <div class="name-products-container">
+      <div class="name-of-product">{{ list.product_name }}</div>
+      <hr>
+      <div class="price">Ціна: {{ list.product_price }} грн</div>
+      <div class="total-price">Загальна сума: {{ getProductSummary(list.product_price, list.product_quantity) }} грн </div>
+    </div>
+    <div class="quantity-remove-basket-container">
+      <div class="quantity">
+        <div class="subtract-quantity" (click)="deleteQuantity(list.product_id)">-</div>
+        <div class="number-of-quantity">{{ list.product_quantity }}</div>
+        <div class="add-quantity" (click)="addQuantity(list.product_id)">+</div>
+      </div>
+      <div class="remove-basket" (click)="deleteProductFromCart(list.product_id)">
+        <img src="assets/pictures/delete-basket.png" class="remove-basket-icon" alt="remove cart">
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="total-price" id="all-products-price">Загальна сума: {{ totalPriceOfProducts() }} грн </div>
+  <div class="footer-container-cart">
+    <button class="order">Order</button>
+    <button class="cancel">Cancel</button>
+  </div>
+</div>
