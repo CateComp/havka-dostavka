@@ -5,6 +5,7 @@ import { Dish } from 'app/core/interfaces/dish';
 import { AboutUs } from 'app/core/interfaces/about-us';
 import { News } from 'app/core/interfaces/news';
 import { map } from 'rxjs/operators';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,16 @@ export class FirebaseService {
           });
         })
       );
+  }
+
+  onUpload(file) {
+    let database = firebase.database()
+    let storage = firebase.storage();
+
+    let buildenavn = storage.ref("images-mocks/" + new Date());
+    buildenavn.put(file);
+
+    let builderurler = database.ref("builderurler")
   }
 
   addDish(dish: Dish): void {
