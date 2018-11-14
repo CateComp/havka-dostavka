@@ -1,7 +1,7 @@
 <div class="card h-100" (mouseover)="mouseHovering()" (mouseout)="mouseLeaving()">
   <img alt="Card image cap" class="card-img-top menu-item__image" 
     [ngClass]="{ 'menu__item-hovered' : dish.isHovered }"
-    src="{{dish.image}}">
+    src="{{dish.img}}">
   <div class="container d-flex flex-column align-items-center position-absolute ingredients__list" *ngIf="dish.isHovered">
     <div class="row d-flex">
       {{dish.info}}
