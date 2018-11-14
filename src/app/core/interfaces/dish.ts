@@ -1,11 +1,13 @@
 export interface Dish {
+    complex: string;
     id: string;
-    name: string;
     info: string;
     weight: number;
     img: string;
-    type: string;
+    name: string;
+    orders?: number;
     price: number;
     rating?: number;
-    orders?: number;
+    todaymenu: boolean;
+    type: string;
 }

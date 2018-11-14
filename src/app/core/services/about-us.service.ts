@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { News } from 'app/core/interfaces/news';
+import { AboutUs } from 'app/core/interfaces/about-us';
 import { FirebaseService } from 'app/core/services/firebase.service';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
 })
-export class NewsService {
-
+export class AboutUsService {
+  
   constructor(private _firebase: FirebaseService) { }
 
-  getCurrentNews(): Observable<News[]> {
-    return this._firebase.getNews();
+  getArticles(): Observable<AboutUs[]> {
+    return this._firebase.getAboutUs();
   }
 }
