@@ -47,47 +47,19 @@
       </div>
     </div>
   </div>
-  
+
   <div class="custom-control custom-checkbox mb-3">
     <input type="checkbox" class="custom-control-input"  name="todaymenu" [(ngModel)]="dish.todaymenu" id="todayMenu">
     <label class="custom-control-label" for="todayMenu">Is it todays menu?</label>
   </div>
 
   <h3 class="title">Choose type</h3>
-
-  <ul>
+  <ul class="form-group">
     <li *ngFor="let type of filterProp">
-      <input type="radio"  [(ngModel)]="dish.type" id="{{type.name}}" name="{{type.name}}" value="{{type.name}}">
+      <input type="radio" [(ngModel)]="dish.type" id="{{type.name}}" name="{{type.name}}" value="{{type.name}}">
       <label for="{{type}}">{{type.name}}</label>
     </li>
   </ul>
-  <div class="form-row">
-    <div class="custom-control custom-radio">
-      <input type="radio" class="custom-control-input" id="first" name="dish-type" required>
-      <label class="custom-control-label" for="first">first</label>
-    </div>
-    <div class="custom-control custom-radio">
-      <input type="radio" class="custom-control-input" id="second" name="dish-type" required>
-      <label class="custom-control-label" for="second">second</label>
-    </div>
-    <div class="custom-control custom-radio">
-      <input type="radio" class="custom-control-input" id="pizza" name="dish-type" required>
-      <label class="custom-control-label" for="pizza">pizza</label>
-    </div>
-    <div class="custom-control custom-radio">
-      <input type="radio" class="custom-control-input" id="dessert" name="dish-type" required>
-      <label class="custom-control-label" for="dessert">dessert</label>
-    </div>
-    <div class="custom-control custom-radio">
-      <input type="radio" class="custom-control-input" id="drink" name="dish-type" required>
-      <label class="custom-control-label" for="drink">drink</label>
-    </div>
-    <div class="custom-control custom-radio mb-3">
-      <input type="radio" class="custom-control-input" id="salads" name="dish-type" required>
-      <label class="custom-control-label" for="salads">salads</label>
-      <div class="invalid-feedback">You should choose type</div>
-    </div>
-  </div>
 
   <div class="form-group">
     <select class="custom-select">
@@ -100,10 +72,10 @@
   </div>
 
   <div class="custom-file">
-    <input type="file" class="custom-file-input" id="image" required>
+    <input type="file" (change)="addImage($event)" class="custom-file-input" id="image" required>
     <label class="custom-file-label" for="image">Choose image...</label>
+    <!-- <button type="button" (click)="onUpload()">Upload</button> -->
     <div class="invalid-feedback">Choose image for your dish</div>
   </div>
-
-  <button class="btn btn-primary" type="submit">Submit form</button>
+  <button class="btn btn-primary" (click)="onUpload()" type="submit">Submit form</button>
 </form>
