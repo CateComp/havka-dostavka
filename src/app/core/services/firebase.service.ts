@@ -30,14 +30,17 @@ export class FirebaseService {
       );
   }
 
-  onUpload(file) {
-    let database = firebase.database()
-    let storage = firebase.storage();
+  downloadImage(dish: Dish): void {
+    console.log('Download image from storage...', dish.img);
+    dish.img = 'https://firebasestorage.googleapis.com/v0/b/havka-2726f.appspot.com/o/images-mocks%2F' + dish.name + '?alt=media';
+  }
 
-    let buildenavn = storage.ref("images-mocks/" + new Date());
-    buildenavn.put(file);
-
-    let builderurler = database.ref("builderurler")
+  uploadImage(dish: Dish): void {
+    console.log('Upload image to storage...');
+    const database = firebase.database();
+    const storage = firebase.storage();
+    const buildenavn = storage.ref('images-mocks/' + dish.name);
+    buildenavn.put(dish.img);
   }
 
   addDish(dish: Dish): void {
@@ -47,6 +50,26 @@ export class FirebaseService {
     .add(dish)
     .then((docRef) => console.log('Dish added with id: ', docRef.id))
     .catch(error => console.log('Error adding the dish: ', error));
+  }
+
+  deleteDish(dish: Dish): void {
+    console.log('Deleting...');
+
+    this.afs.collection<Dish>('menu')
+    .doc(dish.id)
+    .delete()
+    .then(_ => console.log('Document succesfully deleted!'))
+    .catch(err => console.log('Error removing the document: ', err));
+  }
+
+  editDish(dish: Dish): void {
+    console.log('Dish editing...');
+
+    this.afs.collection<Dish>('menu')
+    .doc(dish.id)
+    .update(dish)
+    .then(_ => console.log('Dish successfuly updated...'))
+    .catch(err => console.log('Error editing the dish: ', err));
   }
 
   getAboutUs(): Observable<AboutUs[]> {

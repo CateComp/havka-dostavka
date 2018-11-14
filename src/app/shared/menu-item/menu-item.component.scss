@@ -21,3 +21,16 @@
   opacity: $OpacityLarge;
   transition: $TransitionMedium;
 }
+
+.delete__button {
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+
+.edit__button {
+  left: 0;
+  top: 0;
+  z-index: 100;
+}
+

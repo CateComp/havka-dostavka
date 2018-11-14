@@ -74,8 +74,7 @@
   <div class="custom-file">
     <input type="file" (change)="addImage($event)" class="custom-file-input" id="image" required>
     <label class="custom-file-label" for="image">Choose image...</label>
-    <!-- <button type="button" (click)="onUpload()">Upload</button> -->
     <div class="invalid-feedback">Choose image for your dish</div>
   </div>
-  <button class="btn btn-primary" (click)="onUpload()" type="submit">Submit form</button>
+  <button class="btn btn-primary" (click)="submitDish()" type="submit">Submit form</button>
 </form>
