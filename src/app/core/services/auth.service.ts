@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
-import { of as observableOf } from 'rxjs';
 import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  authState = this.afAuth.authState.pipe(
+  public authState = this.afAuth.authState.pipe(
     map(authState => {
       if(!authState) {
         return null;
@@ -17,20 +16,17 @@ export class AuthService {
       }
     })
   )
- 
   constructor(public afAuth: AngularFireAuth) {  }
-  
-  signInWithFacebook() {
+  public signInWithFacebook(): void {
     this.afAuth.auth.signInWithPopup(
       new auth.FacebookAuthProvider()
     )
-  }
-  signInWithGoogle() {
+  };
+  public signInWithGoogle(): void {
     this.afAuth.auth.signInWithPopup(
       new auth.GoogleAuthProvider())
-  }
-
-  logout() {
+  };
+  public logout(): void {
     this.afAuth.auth.signOut();
-  }
+  };
 }
