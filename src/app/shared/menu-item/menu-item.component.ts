@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DishHome } from 'app/core/interfaces/dish-home';
+import { CartService } from '../../core/services/cart.service';
 
 @Component({
   selector: 'app-menu-item',
@@ -9,14 +10,19 @@ import { DishHome } from 'app/core/interfaces/dish-home';
 export class MenuItemComponent implements OnInit {
   @Input() dish: DishHome;
 
-mouseHovering() {
- this.dish.isHovered = true;
-}
+  constructor(private _cartService: CartService) {}
 
-mouseLeaving() {
-  this.dish.isHovered = false;
-}
-  constructor() {}
+  addToShoppingCart() {
+    this._cartService.addCartItem(this.dish);
+  }
+
+  mouseHovering() {
+   this.dish.isHovered = true;
+  }
+
+  mouseLeaving() {
+    this.dish.isHovered = false;
+  }
 
   ngOnInit() {
   }
