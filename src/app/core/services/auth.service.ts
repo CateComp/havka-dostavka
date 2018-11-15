@@ -9,25 +9,25 @@ import { map } from 'rxjs/operators';
 export class AuthService {
   public authState = this.afAuth.authState.pipe(
     map(authState => {
-      if(!authState) {
+      if (!authState) {
+
         return null;
       } else {
-        console.log(authState)
-        return authState
+        return authState;
       }
     })
-  )
+  );
   constructor(public afAuth: AngularFireAuth) {  }
   public signInWithFacebook(): void {
     this.afAuth.auth.signInWithPopup(
       new auth.FacebookAuthProvider()
-    )
-  };
+    );
+  }
   public signInWithGoogle(): void {
     this.afAuth.auth.signInWithPopup(
-      new auth.GoogleAuthProvider())
-  };
+      new auth.GoogleAuthProvider());
+  }
   public logout(): void {
     this.afAuth.auth.signOut();
-  };
+  }
 }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { NewsService } from 'app/core/services/news.service';
-import { Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FirebaseService } from 'app/core/services/firebase.service';
+import { Subscription } from 'rxjs';
+import { News } from 'app/core/interfaces/news';
 
 @Component({
   selector: 'app-news',
@@ -9,16 +10,16 @@ import { Router } from '@angular/router';
 })
 export class NewsComponent implements OnInit {
 
-  public news: any[] = [];
-  public currentUrl: any;
+  public currentNews: News[] = [];
+  private subscription: Subscription;
+  constructor(private firebaseServise: FirebaseService) { }
 
-  constructor(private _newsService: NewsService, private _router: Router) {
-    _router.events.subscribe((url: any) => this.currentUrl = url);
+  public ngOnInit() {
+    this.subscription = this.firebaseServise.getNews()
+    .subscribe((data: News[]) => this.currentNews = data);
   }
 
-  ngOnInit() {
-    this._newsService.getNews()
-      .subscribe(data => this.news = data);
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
-
 }

@@ -19,12 +19,16 @@ import { AppRoutingModule } from 'app/core/app-routing/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { from } from 'rxjs';
 import { LoginComponent } from './login/login.component';
+import { MenuPipe } from 'app/core/pipes/menu.pipe';
+import { FormsModule } from '@angular/forms';
+import { AdminPageComponent } from 'app/modules/admin-page/admin-page.component';
 
 @NgModule({
   imports: [
     CommonModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   declarations: [
     MenuComponent,
@@ -37,6 +41,8 @@ import { LoginComponent } from './login/login.component';
     MenuWrapperComponent,
     MenuItemComponent,
     LoginComponent,
+    MenuPipe,
+    AdminPageComponent
   ],
   providers: [DishService],
   exports: [MenuComponent, NewsComponent, DeliveryComponent, TrackingComponent, AboutComponent, CartComponent, HomeComponent]

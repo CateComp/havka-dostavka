@@ -42,6 +42,9 @@
           <li *ngIf="user.authState | async" class="nav-item">
             <a class="nav-link" (click)="user.logout()">Вийти</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/administration">Manage page</a>
+          </li>
         </ul>
       </div>
     </div>

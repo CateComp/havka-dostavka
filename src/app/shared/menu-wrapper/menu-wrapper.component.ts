@@ -8,10 +8,11 @@ import { Dish } from 'app/core/interfaces/dish';
 })
 export class MenuWrapperComponent implements OnInit {
   @Input() dishes: Dish[];
+  @Input() type: string;
 
   constructor() {}
 
-  ngOnInit() {
+  public ngOnInit() {
   }
 
 }
