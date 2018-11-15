@@ -1,6 +1,6 @@
 <div class="card h-100" (mouseenter)="mouseHovering()" (mouseout)="mouseLeaving()">
-  <a (click)="open(editDish)" class="btn-warning edit__button position-absolute"><i class="fas fa-edit"></i></a> 
-  <a (click)="deleteDish($event)" class="btn-danger delete__button position-absolute"><i class="fas fa-times-circle"></i></a> 
+  <a (click)="open(editDish)" class="btn-warning edit__button position-absolute"><i class="fas fa-edit"></i></a>
+  <a (click)="deleteDish($event)" class="btn-danger delete__button position-absolute"><i class="fas fa-times-circle"></i></a>
   <img alt="Card image cap" class="card-img-top menu-item__image"
     [ngClass]="{ 'menu__item-hovered' : dish.isHovered }"
     src="{{dish.img}}">
@@ -13,7 +13,7 @@
     <h5 class="card-title text-center my-2">{{dish.name}}</h5>
     <div class="row d-flex text-center flex-nowrap my-4">
       <div class="col-6">
-        {{ dish.price | currency:'UAH ':true:'1.2-2' }}
+        {{ dish.price | currency:'UAH ' }}
       </div>
       <div class="col-6">
         <button type="button" (click)="saveEditDish()" class="btn btn-success">Success</button>

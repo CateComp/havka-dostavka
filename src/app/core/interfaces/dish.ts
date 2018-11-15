@@ -5,7 +5,7 @@ export interface Dish {
     img: string;
     name: string;
     orders?: number;
-    price: number;
+    price: string;
     rating?: number;
     todaymenu: boolean;
     type: string;
