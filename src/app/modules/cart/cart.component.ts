@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService, CartItem } from '../../core/services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -7,32 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  products: any[];
+  products: CartItem[];
 
-  constructor() { 
-    this.products = [
-      {
-        product_id: '1',
-        product_name: 'З куркою та грибами',
-        product_img: 'https://images.pizza33.ua/products_for_catalog/F87hxnCbFeBIeznrX4rJZtvODfoMLMuD.jpg',
-        product_price: '65',
-        product_quantity: 1
-      },
-      {
-        product_id: '2',
-        product_name: 'Вегетаріанська',
-        product_img: 'https://donattelo.ru/image/cache/catalog/1%D0%BF%D0%B8%D1%86%D1%86%D0%B0/zesar-500x500.png',
-        product_price: '73',
-        product_quantity: 1
-      },
-      {
-        product_id: '3',
-        product_name: 'З перцем та сосискою',
-        product_img: 'http://img.krzl.ru/a/cesar/files//import/pizza012.jpg',
-        product_price: '80',
-        product_quantity: 1
-      }
-    ];
+  constructor(private _cartService: CartService, private router: Router) { 
+    this.products = _cartService.getCartItems() || [];
   }
 
   ngOnInit() {
@@ -56,6 +36,8 @@ export class CartComponent implements OnInit {
         this.products.splice(y, 1);
       }
     }
+
+    this._cartService.saveCartItems(this.products);
   }
 
   addQuantity(product) {
@@ -64,6 +46,7 @@ export class CartComponent implements OnInit {
         this.products[z].product_quantity += 1;
       }
     }
+    this._cartService.saveCartItems(this.products);
   }
 
   deleteQuantity(product) {
@@ -74,6 +57,20 @@ export class CartComponent implements OnInit {
         }
       }
     }
+
+    this._cartService.saveCartItems(this.products);
+  }
+
+  completeOrder() {
+    this._cartService.completeOrder(this.products)
+    .then(function() {
+      alert('Замовлення прийнято!');
+    })
+  }
+
+  cancelOrder() {
+    this._cartService.clearCart();
+    this.router.navigate(['/menu']);
   }
 
 }
