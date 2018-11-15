@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   public userName: string;
   constructor(public authService: AuthService) { }
     
-  ngOnInit() {
+  public ngOnInit() {
       
   }
   signInWithFacebook() {

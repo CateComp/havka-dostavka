@@ -16,43 +16,41 @@ export class MenuItemComponent implements OnInit {
   public filterProp: filterProp[] = PROPERTIES;
   private newImage: boolean;
 
-  mouseHovering() {
-  this.dish.isHovered = true;
-  }
-
-  mouseLeaving() {
-    this.dish.isHovered = false;
-  }
 
   constructor(private _fbs: FirebaseService,
       private modalService: NgbModal,
-      public activeModal: NgbActiveModal) {
-        // customize default values of modals used by this component tree
-        // We will delete this after all works done
+      public activeModal: NgbActiveModal) {  }
+
+  public onMouseHover() {
+    this.dish.isHovered = true;
   }
 
-  open(content) {
+  public onMouseLeave() {
+    this.dish.isHovered = false;
+  }
+
+  public open(content) {
     this.modalService.open(content);
     this.submitValidation();
     console.log('This is ', this);
   }
 
-  addImage(event) {
+  public addImage(event) {
     this.newImage = true;
     this.dish.img = event.target.files[0];
     console.log('dish', this.dish.img);
   }
 
-  close(content) {
+  public close(content) {
     console.log('this', this);
     this.activeModal.close(content);
   }
 
-  deleteDish(): void {
+  public deleteDish(): void {
     this._fbs.deleteDish(this.dish);
   }
 
-  saveEditDish() {
+  public saveEditDish() {
     console.log('Edited', this.dish);
     if (this.newImage) {
       this._fbs.uploadImage(this.dish);
@@ -61,7 +59,7 @@ export class MenuItemComponent implements OnInit {
     this._fbs.editDish(this.dish);
   }
 
-  submitValidation() {
+  private submitValidation() {
     window.addEventListener('load', function() {
       // Fetch all the forms we want to apply custom Bootstrap validation styles to
       const forms = document.getElementsByClassName('needs-validation');
@@ -78,7 +76,7 @@ export class MenuItemComponent implements OnInit {
     }, false);
 }
 
-ngOnInit() {
+public ngOnInit() {
 }
 
 

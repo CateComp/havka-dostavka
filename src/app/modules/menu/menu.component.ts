@@ -52,7 +52,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     };
   }
 
-  ngOnInit(): void {
+  public ngOnInit() {
     this.allDishes();
   }
 

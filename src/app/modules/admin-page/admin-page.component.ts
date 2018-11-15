@@ -16,13 +16,17 @@ export class AdminPageComponent implements OnInit {
     name: '',
     type: '',
     todaymenu: false,
-    price: 0,
+    price: '1',
     weight: '',
     img: '',
     info: ''
   };
 
   constructor(private _fbs: FirebaseService) {}
+
+   public ngOnInit() {
+    this.submitValidation();
+  }
 
   public addImage(event) {
     this.dish.img = event.target.files[0];
@@ -51,10 +55,6 @@ export class AdminPageComponent implements OnInit {
           }, false);
         });
       }, false);
-  }
-
-  ngOnInit() {
-    this.submitValidation();
   }
 
 }

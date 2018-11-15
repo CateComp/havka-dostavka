@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(private _dishService: DishService) { }
 
-  ngOnInit(): void {
+  public ngOnInit() {
     this.subscription = this._dishService.getDishesSortedByRating()
     .subscribe((data: Dish[]) => this.dishes = data);
   }

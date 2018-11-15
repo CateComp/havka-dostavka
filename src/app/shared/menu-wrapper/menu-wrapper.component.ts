@@ -12,7 +12,7 @@ export class MenuWrapperComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
+  public ngOnInit() {
   }
 
 }
