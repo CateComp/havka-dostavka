@@ -14,7 +14,7 @@ export class NewsComponent implements OnInit {
   private subscription: Subscription;
   constructor(private firebaseServise: FirebaseService) { }
 
-  ngOnInit(): void {
+  public ngOnInit() {
     this.subscription = this.firebaseServise.getNews()
     .subscribe((data: News[]) => this.currentNews = data);
   }

@@ -1,5 +1,5 @@
 import { PipeTransform, Pipe } from '@angular/core';
-import { Dish } from '../interfaces/dish';
+import { Dish } from 'app/core/interfaces/dish';
 
 @Pipe({
   name: 'menuFilter'

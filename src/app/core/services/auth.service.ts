@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
-import { map } from 'rxjs/operators'
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,24 +9,26 @@ import { map } from 'rxjs/operators'
 export class AuthService {
   public authState = this.afAuth.authState.pipe(
     map(authState => {
-      if(!authState) {
+      if (!authState) {
+
         return null;
       } else {
-        return authState
+
+        return authState;
       }
     })
-  )
+  );
   constructor(public afAuth: AngularFireAuth) {  }
   public signInWithFacebook(): void {
     this.afAuth.auth.signInWithPopup(
       new auth.FacebookAuthProvider()
-    )
-  };
+    );
+  }
   public signInWithGoogle(): void {
     this.afAuth.auth.signInWithPopup(
-      new auth.GoogleAuthProvider())
-  };
+      new auth.GoogleAuthProvider());
+  }
   public logout(): void {
     this.afAuth.auth.signOut();
-  };
+  }
 }
