@@ -25,7 +25,7 @@
   <hr>
   <div class="total-price" id="all-products-price">Загальна сума: {{ totalPriceOfProducts() }} грн </div>
   <div class="footer-container-cart">
-    <button class="order">Order</button>
-    <button class="cancel">Cancel</button>
+    <button class="order" (click)="completeOrder()">Order</button>
+    <button class="cancel" (click)="cancelOrder()">Cancel</button>
   </div>
 </div>
