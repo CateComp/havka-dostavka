@@ -23,7 +23,7 @@ const appRoutes: Routes = [
   { path: 'about-us', component: AboutComponent },
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'admin', component: AdminPageComponent }
+  { path: 'administration', component: AdminPageComponent }
 ];
 
 @NgModule({

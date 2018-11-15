@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DishHome } from 'app/core/interfaces/dish-home';
 import { FirebaseService } from 'app/core/services/firebase.service';
 import { NgbModalConfig, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { filterProp } from 'app/core/interfaces/fiter-properties';
+import { PROPERTIES } from 'app/core/app-config';
 
 @Component({
   selector: 'app-menu-item',
@@ -11,20 +13,7 @@ import { NgbModalConfig, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-boots
 })
 export class MenuItemComponent implements OnInit {
   @Input() dish: DishHome;
-  public filterProp = [
-    {name: 'dessert',
-    isChecked: false},
-    {name: 'first',
-    isChecked: false},
-    {name: 'second',
-    isChecked: false},
-    {name: 'salads',
-    isChecked: false},
-    {name: 'drink',
-    isChecked: false},
-    {name: 'pizza',
-    isChecked: false}
-  ];
+  public filterProp: filterProp[] = PROPERTIES;
   private newImage: boolean;
 
   mouseHovering() {

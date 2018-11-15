@@ -14,7 +14,7 @@ export class FirebaseService {
 
   constructor(private afs: AngularFirestore) {  }
 
-  getItems(): Observable<Dish[]> {
+  public getItems(): Observable<Dish[]> {
     console.log('sending the request...');
     return this.afs.collection<Dish>('menu')
     .snapshotChanges()
@@ -30,12 +30,12 @@ export class FirebaseService {
       );
   }
 
-  downloadImage(dish: Dish): void {
+  public downloadImage(dish: Dish): void {
     console.log('Download image from storage...', dish.img);
     dish.img = 'https://firebasestorage.googleapis.com/v0/b/havka-2726f.appspot.com/o/images-mocks%2F' + dish.name + '?alt=media';
   }
 
-  uploadImage(dish: Dish): void {
+  public uploadImage(dish: Dish): void {
     console.log('Upload image to storage...');
     const database = firebase.database();
     const storage = firebase.storage();
@@ -43,7 +43,7 @@ export class FirebaseService {
     buildenavn.put(dish.img);
   }
 
-  addDish(dish: Dish): void {
+  public addDish(dish: Dish): void {
     console.log('Adding the dishes...');
 
     this.afs.collection<Dish>('menu')
@@ -52,7 +52,7 @@ export class FirebaseService {
     .catch(error => console.log('Error adding the dish: ', error));
   }
 
-  deleteDish(dish: Dish): void {
+  public deleteDish(dish: Dish): void {
     console.log('Deleting...');
 
     this.afs.collection<Dish>('menu')
@@ -62,7 +62,7 @@ export class FirebaseService {
     .catch(err => console.log('Error removing the document: ', err));
   }
 
-  editDish(dish: Dish): void {
+  public editDish(dish: Dish): void {
     console.log('Dish editing...');
 
     this.afs.collection<Dish>('menu')
@@ -72,7 +72,7 @@ export class FirebaseService {
     .catch(err => console.log('Error editing the dish: ', err));
   }
 
-  getAboutUs(): Observable<AboutUs[]> {
+  public getAboutUs(): Observable<AboutUs[]> {
     return this.afs.collection<AboutUs>('about-us')
     .snapshotChanges()
       .pipe(
@@ -86,7 +86,7 @@ export class FirebaseService {
       );
   }
 
-  getNews(): Observable<News[]> {
+  public getNews(): Observable<News[]> {
     return this.afs.collection<News>('news')
     .snapshotChanges()
       .pipe(

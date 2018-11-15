@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from 'app/core/services/firebase.service';
 import { Dish } from 'app/core/interfaces/dish';
+import { PROPERTIES } from 'app/core/app-config';
+import { filterProp } from 'app/core/interfaces/fiter-properties';
 
 @Component({
   selector: 'app-admin-page',
@@ -9,6 +11,7 @@ import { Dish } from 'app/core/interfaces/dish';
 })
 export class AdminPageComponent implements OnInit {
   public image;
+  public filterProp: filterProp[] = PROPERTIES;
   public dish: Dish = {
     name: '',
     type: '',
@@ -19,36 +22,21 @@ export class AdminPageComponent implements OnInit {
     info: ''
   };
 
-  public filterProp = [
-    {name: 'dessert',
-    isChecked: false},
-    {name: 'first',
-    isChecked: false},
-    {name: 'second',
-    isChecked: false},
-    {name: 'salads',
-    isChecked: false},
-    {name: 'drink',
-    isChecked: false},
-    {name: 'pizza',
-    isChecked: false}
-  ];
+  constructor(private _fbs: FirebaseService) {}
 
-  constructor(private _fbs: FirebaseService) { }
-
-  addImage(event) {
+  public addImage(event) {
     this.dish.img = event.target.files[0];
     console.log('dish', this.dish.img);
   }
 
-  submitDish() {
+  public submitDish() {
     console.log('Dish to add', this.dish);
     this._fbs.uploadImage(this.dish);
     this._fbs.downloadImage(this.dish);
     this._fbs.addDish(this.dish);
   }
 
-  submitValidation() {
+  private submitValidation() {
       window.addEventListener('load', function() {
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         const forms = document.getElementsByClassName('needs-validation');

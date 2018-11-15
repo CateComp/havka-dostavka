@@ -3,6 +3,8 @@ import { FirebaseService } from 'app/core/services/firebase.service';
 import { Subscription, Observable } from 'rxjs';
 import { Dish } from 'app/core/interfaces/dish';
 import { DishService } from 'app/core/services/dish.service';
+import { PROPERTIES } from 'app/core/app-config';
+import { filterProp } from 'app/core/interfaces/fiter-properties';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -15,20 +17,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   public complex: Dish[][] = [];
   private subscription: Subscription;
   public isComplex: boolean;
-  public filterProp = [
-    {name: 'dessert',
-    isChecked: false},
-    {name: 'first',
-    isChecked: false},
-    {name: 'second',
-    isChecked: false},
-    {name: 'salads',
-    isChecked: false},
-    {name: 'drink',
-    isChecked: false},
-    {name: 'pizza',
-    isChecked: false}
-  ];
+  public filterProp: filterProp[] =  PROPERTIES;
 
   constructor(
     private firebaseService: FirebaseService,
