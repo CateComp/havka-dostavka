@@ -5,6 +5,7 @@ import { Dish } from 'app/core/interfaces/dish';
 import { AboutUs } from 'app/core/interfaces/about-us';
 import { News } from 'app/core/interfaces/news';
 import { map } from 'rxjs/operators';
+import { OrderDetails } from '../interfaces/order-details';
 
 @Injectable({
   providedIn: 'root'
@@ -56,4 +57,11 @@ export class FirebaseService {
         })
       );
   }
+  
+  addOrder(orderDetails: OrderDetails): Promise<firebase.firestore.DocumentReference> {
+    let collection = this.afs.collection<OrderDetails>('orders');
+
+    return collection.add(orderDetails);
+  }
+
 }
