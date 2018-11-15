@@ -36,7 +36,7 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     MenuWrapperComponent,
     MenuItemComponent,
-    LoginComponent
+    LoginComponent,
   ],
   providers: [DishService],
   exports: [MenuComponent, NewsComponent, DeliveryComponent, TrackingComponent, AboutComponent, CartComponent, HomeComponent]
