@@ -1,24 +1,13 @@
-<p>
-  login works!
-</p>
-<!-- <div *ngIf="afAuth.user | async as user; else showLogin">
-  <h1>Hello {{ user.displayName }}!</h1>
-  <button (click)="logout()">Logout</button>
-</div>
-<ng-template #showLogin>
-  <p>Please login.</p>
-  <button (click)="login()">Login with Google</button>
-</ng-template> -->
-<div *ngIf="afAuth.user | async as user; else showLogin">
-    <h1>Hello {{ user.displayName }}!</h1>
-    <button (click)="logout()">Logout</button>
+<div *ngIf="user.authState | async as authState">
+    <h1>Hello {{ authState.displayName }}!</h1>
+    <button (click)="user.logout()">Logout</button>
 </div>
 <div>
-  <button type="buton" class="btn btn-block" (click)="signInWithFacebook()">
+  <button type="buton" class="btn btn-block" (click)="user.signInWithFacebook()">
     <i class="fa fa-facebook" aria-hidden="true"></i> 
     Login with Facebook
   </button>
-  <button type="button" class="btn btn-block" (click)="signInWithGoogle()">
+  <button type="button" class="btn btn-block" (click)="user.signInWithGoogle()">
     <i class="fa fa-google" aria-hidden="true"></i>
     Login with Google
   </button>
