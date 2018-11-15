@@ -5,7 +5,7 @@ import { Dish } from 'app/core/interfaces/dish';
 import { AboutUs } from 'app/core/interfaces/about-us';
 import { News } from 'app/core/interfaces/news';
 import { map } from 'rxjs/operators';
-import * as firebase from 'firebase/app';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
