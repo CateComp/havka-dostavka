@@ -22,7 +22,7 @@ export class CartComponent implements OnInit {
   public totalPriceOfProducts(): number {
     let totalPrice = 0;
     for(let i = 0; i < this.products.length; i++) {
-      totalPrice += this.products[i].product_price * this.products[i].product_quantity;
+      totalPrice += this.products[i].productPrice * this.products[i].productQuantity;
     }
     return totalPrice;
   }
@@ -33,7 +33,7 @@ export class CartComponent implements OnInit {
 
   public deleteProductFromCart(product): void {
     for(let y = 0; y < this.products.length; y++) {
-      if(this.products[y].product_id === product) {
+      if(this.products[y].productId === product) {
         this.products.splice(y, 1);
       }
     }
@@ -43,8 +43,8 @@ export class CartComponent implements OnInit {
 
   public addQuantity(product): void {
     for(let z = 0; z < this.products.length; z++) {
-      if(this.products[z].product_id === product) {
-        this.products[z].product_quantity += 1;
+      if(this.products[z].productId === product) {
+        this.products[z].productQuantity += 1;
       }
     }
     this._cartService.saveCartItems(this.products);
@@ -52,9 +52,9 @@ export class CartComponent implements OnInit {
 
   public deleteQuantity(product): void {
     for(let j = 0; j < this.products.length; j++) {
-      if(this.products[j].product_id === product) {
-        if(this.products[j].product_quantity > 1) {
-          this.products[j].product_quantity -= 1;
+      if(this.products[j].productId === product) {
+        if(this.products[j].productQuantity > 1) {
+          this.products[j].productQuantity -= 1;
         }
       }
     }

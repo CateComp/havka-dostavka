@@ -3,21 +3,21 @@
   <hr>
   <div class="main-container-cart" *ngFor="let list of products">
     <div class="image-container">
-      <img src="{{ list.product_img }}" class="food-picture" alt="food picture">
+      <img src="{{ list.productImg }}" class="food-picture" alt="food picture">
     </div>
     <div class="name-products-container">
-      <div class="name-of-product">{{ list.product_name }}</div>
+      <div class="name-of-product">{{ list.productName }}</div>
       <hr>
-      <div class="price">Ціна: {{ list.product_price }} грн</div>
-      <div class="total-price">Загальна сума: {{ getProductSummary(list.product_price, list.product_quantity) }} грн </div>
+      <div class="price">Ціна: {{ list.productPrice }} грн</div>
+      <div class="total-price">Загальна сума: {{ getProductSummary(list.productPrice, list.productQuantity) }} грн </div>
     </div>
     <div class="quantity-remove-basket-container">
       <div class="quantity">
-        <div class="subtract-quantity" (click)="deleteQuantity(list.product_id)">-</div>
-        <div class="number-of-quantity">{{ list.product_quantity }}</div>
-        <div class="add-quantity" (click)="addQuantity(list.product_id)">+</div>
+        <div class="subtract-quantity" (click)="deleteQuantity(list.productId)">-</div>
+        <div class="number-of-quantity">{{ list.productQuantity }}</div>
+        <div class="add-quantity" (click)="addQuantity(list.productId)">+</div>
       </div>
-      <div class="remove-basket" (click)="deleteProductFromCart(list.product_id)">
+      <div class="remove-basket" (click)="deleteProductFromCart(list.productId)">
         <img src="assets/pictures/delete-basket.png" class="remove-basket-icon" alt="remove cart">
       </div>
     </div>
