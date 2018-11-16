@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService, CartItem } from '../../core/services/cart.service';
+import { CartService, CartItem } from 'app/core/services/cart.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'app/core/services/auth.service';
 
@@ -12,14 +12,14 @@ export class CartComponent implements OnInit {
 
   products: CartItem[];
 
-  constructor(private _cartService: CartService, private router: Router, public user: AuthService) { 
+  constructor(private _cartService: CartService, private _router: Router, public user: AuthService) { 
     this.products = _cartService.getCartItems() || [];
   }
 
   ngOnInit() {
   }
 
-  totalPriceOfProducts() {
+  public totalPriceOfProducts(): number {
     let totalPrice = 0;
     for(let i = 0; i < this.products.length; i++) {
       totalPrice += this.products[i].product_price * this.products[i].product_quantity;
@@ -27,11 +27,11 @@ export class CartComponent implements OnInit {
     return totalPrice;
   }
 
-  getProductSummary(price: number, quantity: number) {
+  public getProductSummary(price: number, quantity: number): number {
     return price * quantity;
   }
 
-  deleteProductFromCart(product) {
+  public deleteProductFromCart(product): void {
     for(let y = 0; y < this.products.length; y++) {
       if(this.products[y].product_id === product) {
         this.products.splice(y, 1);
@@ -41,7 +41,7 @@ export class CartComponent implements OnInit {
     this._cartService.saveCartItems(this.products);
   }
 
-  addQuantity(product) {
+  public addQuantity(product): void {
     for(let z = 0; z < this.products.length; z++) {
       if(this.products[z].product_id === product) {
         this.products[z].product_quantity += 1;
@@ -50,7 +50,7 @@ export class CartComponent implements OnInit {
     this._cartService.saveCartItems(this.products);
   }
 
-  deleteQuantity(product) {
+  public deleteQuantity(product): void {
     for(let j = 0; j < this.products.length; j++) {
       if(this.products[j].product_id === product) {
         if(this.products[j].product_quantity > 1) {
@@ -62,24 +62,24 @@ export class CartComponent implements OnInit {
     this._cartService.saveCartItems(this.products);
   }
 
-  completeOrder() {
+  public completeOrder(): void {
     this._cartService.completeOrder(this.products)
     .then(function() {
       alert('Замовлення прийнято!');
     })
   }
 
-  cancelOrder() {
+  public cancelOrder(): void {
     this._cartService.clearCart();
     this.products = [];
   }
 
-  changeRouteToMenu() {
-    this.router.navigate(['/menu']);
+  public changeRouteToMenu(): void {
+    this._router.navigate(['/menu']);
   }
 
-  logInCart() {
-    this.router.navigate(['/login']);
+  public logInCart(): void {
+    this._router.navigate(['/login']);
   }
 
 }
