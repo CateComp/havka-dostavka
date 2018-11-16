@@ -3,6 +3,7 @@ import { FirebaseService } from 'app/core/services/firebase.service';
 import { Dish } from 'app/core/interfaces/dish';
 import { PROPERTIES } from 'app/core/app-config';
 import { filterProp } from 'app/core/interfaces/fiter-properties';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-page',
@@ -10,6 +11,8 @@ import { filterProp } from 'app/core/interfaces/fiter-properties';
   styleUrls: ['./admin-page.component.scss']
 })
 export class AdminPageComponent implements OnInit {
+  public registerForm: FormGroup;
+  submitted = false;
   public image;
   public filterProp: filterProp[] = PROPERTIES;
   public dish: Dish = {
@@ -22,10 +25,31 @@ export class AdminPageComponent implements OnInit {
     info: ''
   };
 
-  constructor(private _fbs: FirebaseService) {}
+  constructor(private _fbs: FirebaseService, private _formBuilder: FormBuilder) {}
 
-   public ngOnInit() {
-    this.submitValidation();
+  public ngOnInit() {
+    this.registerForm = this._formBuilder.group({
+      name: ['', Validators.required],
+      type: ['', Validators.required],
+      todaymenu: false,
+      price: ['1', Validators.required],
+      weight: ['', Validators.required],
+      img: ['', Validators.required],
+      info: ['', Validators.required]
+      });
+  }
+  // convenience getter for easy access to form fields
+  get f() { return this.registerForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+        return;
+    }
+
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
   }
 
   public addImage(event) {
@@ -34,27 +58,18 @@ export class AdminPageComponent implements OnInit {
   }
 
   public submitDish() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+        return;
+    }
+
     console.log('Dish to add', this.dish);
     this._fbs.uploadImage(this.dish);
     this._fbs.downloadImage(this.dish);
     this._fbs.addDish(this.dish);
-  }
-
-  private submitValidation() {
-      window.addEventListener('load', function() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        const forms = document.getElementsByClassName('needs-validation');
-        // Loop over them and prevent submission
-        const validation = Array.prototype.filter.call(forms, function(form) {
-          form.addEventListener('submit', function(event) {
-            if (form.checkValidity() === false) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-          }, false);
-        });
-      }, false);
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
   }
 
 }

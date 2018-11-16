@@ -38,3 +38,21 @@
   top: 0;
   z-index: 5;
 }
+
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 3rem;
+  color: $milkColor;
+}
+
+.full {
+  color: $red;
+}
+
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: $red;
+}

@@ -1,4 +1,4 @@
-<form class="needs-validation">
+<!-- <form class="needs-validation">
   <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="name">Name</label>
@@ -77,4 +77,70 @@
     <div class="invalid-feedback">Choose image for your dish</div>
   </div>
   <button class="btn btn-primary" (click)="submitDish()" type="submit">Submit form</button>
-</form>
+</form> -->
+
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+              <h3>Wow new dish incomming!</h3>
+              <form  [formGroup]="registerForm" (ngSubmit)="submitDish()" novalidate>
+                  <div class="form-group">
+                      <label>Name</label>
+                      <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                      <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                          <div *ngIf="f['name'].errors.required">First Name is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label>Description</label>
+                      <input type="text" formControlName="info" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['info'].errors }" />
+                      <div *ngIf="submitted && f['info'].errors" class="invalid-feedback">
+                          <div *ngIf="f['info'].errors.required">Info is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label>Price</label>
+                      <input type="text" formControlName="price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['price'].errors }" />
+                      <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
+                          <div *ngIf="f['price'].errors.required">Price is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label>Weight</label>
+                      <input type="text" formControlName="weight" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['weight'].errors }" />
+                      <div *ngIf="submitted && f['weight'].errors" class="invalid-feedback">
+                          <div *ngIf="f['weight'].errors.required">Weight is required</div>
+                      </div>
+                  </div>
+                  <div class="form-row align-items-center mb-3">
+                      <input id="todayMenu" type="checkbox" formControlName="todaymenu" class="input-group-prepend" [ngClass]="{ 'is-invalid': submitted && f['todaymenu'].errors }" />
+                      <label for="todayMenu" class="mb-0">Is it for today menu</label>
+                      <div *ngIf="submitted && f['todaymenu'].errors" class="invalid-feedback">
+                          <div *ngIf="f['todaymenu'].errors.required">todaymenu is required</div>
+                      </div>
+                  </div>
+                  <div class="form-row mb-3">
+                      <div class="form-group d-flex align-items-center mr-2" *ngFor="let type of filterProp">
+                        <input id="{{type.name}}" value="{{type.name}}" type="radio" formControlName="type" class="input-group-prepend" [ngClass]="{ 'is-invalid': submitted && f['type'].errors }" />
+                        <label for="{{type.name}}" class="mb-0">{{type.name}}</label>
+                        <div *ngIf="submitted && f['type'].errors" class="invalid-feedback">
+                            <div *ngIf="f['type'].errors.required">type is required</div>
+                        </div>
+                      </div>
+                  </div>
+                                    <div class="form-row align-items-center mb-3">
+                                      <input id="todayMenu" type="checkbox" formControlName="todaymenu" class="input-group-prepend" [ngClass]="{ 'is-invalid': submitted && f['todaymenu'].errors }" />
+                                      <label for="todayMenu" class="mb-0">Complex</label>
+                                      <div *ngIf="submitted && f['todaymenu'].errors" class="invalid-feedback">
+                                          <div *ngIf="f['todaymenu'].errors.required">todaymenu is required</div>
+                                      </div>
+                                    </div>
+                  <div class="form-group">
+                      <button class="btn btn-primary">Register</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>

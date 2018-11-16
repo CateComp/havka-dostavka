@@ -20,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { from } from 'rxjs';
 import { LoginComponent } from './login/login.component';
 import { MenuPipe } from 'app/core/pipes/menu.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminPageComponent } from 'app/modules/admin-page/admin-page.component';
 
 @NgModule({
@@ -28,7 +28,8 @@ import { AdminPageComponent } from 'app/modules/admin-page/admin-page.component'
     CommonModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     MenuComponent,
