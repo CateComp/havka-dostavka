@@ -2,7 +2,7 @@ export interface Dish {
     complex?: string;
     id?: string;
     info: string;
-    weight: number;
+    weight: string;
     img: string;
     name: string;
     orders?: number;

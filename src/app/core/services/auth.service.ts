@@ -10,13 +10,24 @@ export class AuthService {
   public authState = this.afAuth.authState.pipe(
     map(authState => {
       if (!authState) {
-
+        // console.log(authState)
         return null;
       } else {
+        // console.log(authState)
         return authState;
       }
     })
   );
+  public admins: any[] = ['UU6RfkCmVhc74K3p5hML3MonPVq1', 'QIiRirBfnOeHSv4sk5ujNReT5hf2', 'UEEmYwhUy4XXcVKpDSD9o5629t22', 'CXZCea7MMjgs6vVLJc4cOZFPy6E3'];
+  public isAdmin = this.afAuth.authState.pipe(
+    map(authState => {
+      if (!authState || !this.admins.includes(authState.uid)){
+        return null
+      } else {
+        return authState
+      }
+    })
+  )
   constructor(public afAuth: AngularFireAuth) {  }
   public signInWithFacebook(): void {
     this.afAuth.auth.signInWithPopup(
@@ -25,7 +36,8 @@ export class AuthService {
   }
   public signInWithGoogle(): void {
     this.afAuth.auth.signInWithPopup(
-      new auth.GoogleAuthProvider());
+      new auth.GoogleAuthProvider()
+    );
   }
   public logout(): void {
     this.afAuth.auth.signOut();
