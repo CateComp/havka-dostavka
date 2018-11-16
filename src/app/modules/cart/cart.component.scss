@@ -9,8 +9,8 @@ $main-container-cart-padding-bottom: 20px;
 $image-container-width: 420px;
 $image-container-height: 300px;
 $image-container-margin-right: 20px;
-$food-picture-height: 100%;
-$food-picture-width: 100%;
+$picture-height: 100%;
+$picture-width: 100%;
 $name-products-container-margin-left: 20px;
 $name-products-container-margin-right: 20px;
 $name-products-container-width: 30%;
@@ -31,14 +31,20 @@ $remove-basket-icon-width: 30px;
 $remove-basket-icon-height: 30px;
 $all-products-price-margin-top: 15px;
 $all-products-price-margin-bottom: 30px;
-$order-width: 15%;
+$order-width: 100%;
 $order-height: 2em;
-$order-border-radius: 5px;
-$order-font-size: 21px;
+$border-radius: 7px;
+$button-font-size: 21px;
 $cancel-height: 2em;
-$cancel-width: 15%;
-$cancel-border-radius: 7px;
-$cancel-font-size: 21px;
+$cancel-width: 27%;
+$main-menu-height: 2em;
+$main-menu-width: 15%;
+$log-in-height: 2em;
+$log-in-width: 100%;
+$empty-basket-header-font-size: 25px;
+$empty-basket-header-padding: 20px;
+$empty-basket-image-container-height: 400px;
+$empty-basket-image-container-width: 300px;
 
 .wrapper {
   width: $wrapper-width;
@@ -69,8 +75,8 @@ $cancel-font-size: 21px;
       margin-right: $image-container-margin-right;
 
       .food-picture {
-        height: $food-picture-height;
-        width: $food-picture-width;
+        height: $picture-height;
+        width: $picture-width;
         background-size: cover;
       }
     }
@@ -128,6 +134,27 @@ $cancel-font-size: 21px;
     }
   }
 
+  .empty-basket-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .empty-basket-header {
+      font-size: $empty-basket-header-font-size;
+      padding: $empty-basket-header-padding;
+    }
+
+    .empty-basket-image-container {
+      height: $empty-basket-image-container-height;
+      width: $empty-basket-image-container-width;
+
+      .empty-basket-image {
+        height: $picture-height;
+        width: $picture-width;
+      }
+    }
+  }
+
   #all-products-price {
     text-align: center;
     margin-top: $all-products-price-margin-top;
@@ -137,16 +164,16 @@ $cancel-font-size: 21px;
   .footer-container-cart {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
 
     .order {
       width: $order-width;
       height: $order-height;
-      border-radius: $order-border-radius;
+      border-radius: $border-radius;
       box-shadow: 0 7px 30px 0 $strong-orange;
       border: none;
       color: $white;
-      font-size: $order-font-size;
+      font-size: $button-font-size;
       background-color: $orange;
 
       &:hover {
@@ -157,16 +184,46 @@ $cancel-font-size: 21px;
     .cancel {
       height: $cancel-height;
       width: $cancel-width;
-      border-radius: $cancel-border-radius;
+      border-radius: $border-radius;
       background-color: $pink;
       box-shadow: 0 7px 30px 0 $strong-red;
       border: none;
       color: $white;
-      font-size: $cancel-font-size;
+      font-size: $button-font-size;
 
       &:hover {
         cursor: pointer;
       }
+    }
+  }
+
+  .main-menu {
+    height: $main-menu-height;
+    width: $main-menu-width;
+    border-radius: $border-radius;
+    background-color: $peachy;
+    box-shadow: 0 7px 30px 0 $dark-orange;
+    border: none;
+    color: $white;
+    font-size: $button-font-size;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .log-in {
+    height: $log-in-height;
+    width: $log-in-width;
+    border-radius: $border-radius;
+    background-color: $dark-yellow;
+    box-shadow: 0 7px 30px 0 $light-yellow;
+    border: none;
+    color: $white;
+    font-size: $button-font-size;
+
+    &:hover {
+      cursor: pointer;
     }
   }
 }
