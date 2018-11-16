@@ -3,7 +3,7 @@
   <hr>
   <div class="main-container-cart" *ngFor="let list of products">
     <div class="image-container">
-      <img src="{{ list.product_img }}" class="food-picture" alt="pizza">
+      <img src="{{ list.product_img }}" class="food-picture" alt="food picture">
     </div>
     <div class="name-products-container">
       <div class="name-of-product">{{ list.product_name }}</div>
@@ -22,10 +22,24 @@
       </div>
     </div>
   </div>
+  <div *ngIf="products.length === 0" class="empty-basket-container">
+    <h2 class="empty-basket-header">Ваш кошик порожній</h2>
+    <div class="empty-basket-image-container">
+      <img src="assets/pictures/empty-basket.jpg" class="empty-basket-image" alt="empty basket">
+    </div>
+  </div>
   <hr>
-  <div class="total-price" id="all-products-price">Загальна сума: {{ totalPriceOfProducts() }} грн </div>
+  <div *ngIf="!(products.length === 0)" class="total-price" id="all-products-price">Загальна сума: {{ totalPriceOfProducts() }} грн </div>
   <div class="footer-container-cart">
-    <button class="order" (click)="completeOrder()">Order</button>
-    <button class="cancel" (click)="cancelOrder()">Cancel</button>
+    <div>
+      <div *ngIf="!(user.authState | async)">
+        <button *ngIf="!(products.length === 0)" class="log-in" (click)="logInCart()">Увійти</button>
+      </div>
+      <div *ngIf="user.authState | async as authState">
+        <button *ngIf="!(products.length === 0)" class="order" (click)="completeOrder()">Замовити</button>
+      </div>
+    </div>
+    <button *ngIf="!(products.length === 0)" class="cancel" (click)="cancelOrder()">Скасувати замовлення</button>
+    <button class="main-menu" (click)="changeRouteToMenu()">На головну</button>
   </div>
 </div>
