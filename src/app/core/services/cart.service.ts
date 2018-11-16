@@ -6,11 +6,11 @@ import { LocalStorageService } from './local-storage.service';
 import { Dish } from 'app/core/interfaces/dish';
 
 export interface CartItem {
-    product_id: string;
-    product_name: string;
-    product_img: string;
-    product_price: number;
-    product_quantity: number;
+    productId: string;
+    productName: string;
+    productImg: string;
+    productPrice: number;
+    productQuantity: number;
 }
 
 @Injectable({
@@ -38,10 +38,10 @@ export class CartService {
   public addCartItem(product: Dish): void {
       let items = this._localStorage.get('cartItems') || [];
 
-      let existingItem = items.find(i => i.product_id === product.id);
+      let existingItem = items.find(i => i.productId === product.id);
 
       if (existingItem) {
-          existingItem.product_quantity += 1;
+          existingItem.productQuantity += 1;
       } else {
         let cartItem = {
             productId: product.id,
@@ -60,8 +60,8 @@ export class CartService {
   public completeOrder(items: CartItem[]): Promise<any> {
     let promise = new Promise((resolve, reject) => {
         this._afAuth.idToken.subscribe(userId => {
-            const products = items.map((item) => { return { product_id: item.product_id, quantity: item.product_quantity } });
-            const orderDetails = { user_id: userId, products }
+            const products = items.map((item) => { return { productId: item.productId, quantity: item.productQuantity } });
+            const orderDetails = { userId: userId, products }
 
             this._firebase.addOrder(orderDetails)
             .then(function() {

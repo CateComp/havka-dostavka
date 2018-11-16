@@ -1,9 +1,9 @@
 export interface OrderProduct {
-    product_id: string;
+    productId: string;
     quantity: number;
 };
 
 export interface OrderDetails {
-    user_id: string;
+    userId: string;
     products: OrderProduct[];
 }
