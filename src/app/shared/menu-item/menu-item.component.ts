@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DishHome } from 'app/core/interfaces/dish-home';
-import { CartService } from '../../core/services/cart.service';
+import { CartService } from 'app/core/services/cart.service';
 
 @Component({
   selector: 'app-menu-item',
@@ -12,7 +12,7 @@ export class MenuItemComponent implements OnInit {
 
   constructor(private _cartService: CartService) {}
 
-  addToShoppingCart() {
+  public addToShoppingCart(): void {
     this._cartService.addCartItem(this.dish);
   }
 
