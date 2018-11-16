@@ -22,6 +22,11 @@
   transition: $TransitionMedium;
 }
 
+.btn {
+  background: $main-text-color-red;
+  color: $text-color-white;
+}
+
 .delete__button {
   right: 0;
   top: 0;
@@ -33,4 +38,3 @@
   top: 0;
   z-index: 5;
 }
-

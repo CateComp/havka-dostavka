@@ -1,37 +1,46 @@
 <header>
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+	<nav class="navbar navbar-expand-md fixed-top">
     <div class="container">
-      <a class="navbar-brand" routerLink="/">LOGO</a>
+      <a class="navbar-brand" routerLink="/">
+       <div class="logo">
+        <span>Хавка</span>
+        <p>доставка</p>
+       </div>
+      </a>
+
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="navbar-collapse collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto navbar-left">
           <li class="nav-item active">
-            <a class="nav-link" routerLink="/menu">Menu</a>
+            <a class="nav-link" routerLink="/menu">Хавка</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/news">News</a>
+            <a class="nav-link" routerLink="/delivery">Доставка</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/delivery">Delivery</a>
+            <a class="nav-link" routerLink="/news">Новини</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/tracking">Tracking</a>
+            <a class="nav-link" routerLink="/tracking">Мапа</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/about-us">About Us</a>
+            <a class="nav-link" routerLink="/about-us">Про нас</a>
           </li>
         </ul>
         <ul class="navbar-nav navbar-right">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/cart"><i class="fas fa-shopping-cart"></i></a>
-          </li>
           <li *ngIf="user.authState | async as authState" class="nav-item">
-              <a class="nav-link" routerLink="/login">Sign in as {{ authState.displayName }}</a>
-            </li>
+            <a class="nav-link" routerLink="/login"><i class="fas fa-user"></i> {{ authState.displayName }}</a>
+          </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/login">Login</a>
+            <a class="nav-link cart" routerLink="/cart"><i class="fas fa-shopping-cart"></i></a>
+          </li>
+          <li *ngIf="!(user.authState | async)" class="nav-item">
+            <a class="nav-link" routerLink="/login">Увійти</a>
+          </li>
+          <li *ngIf="user.authState | async" class="nav-item">
+            <a class="nav-link" (click)="user.logout()">Вийти</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/administration">Manage page</a>

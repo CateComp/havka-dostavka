@@ -1,17 +1,25 @@
-.item__icon {
-  display: flex;
-  justify-content: center;
-  justify-self: center;
-  text-align: center;
-  font-size: 2rem;
-}
-
-.footer__wrapper {
+@import 'styles.scss';
+footer {
   padding: 2rem;
-}
-
-.contacts-list__item {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-family: $footer-font-family;
+  background: $footer-bg;
+  color: $text-color-white;
+  li {
+    list-style: none;
+  }
+  .item__icon {
+    font-size: 2rem;
+    color: $main-text-color-red;
+    a {
+      color: $main-text-color-red;
+      i {
+        padding: 0 1rem;
+      }
+    }
+    .contacts-list__item {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
 }

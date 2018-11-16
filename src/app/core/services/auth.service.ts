@@ -13,7 +13,6 @@ export class AuthService {
 
         return null;
       } else {
-
         return authState;
       }
     })
