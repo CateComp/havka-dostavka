@@ -7,7 +7,6 @@
         <p>доставка</p>
        </div>
       </a>
-
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -28,6 +27,9 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/about-us">Про нас</a>
           </li>
+          <li *ngIf="user.isAdmin | async" class="nav-item">
+            <a class="nav-link" routerLink="/administration">Адміністрування</a>
+          </li>
         </ul>
         <ul class="navbar-nav navbar-right">
           <li *ngIf="user.authState | async as authState" class="nav-item">
@@ -40,10 +42,7 @@
             <a class="nav-link" routerLink="/login">Увійти</a>
           </li>
           <li *ngIf="user.authState | async" class="nav-item">
-            <a class="nav-link" (click)="user.logout()">Вийти</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/administration">Manage page</a>
+            <a class="nav-link logout" (click)="user.logout()">Вийти</a>
           </li>
         </ul>
       </div>

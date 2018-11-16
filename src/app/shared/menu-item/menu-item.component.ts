@@ -4,6 +4,7 @@ import { FirebaseService } from 'app/core/services/firebase.service';
 import { NgbModalConfig, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { filterProp } from 'app/core/interfaces/fiter-properties';
 import { PROPERTIES } from 'app/core/app-config';
+import { AuthService } from 'app/core/services/auth.service'
 
 @Component({
   selector: 'app-menu-item',
@@ -18,8 +19,10 @@ export class MenuItemComponent implements OnInit {
 
 
   constructor(private _fbs: FirebaseService,
-      private modalService: NgbModal,
-      public activeModal: NgbActiveModal) {  }
+    private modalService: NgbModal,
+    public activeModal: NgbActiveModal,
+    public user: AuthService,
+  ) {  }
 
   public onMouseHover() {
     this.dish.isHovered = true;

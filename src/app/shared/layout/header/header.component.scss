@@ -4,6 +4,9 @@ nav {
     background: $header-bg !important;
     font-family: $header-font-family;
     .container {
+        .logout {
+            cursor: pointer;
+        }
         a {
             color: $main-text-color;
             font-size: 18px;
