@@ -3,57 +3,52 @@ import { FirebaseService } from './firebase.service';
 import { Observable } from 'rxjs/internal/Observable';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { LocalStorageService } from './local-storage.service';
-import { Dish } from '../interfaces/dish';
+import { Dish } from 'app/core/interfaces/dish';
 
 export interface CartItem {
-    product_id: string,
-    product_name: string,
-    product_img: string,
-    product_price: number,
-    product_quantity: number
+    product_id: string;
+    product_name: string;
+    product_img: string;
+    product_price: number;
+    product_quantity: number;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  userId: string;
   constructor(
       private _firebase: FirebaseService,
       private _afAuth: AngularFireAuth, 
       private _localStorage: LocalStorageService) { 
   }
 
-  getCartItems(): CartItem[] {
-    return this._localStorage.get('cartItems');
+  public getCartItems(): CartItem[] {
+      return this._localStorage.get('cartItems');
   }
 
-  saveCartItems(items: CartItem[]) {
+  public saveCartItems(items: CartItem[]): void {
       this._localStorage.save('cartItems', items);
   }
 
-  clearCart() {
+  public clearCart(): void {
     localStorage.removeItem('cartItems');
   }
 
-  addCartItem(product: Dish) {
-      let items = this._localStorage.get('cartItems');
+  public addCartItem(product: Dish): void {
+      let items = this._localStorage.get('cartItems') || [];
 
-      if (!items) {
-          items = [];
-      }
-
-      let existingItem = items.find(i => i.product_id == product.id);
+      let existingItem = items.find(i => i.product_id === product.id);
 
       if (existingItem) {
           existingItem.product_quantity += 1;
       } else {
         let cartItem = {
-            product_id: product.id,
-            product_name: product.name,
-            product_img: product.img,
-            product_price: product.price,
-            product_quantity: 1
+            productId: product.id,
+            productName: product.name,
+            productImg: product.img,
+            productPrice: product.price,
+            productQuantity: 1
         };
 
         items.push(cartItem);
@@ -62,19 +57,13 @@ export class CartService {
       this._localStorage.save('cartItems', items);
   }
 
-  completeOrder(items: CartItem[]): Promise<any> {
-    let self = this;
+  public completeOrder(items: CartItem[]): Promise<any> {
+    let promise = new Promise((resolve, reject) => {
+        this._afAuth.idToken.subscribe(userId => {
+            const products = items.map((item) => { return { product_id: item.product_id, quantity: item.product_quantity } });
+            const orderDetails = { user_id: userId, products }
 
-    let promise = new Promise(function(resolve, reject) {
-        self._afAuth.idToken.subscribe(userId => {
-            let orderDetails = {
-                user_id: userId,
-                products: items.map((item) => {
-                    return { product_id: item.product_id, quantity: item.product_quantity }
-                })
-            }
-
-            self._firebase.addOrder(orderDetails)
+            this._firebase.addOrder(orderDetails)
             .then(function() {
               resolve();  
             });
