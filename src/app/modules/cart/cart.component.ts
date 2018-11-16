@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService, CartItem } from '../../core/services/cart.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'app/core/services/auth.service';
 
 @Component({
   selector: 'app-cart',
@@ -11,7 +12,7 @@ export class CartComponent implements OnInit {
 
   products: CartItem[];
 
-  constructor(private _cartService: CartService, private router: Router) { 
+  constructor(private _cartService: CartService, private router: Router, public user: AuthService) { 
     this.products = _cartService.getCartItems() || [];
   }
 
@@ -70,7 +71,15 @@ export class CartComponent implements OnInit {
 
   cancelOrder() {
     this._cartService.clearCart();
+    this.products = [];
+  }
+
+  changeRouteToMenu() {
     this.router.navigate(['/menu']);
+  }
+
+  logInCart() {
+    this.router.navigate(['/login']);
   }
 
 }
