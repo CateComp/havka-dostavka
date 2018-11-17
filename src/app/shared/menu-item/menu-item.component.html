@@ -16,6 +16,7 @@
         {{ dish.price | currency:'UAH ' }}
       </div>
       <div class="col-6">
+        <button type="button" class="btn btn-success" (click)="addToShoppingCart()">Add to cart</button>
         <button type="button" (click)="saveEditDish()" class="btn btn-success">Success</button>
       </div>
     </div>

@@ -5,6 +5,7 @@ import { Dish } from 'app/core/interfaces/dish';
 import { AboutUs } from 'app/core/interfaces/about-us';
 import { News } from 'app/core/interfaces/news';
 import { map } from 'rxjs/operators';
+import { OrderDetails } from 'app/core/interfaces/order-details';
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
 import 'firebase/database';
@@ -101,4 +102,9 @@ export class FirebaseService {
         })
       );
   }
+  
+  addOrder(orderDetails: OrderDetails): Promise<firebase.firestore.DocumentReference> {
+    return this.afs.collection<OrderDetails>('orders').add(orderDetails);
+  }
+
 }
