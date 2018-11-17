@@ -14,7 +14,7 @@ export class AboutComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   constructor(private firebaseServise: FirebaseService) { }
    
-  ngOnInit(): void {
+  public ngOnInit() {
     this.subscription = this.firebaseServise.getAboutUs()
     .subscribe((data: AboutUs[]) => this.articles = data);
   }

@@ -21,6 +21,7 @@ import { from } from 'rxjs';
 import { LoginComponent } from './login/login.component';
 import { MenuPipe } from 'app/core/pipes/menu.pipe';
 import { FormsModule } from '@angular/forms';
+import { AdminPageComponent } from 'app/modules/admin-page/admin-page.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { FormsModule } from '@angular/forms';
     MenuWrapperComponent,
     MenuItemComponent,
     LoginComponent,
-    MenuPipe
+    MenuPipe,
+    AdminPageComponent
   ],
   providers: [DishService],
   exports: [MenuComponent, NewsComponent, DeliveryComponent, TrackingComponent, AboutComponent, CartComponent, HomeComponent]

@@ -1,0 +1,39 @@
+@import "./src/assets/scss/variables.scss";
+@import "./src/assets/scss/fonts.scss";
+nav {
+    background: $header-bg !important;
+    font-family: $header-font-family;
+    .container {
+        .logout {
+            cursor: pointer;
+        }
+        a {
+            color: $main-text-color;
+            font-size: 18px;
+            .logo {
+                color: $main-text-color-red;
+                span {
+                    font-size: 31px;
+                    font-weight: 900;
+                    font-style: normal;
+                    font-stretch: normal;
+                    line-height: 1;
+                    letter-spacing: normal;
+                }
+                p {
+                    padding: 0px 0px 5px;
+                    margin: 0;
+                    font-size: 31px;
+                    font-weight: 500;
+                    font-style: normal;
+                    font-stretch: normal;
+                    line-height: 0.03;
+                    letter-spacing: normal;
+                }
+            }
+        }
+        i {
+            color: $main-text-color-red;
+        }
+    }
+}
