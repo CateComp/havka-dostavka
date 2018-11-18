@@ -29,7 +29,8 @@ import { AdminPageComponent } from 'app/modules/admin-page/admin-page.component'
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
   ],
   declarations: [
     MenuComponent,
