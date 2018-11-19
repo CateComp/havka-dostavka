@@ -102,7 +102,7 @@ export class FirebaseService {
         })
       );
   }
-  
+
   addOrder(orderDetails: OrderDetails): Promise<firebase.firestore.DocumentReference> {
     return this.afs.collection<OrderDetails>('orders').add(orderDetails);
   }

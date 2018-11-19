@@ -81,12 +81,12 @@
           </div>
         </div>
       </div>
-    
+
       <div class="custom-control custom-checkbox mb-3">
         <input type="checkbox" class="custom-control-input"  name="todaymenu" [(ngModel)]="dish.todaymenu" id="todayMenu">
         <label class="custom-control-label" for="todayMenu">Is it todays menu?</label>
       </div>
-    
+
       <h3 class="title">Choose type</h3>
       <ul class="form-group">
         <li *ngFor="let type of filterProp">
@@ -94,7 +94,7 @@
           <label for="{{type}}">{{type.name}}</label>
         </li>
       </ul>
-    
+
       <div class="form-group">
         <select class="custom-select">
           <option value="">Will it be in complex menu</option>
@@ -104,7 +104,7 @@
         </select>
         <div class="invalid-feedback">Example invalid custom select feedback</div>
       </div>
-    
+
       <div class="custom-file">
         <input type="file" (change)="addImage($event)" class="custom-file-input" id="image" required>
         <label class="custom-file-label" for="image">Choose image...</label>

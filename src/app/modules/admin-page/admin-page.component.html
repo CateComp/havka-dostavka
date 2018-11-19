@@ -2,10 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3">
-        <h3>Wow new dish incomming!</h3>
+        <h3>Ухти нова страва!</h3>
         <form  [formGroup]="addDishForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <label>Name</label>
+            <label>Назва</label>
             <input type="text"
               formControlName="name"
               class="form-control"
@@ -14,12 +14,12 @@
               [ngClass]="{ 'is-invalid': addDishForm.controls.name.invalid && addDishForm.controls.name.errors }" />
 
             <div *ngIf="addDishForm.controls.name.invalid && addDishForm.controls.name.errors" class="invalid-feedback">
-              <div *ngIf="addDishForm.controls.name.errors.required">First Name is required</div>
+              <div *ngIf="addDishForm.controls.name.errors.required">Назва обов'язкова!</div>
             </div>
           </div>
 
           <div class="form-group">
-            <label>Description</label>
+            <label>Опис</label>
             <input type="text"
               formControlName="info"
               class="form-control"
@@ -27,12 +27,12 @@
               [ngClass]="{ 'is-invalid': addDishForm.controls.info.invalid && addDishForm.controls.info.errors }" />
 
             <div *ngIf="addDishForm.controls.info.invalid && addDishForm.controls.info.errors" class="invalid-feedback">
-                <div *ngIf="addDishForm.controls.info.errors.required">Info is required</div>
+                <div *ngIf="addDishForm.controls.info.errors.required">Опис обов'язковий!</div>
             </div>
           </div>
 
           <div class="form-group">
-            <label>Price</label>
+            <label>Ціна</label>
             <input type="text"
             formControlName="price"
             class="form-control"
@@ -40,12 +40,14 @@
             [ngClass]="{ 'is-invalid': addDishForm.controls.price.invalid && addDishForm.controls.price.errors }" />
 
             <div *ngIf="addDishForm.controls.price.invalid && addDishForm.controls.price.errors" class="invalid-feedback">
-                <div *ngIf="addDishForm.controls.price.errors.required">Price is required</div>
+                <div *ngIf="addDishForm.controls.price.errors.required">Ціна обов'язкова!</div>
+                <div *ngIf="addDishForm.controls.price.errors.pattern">Ціна повинна бути записана в форматі $.$$!</div>
+                <div *ngIf="addDishForm.controls.price.errors.pattern.actualValue === 0">Не може бути 0!</div>
             </div>
           </div>
 
           <div class="form-group">
-            <label>Weight</label>
+            <label>Вага</label>
             <input type="text"
               formControlName="weight"
               class="form-control"
@@ -53,12 +55,12 @@
               [ngClass]="{ 'is-invalid': addDishForm.controls.name.invalid && addDishForm.controls.weight.errors }" />
 
             <div *ngIf="addDishForm.controls.weight.invalid && addDishForm.controls.weight.errors" class="invalid-feedback">
-                <div *ngIf="addDishForm.controls.weight.errors.required">Weight is required</div>
+                <div *ngIf="addDishForm.controls.weight.errors.required">Вага обо'вязкова!</div>
             </div>
           </div>
 
           <div class="form-row align-items-center mb-3">
-            <label for="todayMenu" class="mb-0">Is it for today menu</label>
+            <label for="todayMenu" class="mb-0">О, а буде воно сьогодні?</label>
 
             <input id="todayMenu"
               type="checkbox"
@@ -84,7 +86,7 @@
             </div>
 
             <div *ngIf="addDishForm.controls.type.invalid !== false && addDishForm.controls.type.errors !== false" class="invalid-feedback d-block">
-              <div *ngIf="addDishForm.controls.type.errors.required">type is required</div>
+              <div *ngIf="addDishForm.controls.type.errors.required">Тип обов'язковий</div>
             </div>
           </div>
 
@@ -94,7 +96,7 @@
               [(ngModel)]="dish.complex"
               [ngClass]="{ 'is-invalid': addDishForm.controls.complex.invalid && addDishForm.controls.complex.errors}">
 
-                <option value="">Will it be in complex menu</option>
+                <option value="">Буде ця смакота в комплексі, ммм?</option>
                 <option value="bussiness1">bussiness1</option>
                 <option value="bussiness2">bussiness2</option>
                 <option value="bussiness3">bussiness3</option>
@@ -110,15 +112,24 @@
               [ngClass]="{ 'is-invalid': addDishForm.controls.img.invalid && addDishForm.controls.img.errors}"
               disabled>
 
-            <label class="custom-file-label" for="img">Choose the image for {{dish.name}}</label>
+            <label class="custom-file-label" for="img">Ну вибери картинку для {{dish.name}}</label>
             <div *ngIf="addDishForm.controls.img.invalid && addDishForm.controls.img.errors" class="invalid-feedback">
-              <div *ngIf="addDishForm.controls.img.errors.required">Image is required! Put the name!</div>
+              <div *ngIf="addDishForm.controls.img.errors.required">Ну як ж без картинки!</div>
+              <div *ngIf="addDishForm.controls.name.errors.required">Назва обов'язкова!</div>
+              <div *ngIf="addDishForm.controls.img.errors.required" class="text-center">Тут вот буде красота!</div>
+            </div>
+            <div *ngIf="!addDishForm.controls.img.invalid && !addDishForm.controls.img.errors" class="invalid-feedback">
+              <div *ngIf="addDishForm.controls.img.errors.required">Нє, ну хіба ж не краса!</div>
             </div>
           </div>
-          <img [src]="dish.img || defaultImage" class="m-3 image-example" alt="Choose the image">
-
           <div class="form-group">
-              <button class="btn btn-primary">Register</button>
+            <div class="row">
+              <div class="col d-flex flex-column align-items-center justify-content-center">
+                <i class="fas fa-arrow-down"></i>
+                <img [src]="dish.img || defaultImage" class="m-3 image-example" alt="Choose the image">
+                <button class="btn btn-primary">Додати</button>
+              </div>
+            </div>
           </div>
         </form>
       </div>

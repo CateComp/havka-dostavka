@@ -17,7 +17,6 @@ import { DishService } from 'app/core/services/dish.service';
 // help modules
 import { AppRoutingModule } from 'app/core/app-routing/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { from } from 'rxjs';
 import { LoginComponent } from './login/login.component';
 import { MenuPipe } from 'app/core/pipes/menu.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

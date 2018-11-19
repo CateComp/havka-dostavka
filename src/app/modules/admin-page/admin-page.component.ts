@@ -20,7 +20,7 @@ export class AdminPageComponent implements OnInit {
     name: '',
     type: '',
     todaymenu: false,
-    price: '',
+    price: 0,
     weight: '',
     img: '',
     info: ''
@@ -34,7 +34,10 @@ export class AdminPageComponent implements OnInit {
       name: new FormControl('', Validators.required),
       type: new FormControl('', Validators.required),
       todaymenu: new FormControl (false),
-      price:  new FormControl('', Validators.required),
+      price:  new FormControl(0, Validators.compose([
+        Validators.required,
+        Validators.pattern('^[1-9][0-9]{0,3}((.)[0-9]{0,2})$')
+      ])),
       weight:  new FormControl('', Validators.required),
       img:  new FormControl('', Validators.required),
       info:  new FormControl('', Validators.required)
