@@ -30,14 +30,6 @@ export class MenuItemComponent implements OnInit {
     this._cartService.addCartItem(this.dish);
   }
 
-  public onMouseHover() {
-    this.dish.isHovered = true;
-  }
-
-  public onMouseLeave() {
-    this.dish.isHovered = false;
-  }
-
   public open(content) {
     this.modalService.open(content);
     this.submitValidation();

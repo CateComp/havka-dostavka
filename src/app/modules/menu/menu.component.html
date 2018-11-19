@@ -7,12 +7,18 @@
     </div>
   </div>
   <div class="row" *ngIf="!isComplex">
-    <div class="col-3">
+    <div class="menu-category col-xs-3 col-sm-2">
       <ul>
-        <li *ngFor="let type of filterProp"><input type="checkbox" (change)="addType(type.isChecked ? type : type)" [(ngModel)]="type.isChecked" id="{{type.name}}" name="{{type.name}}" value="{{type.name}}"><label for="{{type}}">{{type.name}}</label></li>
+        <li *ngFor="let type of filterProp">
+          <label class="filter-cb-container">{{type.name}}
+            <input type="checkbox" checked="checked" (change)="addType(type)" [(ngModel)]="type.isChecked" id="{{type.name}}" name="{{type.name}}" value="{{type.name}}">
+            <span class="checkmark"></span>
+          </label>
+          <!-- <input type="checkbox" (change)="addType(type.isChecked ? type : type)" [(ngModel)]="type.isChecked" id="{{type.name}}" name="{{type.name}}" value="{{type.name}}"><label for="{{type}}">{{type.name}}</label> -->
+        </li>
       </ul>
     </div>
-    <div class="col-9">
+    <div class="cells-dishes col-xs-9 col-sm-10">
       <app-menu-wrapper [dishes]="menu" [type]="name"></app-menu-wrapper>
     </div>
   </div>
