@@ -23,10 +23,6 @@ import { MenuPipe } from 'app/core/pipes/menu.pipe';
 import { FormsModule } from '@angular/forms';
 import { AdminPageComponent } from 'app/modules/admin-page/admin-page.component';
 import { AgmCoreModule } from '@agm/core';
-<<<<<<< HEAD
-=======
-import { environment } from 'environments/environment.prod';
->>>>>>> d411eb0... added tracking
 
 @NgModule({
   imports: [
@@ -34,13 +30,9 @@ import { environment } from 'environments/environment.prod';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-<<<<<<< HEAD
-    AgmCoreModule
-=======
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBMSQKIZ7cpNU3vL-jSiAMOL0K3In9A3dQ'
     })
->>>>>>> d411eb0... added tracking
   ],
   declarations: [
     MenuComponent,

@@ -12,12 +12,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FirebaseService } from 'app/core/services/firebase.service';
-<<<<<<< HEAD
 // Imported Angular Google Maps
 import { AgmCoreModule } from '@agm/core';
-=======
-// imported google maps
->>>>>>> d411eb0... added tracking
 
 import { environment } from '../environments/environment';
 

@@ -6,12 +6,9 @@ import { AboutUs } from 'app/core/interfaces/about-us';
 import { MapCoords } from 'app/core/interfaces/map-coords';
 import { News } from 'app/core/interfaces/news';
 import { map } from 'rxjs/operators';
-<<<<<<< HEAD
-=======
 import { of as observableOf, from } from 'rxjs'
 
 import { OrderDetails } from 'app/core/interfaces/order-details';
->>>>>>> d411eb0... added tracking
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
 import 'firebase/database';
@@ -109,8 +106,6 @@ export class FirebaseService {
         })
       );
   }
-<<<<<<< HEAD
-=======
 
   addOrder(orderDetails: OrderDetails): Promise<firebase.firestore.DocumentReference> {
     return this.afs.collection<OrderDetails>('orders').add(orderDetails);
@@ -126,5 +121,4 @@ export class FirebaseService {
       })
     );
   }
->>>>>>> d411eb0... added tracking
 }

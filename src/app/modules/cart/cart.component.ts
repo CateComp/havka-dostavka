@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-=======
 import { CartService, CartItem } from 'app/core/services/cart.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'app/core/services/auth.service';
 import { TrackingComponent } from 'app/modules/tracking/tracking.component';
 import { LocalStorageService } from 'app/core/services/local-storage.service'
->>>>>>> d411eb0... added tracking
 
 @Component({
   selector: 'app-cart',
@@ -16,9 +13,6 @@ import { LocalStorageService } from 'app/core/services/local-storage.service'
 })
 export class CartComponent implements OnInit {
 
-<<<<<<< HEAD
-  constructor() { }
-=======
   products: CartItem[];
 
   constructor(
@@ -30,14 +24,10 @@ export class CartComponent implements OnInit {
     ) { 
     this.products = _cartService.getCartItems() || [];
   }
->>>>>>> d411eb0... added tracking
 
   public ngOnInit() {
   }
 
-<<<<<<< HEAD
-}
-=======
   public totalPriceOfProducts(): number {
     let totalPrice = 0;
     for(let i = 0; i < this.products.length; i++) {
@@ -106,4 +96,3 @@ export class CartComponent implements OnInit {
     this.trackingComponent.startWay(this.nrSelect)
   }
 }
->>>>>>> d411eb0... added tracking

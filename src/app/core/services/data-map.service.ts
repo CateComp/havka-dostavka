@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'app/core/services/local-storage.service';
 import { MapCoords } from 'app/core/interfaces/map-coords';
 import { FirebaseService } from 'app/core/services/firebase.service';
-import { interval, timer, Observable } from 'rxjs';
-import { zip, switchMap, map, startWith, scan } from 'rxjs/operators';
-// import { CurrencyIndex } from '@angular/common/src/i18n/locale_data';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
