@@ -50,8 +50,9 @@ export class FirebaseService {
     console.log('Adding the dishes...');
 
     this.afs.collection<Dish>('menu')
-    .add(dish)
-    .then((docRef) => console.log('Dish added with id: ', docRef.id))
+    .doc(dish.id)
+    .set(dish)
+    .then(_ => console.log('Dish added with id: ', dish.id))
     .catch(error => console.log('Error adding the dish: ', error));
   }
 

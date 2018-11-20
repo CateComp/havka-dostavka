@@ -19,8 +19,8 @@ export interface CartItem {
 export class CartService {
   constructor(
       private _firebase: FirebaseService,
-      private _afAuth: AngularFireAuth, 
-      private _localStorage: LocalStorageService) { 
+      private _afAuth: AngularFireAuth,
+      private _localStorage: LocalStorageService) {
   }
 
   public getCartItems(): CartItem[] {
@@ -65,11 +65,11 @@ export class CartService {
 
             this._firebase.addOrder(orderDetails)
             .then(function() {
-              resolve();  
+              resolve();
             });
         })
     });
-    
+
     return promise;
   }
 }

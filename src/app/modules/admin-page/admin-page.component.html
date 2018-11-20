@@ -23,7 +23,7 @@
             <input type="text"
               formControlName="info"
               class="form-control"
-              [(ngModel)]="dish.controls"
+              [(ngModel)]="dish.info"
               [ngClass]="{ 'is-invalid': addDishForm.controls.info.invalid && addDishForm.controls.info.errors }" />
 
             <div *ngIf="addDishForm.controls.info.invalid && addDishForm.controls.info.errors" class="invalid-feedback">
@@ -47,7 +47,7 @@
           </div>
 
           <div class="form-group">
-            <label>Вага</label>
+            <label>Вага гр.</label>
             <input type="text"
               formControlName="weight"
               class="form-control"
@@ -66,8 +66,17 @@
               type="checkbox"
               formControlName="todaymenu"
               class="input-group-prepend"
-              [(ngModel)]="dish.todaymenu"
-              [ngClass]="{ 'is-invalid': addDishForm.controls.todaymenu.invalid && addDishForm.controls.todaymenu.errors }" />
+              [(ngModel)]="dish.todaymenu" />
+          </div>
+
+          <div class="form-row align-items-center mb-3">
+            <label for="halfPortion" class="mb-0">Шеф а пів порції можна?</label>
+
+            <input id="halfPortion"
+              type="checkbox"
+              formControlName="half"
+              class="input-group-prepend"
+              [(ngModel)]="dish.half" />
 
           </div>
 
@@ -80,9 +89,7 @@
                 type="radio"
                 formControlName="type"
                 class="input-group-prepend"
-                [(ngModel)]="dish.type"
-                [ngClass]="{ 'is-invalid': addDishForm.controls.type.invalid && addDishForm.controls.type.errors }" />
-
+                [(ngModel)]="dish.type" />
             </div>
 
             <div *ngIf="addDishForm.controls.type.invalid !== false && addDishForm.controls.type.errors !== false" class="invalid-feedback d-block">
@@ -114,18 +121,20 @@
 
             <label class="custom-file-label" for="img">Ну вибери картинку для {{dish.name}}</label>
             <div *ngIf="addDishForm.controls.img.invalid && addDishForm.controls.img.errors" class="invalid-feedback">
-              <div *ngIf="addDishForm.controls.img.errors.required">Ну як ж без картинки!</div>
-              <div *ngIf="addDishForm.controls.name.errors.required">Назва обов'язкова!</div>
-              <div *ngIf="addDishForm.controls.img.errors.required" class="text-center">Тут вот буде красота!</div>
-            </div>
-            <div *ngIf="!addDishForm.controls.img.invalid && !addDishForm.controls.img.errors" class="invalid-feedback">
-              <div *ngIf="addDishForm.controls.img.errors.required">Нє, ну хіба ж не краса!</div>
+              <div *ngIf="addDishForm.controls.img.errors.required">
+                <div>Ну як ж без картинки і назва обов'язкова!</div>
+                <div class="text-center">
+                  Тут вот буде красота!
+                </div>
+                <div class="text-center">
+                  <i class="fas fa-arrow-down"></i>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="form-group">
+          <div class="form-group pt-5">
             <div class="row">
               <div class="col d-flex flex-column align-items-center justify-content-center">
-                <i class="fas fa-arrow-down"></i>
                 <img [src]="dish.img || defaultImage" class="m-3 image-example" alt="Choose the image">
                 <button class="btn btn-primary">Додати</button>
               </div>
