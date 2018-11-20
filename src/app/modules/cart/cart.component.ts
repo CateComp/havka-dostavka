@@ -63,7 +63,7 @@ export class CartComponent implements OnInit {
   }
 
   public completeOrder(): void {
-    this._cartService.completeOrder(this.products)
+    this._cartService.completeOrder(this.products, this.address, this.phone)
     .then(function() {
       alert('Замовлення прийнято!');
     })
@@ -80,6 +80,14 @@ export class CartComponent implements OnInit {
 
   public logInCart(): void {
     this._router.navigate(['/login']);
+  }
+
+  public isAddressValid(): bool {
+    return this.address && this.address.length > 0;
+  }
+
+  public isPhoneValid(): bool {
+    return this.phone && this.phone.length > 0;
   }
 
 }
