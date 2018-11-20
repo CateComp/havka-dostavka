@@ -11,9 +11,13 @@ import { AuthService } from 'app/core/services/auth.service';
 export class CartComponent implements OnInit {
 
   products: CartItem[];
+  phone: string;
+  address: string;
 
   constructor(private _cartService: CartService, private _router: Router, public user: AuthService) { 
     this.products = _cartService.getCartItems() || [];
+    this.phone = '';
+    this.address = '';
   }
 
   public ngOnInit() {
@@ -82,11 +86,11 @@ export class CartComponent implements OnInit {
     this._router.navigate(['/login']);
   }
 
-  public isAddressValid(): bool {
+  public isAddressValid(): boolean {
     return this.address && this.address.length > 0;
   }
 
-  public isPhoneValid(): bool {
+  public isPhoneValid(): boolean {
     return this.phone && this.phone.length > 0;
   }
 
