@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container">
   <p>
     tracking works!
@@ -22,3 +23,21 @@
 
   {{points | json}}
 </div>
+=======
+<h1>{{ title }}</h1>
+<agm-map [latitude]="currentPos.lat" [longitude]="currentPos.lng" [zoom]="zoom">
+  <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="icon"></agm-marker>
+  <agm-marker [latitude]="deliveryPlaceLat" 
+      [longitude]="deliveryPlaceLng">
+      <agm-info-window>
+        <strong>Delivery place</strong>
+      </agm-info-window>
+  </agm-marker>
+  <agm-polyline strokeColor="blue">
+    <agm-polyline-point *ngFor="let point of polyline" [latitude]="point.lat"
+      [longitude]="point.lng">
+    </agm-polyline-point>
+  </agm-polyline>
+</agm-map>
+<button (click)="startWay()"></button>
+>>>>>>> d411eb0... added tracking
