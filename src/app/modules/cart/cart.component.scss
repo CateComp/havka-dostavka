@@ -191,7 +191,7 @@ $media-main-menu-small-screen-width: 42%;
     input {
       padding-left: $input-padding-left;
       height: $input-height;
-      background-color: $light-grey;
+      background-color: $white;
       border: $border solid $dark-grey;
       width: $input-width;
       margin-bottom: $input-margin-bottom;
@@ -221,6 +221,10 @@ $media-main-menu-small-screen-width: 42%;
 
       &:hover {
         cursor: pointer;
+      }
+
+      &:disabled {
+        opacity: 0.5;
       }
     }
 
