@@ -10,17 +10,16 @@ import { AuthService } from 'app/core/services/auth.service';
 })
 export class CartComponent implements OnInit {
 
-  products: CartItem[];
-  phone: string;
-  address: string;
+  public products: CartItem[];
+  public phone: string = '';
+  public address: string = '';
 
   constructor(private _cartService: CartService, private _router: Router, public user: AuthService) { 
-    this.products = _cartService.getCartItems() || [];
-    this.phone = '';
-    this.address = '';
+    
   }
 
   public ngOnInit() {
+    this.products = this._cartService.getCartItems() || [];
   }
 
   public totalPriceOfProducts(): number {
