@@ -31,8 +31,14 @@ $remove-basket-icon-width: 30px;
 $remove-basket-icon-height: 30px;
 $all-products-price-margin-top: 15px;
 $all-products-price-margin-bottom: 30px;
+$input-padding-left: 15px;
+$input-height: 40px;
+$input-width: 100%;
+$input-margin-bottom: 20px;
 $order-width: 100%;
 $order-height: 2em;
+$order-padding-right: 25px;
+$order-padding-left: 25px;
 $border-radius: 7px;
 $button-font-size: 21px;
 $cancel-height: 2em;
@@ -41,6 +47,9 @@ $main-menu-height: 2em;
 $main-menu-width: 15%;
 $log-in-height: 2em;
 $log-in-width: 100%;
+$log-in-padding-left: 45px;
+$log-in-padding-right: 45px;
+$log-in-margin-bottom: 15px;
 $empty-basket-header-font-size: 25px;
 $empty-basket-header-padding: 20px;
 $empty-basket-image-container-height: 400px;
@@ -177,6 +186,22 @@ $media-main-menu-small-screen-width: 42%;
     margin-bottom: $all-products-price-margin-bottom;
   }
 
+  .contact-info {
+
+    input {
+      padding-left: $input-padding-left;
+      height: $input-height;
+      background-color: $white;
+      border: $border solid $dark-grey;
+      width: $input-width;
+      margin-bottom: $input-margin-bottom;
+
+      &::placeholder {
+        color: $medium-grey;
+      }
+    }
+  }
+
   .footer-container-cart {
     display: flex;
     flex-direction: row;
@@ -191,9 +216,15 @@ $media-main-menu-small-screen-width: 42%;
       color: $white;
       font-size: $button-font-size;
       background-color: $orange;
+      padding-right: $order-padding-right;
+      padding-left: $order-padding-left;
 
       &:hover {
         cursor: pointer;
+      }
+
+      &:disabled {
+        opacity: 0.5;
       }
     }
 
@@ -237,6 +268,9 @@ $media-main-menu-small-screen-width: 42%;
     border: none;
     color: $white;
     font-size: $button-font-size;
+    padding-left: $log-in-padding-left;
+    padding-right: $log-in-padding-right;
+    margin-bottom: $log-in-margin-bottom;
 
     &:hover {
       cursor: pointer;
