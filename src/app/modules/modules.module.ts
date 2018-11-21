@@ -22,6 +22,10 @@ import { LoginComponent } from './login/login.component';
 import { MenuPipe } from 'app/core/pipes/menu.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminPageComponent } from 'app/modules/admin-page/admin-page.component';
+import { CarouselComponent } from './carousel/carousel.component';
+//
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -30,7 +34,8 @@ import { AdminPageComponent } from 'app/modules/admin-page/admin-page.component'
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
+    NgbModule
   ],
   declarations: [
     MenuComponent,
@@ -44,9 +49,10 @@ import { AdminPageComponent } from 'app/modules/admin-page/admin-page.component'
     MenuItemComponent,
     LoginComponent,
     MenuPipe,
-    AdminPageComponent
+    AdminPageComponent,
+    CarouselComponent
   ],
-  providers: [DishService],
+  providers: [DishService, NgbCarouselConfig],
   exports: [MenuComponent, NewsComponent, DeliveryComponent, TrackingComponent, AboutComponent, CartComponent, HomeComponent]
 })
 export class ModulesModule { }
