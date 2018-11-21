@@ -10,10 +10,8 @@ export class AuthService {
   public authState = this.afAuth.authState.pipe(
     map(authState => {
       if (!authState) {
-        // console.log(authState)
         return null;
       } else {
-        // console.log(authState)
         return authState;
       }
     })

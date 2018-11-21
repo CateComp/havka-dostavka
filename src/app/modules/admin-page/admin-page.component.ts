@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FirebaseService } from 'app/core/services/firebase.service';
 import { Dish } from 'app/core/interfaces/dish';
 import { PROPERTIES } from 'app/core/app-config';
@@ -11,38 +11,51 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
   styleUrls: ['./admin-page.component.scss']
 })
 export class AdminPageComponent implements OnInit {
+  @Input() dishExisted: Dish;
+
   public addDishForm: FormGroup;
   public defaultImage: string = 'assets/pictures/placeholder.jpg';
 
   public filterProp: filterProp[] = PROPERTIES;
   public dish: Dish = {
     complex: '',
+    half: false,
     name: '',
     type: '',
     todaymenu: false,
-    price: '',
-    weight: '',
+    price: 0,
+    weight: 0,
     img: '',
-    info: ''
+    info: '',
+    orders: 0,
+    rating: 0
   };
-
-  constructor(private _fbs: FirebaseService, private _formBuilder: FormBuilder) {}
+  constructor(private _fbs: FirebaseService, private _formBuilder: FormBuilder) {
+  }
 
   public ngOnInit(): void {
+    this.dish = this.dishExisted || this.dish;
+
     this.addDishForm = new FormGroup({
-      complex: new FormControl(''),
-      name: new FormControl('', Validators.required),
-      type: new FormControl('', Validators.required),
-      todaymenu: new FormControl (false),
-      price:  new FormControl('', Validators.required),
-      weight:  new FormControl('', Validators.required),
-      img:  new FormControl('', Validators.required),
-      info:  new FormControl('', Validators.required)
+      complex: new FormControl(this.dish.complex),
+      half: new FormControl (this.dish.half),
+      name: new FormControl(this.dish.name, Validators.required),
+      type: new FormControl(this.dish.type, Validators.required),
+      todaymenu: new FormControl (this.dish.todaymenu),
+      price:  new FormControl(this.dish.price, Validators.compose([
+        Validators.required,
+        Validators.pattern('^[1-9][0-9]{0,3}((.)[0-9]{0,2})$')
+      ])),
+      weight:  new FormControl(this.dish.weight, Validators.compose([
+        Validators.required,
+        Validators.pattern('^[1-9][0-9]{0,5}')
+      ])),
+      img:  new FormControl(this.dish.img, Validators.required),
+      info:  new FormControl(this.dish.info, Validators.required)
       });
   }
 
   public onSubmit(): void {
-    console.log(this.addDishForm);
     // stop here if form is invalid
     if (this.addDishForm.invalid) {
       return;
@@ -66,8 +79,13 @@ export class AdminPageComponent implements OnInit {
   }
 
   private submitDish(): void {
-    console.log('Dish to add', this.dish);
-    this._fbs.addDish(this.dish);
+    console.log('Dish to process', this.dish);
+    if(this.dish.id !== undefined) {
+      this._fbs.editDish(this.dish)
+    } else {
+      this.dish.id = this.dish.name + '' + Math.floor(Math.random() * Math.floor(1000));
+      this._fbs.addDish(this.dish);
+    }
   }
 
 }
