@@ -1,80 +1,127 @@
-<form class="needs-validation">
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name"  name="name" [(ngModel)]="dish.name" placeholder="Dish name" required>
-      <div class="invalid-feedback">
-        Please provide a valid dish name.
-      </div>
-      <div class="valid-feedback">
-          Looks good!
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h3>Wow new dish incomming!</h3>
+        <form  [formGroup]="addDishForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text"
+              formControlName="name"
+              class="form-control"
+              [(ngModel)]="dish.name"
+              (change)="enableImage()"
+              [ngClass]="{ 'is-invalid': addDishForm.controls.name.invalid && addDishForm.controls.name.errors }" />
+
+            <div *ngIf="addDishForm.controls.name.invalid && addDishForm.controls.name.errors" class="invalid-feedback">
+              <div *ngIf="addDishForm.controls.name.errors.required">First Name is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Description</label>
+            <input type="text"
+              formControlName="info"
+              class="form-control"
+              [(ngModel)]="dish.controls"
+              [ngClass]="{ 'is-invalid': addDishForm.controls.info.invalid && addDishForm.controls.info.errors }" />
+
+            <div *ngIf="addDishForm.controls.info.invalid && addDishForm.controls.info.errors" class="invalid-feedback">
+                <div *ngIf="addDishForm.controls.info.errors.required">Info is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Price</label>
+            <input type="text"
+            formControlName="price"
+            class="form-control"
+            [(ngModel)]="dish.price"
+            [ngClass]="{ 'is-invalid': addDishForm.controls.price.invalid && addDishForm.controls.price.errors }" />
+
+            <div *ngIf="addDishForm.controls.price.invalid && addDishForm.controls.price.errors" class="invalid-feedback">
+                <div *ngIf="addDishForm.controls.price.errors.required">Price is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Weight</label>
+            <input type="text"
+              formControlName="weight"
+              class="form-control"
+              [(ngModel)]="dish.weight"
+              [ngClass]="{ 'is-invalid': addDishForm.controls.name.invalid && addDishForm.controls.weight.errors }" />
+
+            <div *ngIf="addDishForm.controls.weight.invalid && addDishForm.controls.weight.errors" class="invalid-feedback">
+                <div *ngIf="addDishForm.controls.weight.errors.required">Weight is required</div>
+            </div>
+          </div>
+
+          <div class="form-row align-items-center mb-3">
+            <label for="todayMenu" class="mb-0">Is it for today menu</label>
+
+            <input id="todayMenu"
+              type="checkbox"
+              formControlName="todaymenu"
+              class="input-group-prepend"
+              [(ngModel)]="dish.todaymenu"
+              [ngClass]="{ 'is-invalid': addDishForm.controls.todaymenu.invalid && addDishForm.controls.todaymenu.errors }" />
+
+          </div>
+
+          <div class="form-row mb-3">
+            <div class="d-flex align-items-center mr-2" *ngFor="let type of filterProp">
+              <label for="{{type.name}}" class="mb-0">{{type.name}}</label>
+
+              <input id="{{type.name}}"
+                value="{{type.name}}"
+                type="radio"
+                formControlName="type"
+                class="input-group-prepend"
+                [(ngModel)]="dish.type"
+                [ngClass]="{ 'is-invalid': addDishForm.controls.type.invalid && addDishForm.controls.type.errors }" />
+
+            </div>
+
+            <div *ngIf="addDishForm.controls.type.invalid !== false && addDishForm.controls.type.errors !== false" class="invalid-feedback d-block">
+              <div *ngIf="addDishForm.controls.type.errors.required">type is required</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <select class="custom-select"
+              formControlName="complex"
+              [(ngModel)]="dish.complex"
+              [ngClass]="{ 'is-invalid': addDishForm.controls.complex.invalid && addDishForm.controls.complex.errors}">
+
+                <option value="">Will it be in complex menu</option>
+                <option value="bussiness1">bussiness1</option>
+                <option value="bussiness2">bussiness2</option>
+                <option value="bussiness3">bussiness3</option>
+            </select>
+          </div>
+
+          <div class="custom-file mb-3">
+            <input type="file"
+              (change)="addImage($event)"
+              class="custom-file-input"
+              id="img"
+              formControlName="img"
+              [ngClass]="{ 'is-invalid': addDishForm.controls.img.invalid && addDishForm.controls.img.errors}"
+              disabled>
+
+            <label class="custom-file-label" for="img">Choose the image for {{dish.name}}</label>
+            <div *ngIf="addDishForm.controls.img.invalid && addDishForm.controls.img.errors" class="invalid-feedback">
+              <div *ngIf="addDishForm.controls.img.errors.required">Image is required! Put the name!</div>
+            </div>
+          </div>
+          <img [src]="dish.img || defaultImage" class="m-3 image-example" alt="Choose the image">
+
+          <div class="form-group">
+              <button class="btn btn-primary">Register</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="price">Price</label>
-      <input type="text" class="form-control" id="price" name="price" [(ngModel)]="dish.price" required>
-      <div class="invalid-feedback">
-        Please provide a valid dish price.
-      </div>
-      <div class="valid-feedback">
-          Looks good!
-      </div>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="weight">Weight</label>
-      <input type="text" class="form-control" id="weight"  name="weight" [(ngModel)]="dish.weight" required>
-      <div class="invalid-feedback">
-        Please provide a valid dish weight.
-      </div>
-      <div class="valid-feedback">
-          Looks good!
-      </div>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="description">Description</label>
-      <input type="text" class="form-control" id="description"  name="description" [(ngModel)]="dish.info" required>
-      <div class="invalid-feedback">
-        Please provide a valid dish description.
-      </div>
-      <div class="valid-feedback">
-          Looks good!
-      </div>
-    </div>
-  </div>
-
-  <div class="custom-control custom-checkbox mb-3">
-    <input type="checkbox" class="custom-control-input"  name="todaymenu" [(ngModel)]="dish.todaymenu" id="todayMenu">
-    <label class="custom-control-label" for="todayMenu">Is it todays menu?</label>
-  </div>
-
-  <h3 class="title">Choose type</h3>
-  <ul class="form-group">
-    <li *ngFor="let type of filterProp">
-      <input type="radio" [(ngModel)]="dish.type" id="{{type.name}}" name="{{type.name}}" value="{{type.name}}">
-      <label for="{{type}}">{{type.name}}</label>
-    </li>
-  </ul>
-
-  <div class="form-group">
-    <select class="custom-select">
-      <option value="">Will it be in complex menu</option>
-      <option value="bussiness1">bussiness1</option>
-      <option value="bussiness2">bussiness2</option>
-      <option value="bussiness3">bussiness3</option>
-    </select>
-    <div class="invalid-feedback">Example invalid custom select feedback</div>
-  </div>
-
-  <div class="custom-file">
-    <input type="file" (change)="addImage($event)" class="custom-file-input" id="image" required>
-    <label class="custom-file-label" for="image">Choose image...</label>
-    <div class="invalid-feedback">Choose image for your dish</div>
-  </div>
-  <button class="btn btn-primary" (click)="submitDish()" type="submit">Submit form</button>
-</form>
+</div>

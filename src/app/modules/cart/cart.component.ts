@@ -22,6 +22,7 @@ export class CartComponent implements OnInit {
     public trackingComponent: TrackingComponent,
     public ls: LocalStorageService,
     ) { 
+
     this.products = _cartService.getCartItems() || [];
   }
 
@@ -90,6 +91,7 @@ export class CartComponent implements OnInit {
   public logInCart(): void {
     this._router.navigate(['/login']);
   }
+
   public nrSelect: string;
   public startTracking() {
     this.ls.save('way',this.nrSelect)

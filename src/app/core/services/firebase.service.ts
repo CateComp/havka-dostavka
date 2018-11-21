@@ -6,8 +6,6 @@ import { AboutUs } from 'app/core/interfaces/about-us';
 import { MapCoords } from 'app/core/interfaces/map-coords';
 import { News } from 'app/core/interfaces/news';
 import { map } from 'rxjs/operators';
-import { of as observableOf, from } from 'rxjs'
-
 import { OrderDetails } from 'app/core/interfaces/order-details';
 import * as firebase from 'firebase/app';
 import 'firebase/storage';

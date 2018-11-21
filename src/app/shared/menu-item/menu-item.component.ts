@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DishHome } from 'app/core/interfaces/dish-home';
+import { CartService } from 'app/core/services/cart.service';
 import { FirebaseService } from 'app/core/services/firebase.service';
 import { NgbModalConfig, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { filterProp } from 'app/core/interfaces/fiter-properties';
@@ -17,12 +18,17 @@ export class MenuItemComponent implements OnInit {
   public filterProp: filterProp[] = PROPERTIES;
   private newImage: boolean;
 
-
+  
   constructor(private _fbs: FirebaseService,
     private modalService: NgbModal,
+    private _cartService: CartService,
     public activeModal: NgbActiveModal,
     public user: AuthService,
   ) {  }
+  
+  public addToShoppingCart(): void {
+    this._cartService.addCartItem(this.dish);
+  }
 
   public onMouseHover() {
     this.dish.isHovered = true;
