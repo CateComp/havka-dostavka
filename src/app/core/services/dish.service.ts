@@ -15,7 +15,7 @@ export class DishService {
    return this._firebase.getItems()
             .pipe(map(data => data.sort((a, b) => a.rating - b.rating)))
             .pipe(map(data => data.reverse()))
-            .pipe(map(data => data.slice(0, 4)));
+            .pipe(map(data => data.slice(0, 3)));
   }
 
   todaysMenu(): Observable<Dish[]> {
