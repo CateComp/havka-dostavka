@@ -28,7 +28,7 @@
     }
 }
 
-.form-control, .custom-select, .custom-file, {
+.dish-input {
     font: .9em/1.5em "handwriting", sans-serif;
     padding: 0 10px;
     margin: 0;
@@ -53,12 +53,12 @@
     }
 }
 
-.custom-file-label {
+.dish-label {
     font: .9em/1.5em "handwriting", sans-serif;
     background: none;
 }
 
-.btn {
+.success-button {
     padding: 5px;
     background-color: #e69a7d;
     border-color: darken(#e69a7d,30%);

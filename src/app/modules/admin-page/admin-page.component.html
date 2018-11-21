@@ -8,7 +8,7 @@
             <label>Назва</label>
             <input type="text"
               formControlName="name"
-              class="form-control"
+              class="form-control dish-input"
               [(ngModel)]="dish.name"
               (change)="enableImage()"
               [ngClass]="{ 'is-invalid': addDishForm.controls.name.invalid && addDishForm.controls.name.errors }" />
@@ -22,7 +22,7 @@
             <label>Опис</label>
             <input type="text"
               formControlName="info"
-              class="form-control"
+              class="form-control dish-input"
               [(ngModel)]="dish.info"
               [ngClass]="{ 'is-invalid': addDishForm.controls.info.invalid && addDishForm.controls.info.errors }" />
 
@@ -35,7 +35,7 @@
             <label>Ціна</label>
             <input type="text"
             formControlName="price"
-            class="form-control"
+            class="form-control dish-input"
             [(ngModel)]="dish.price"
             [ngClass]="{ 'is-invalid': addDishForm.controls.price.invalid && addDishForm.controls.price.errors }" />
 
@@ -50,7 +50,7 @@
             <label>Вага гр.</label>
             <input type="text"
               formControlName="weight"
-              class="form-control"
+              class="form-control dish-input"
               [(ngModel)]="dish.weight"
               [ngClass]="{ 'is-invalid': addDishForm.controls.name.invalid && addDishForm.controls.weight.errors }" />
 
@@ -98,7 +98,7 @@
           </div>
 
           <div class="form-group">
-            <select class="custom-select"
+            <select class="custom-select dish-input"
               formControlName="complex"
               [(ngModel)]="dish.complex"
               [ngClass]="{ 'is-invalid': addDishForm.controls.complex.invalid && addDishForm.controls.complex.errors}">
@@ -110,16 +110,16 @@
             </select>
           </div>
 
-          <div class="custom-file mb-3">
+          <div class="custom-file dish-input mb-3">
             <input type="file"
               (change)="addImage($event)"
-              class="custom-file-input"
+              class="custom-file-input dish-input"
               id="img"
               formControlName="img"
               [ngClass]="{ 'is-invalid': addDishForm.controls.img.invalid && addDishForm.controls.img.errors}"
               disabled>
 
-            <label class="custom-file-label" for="img">Ну вибери картинку для {{dish.name}}</label>
+            <label class="custom-file-label dish-label" for="img">Ну вибери картинку для {{dish.name}}</label>
             <div *ngIf="addDishForm.controls.img.invalid && addDishForm.controls.img.errors" class="invalid-feedback">
               <div *ngIf="addDishForm.controls.img.errors.required">
                 <div>Ну як ж без картинки і назва обов'язкова!</div>
@@ -136,7 +136,7 @@
             <div class="row">
               <div class="col d-flex flex-column align-items-center justify-content-center">
                 <img [src]="dish.img || defaultImage" class="m-3 image-example" alt="Choose the image">
-                <button class="btn btn-primary">Додати</button>
+                <button class="btn btn-primary success-button">Додати</button>
               </div>
             </div>
           </div>
