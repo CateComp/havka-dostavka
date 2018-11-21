@@ -38,15 +38,6 @@
 <!-- Modal -->
 <ng-template #editDish let-c="close" let-d="dismiss">
   <app-admin-page
-    [id]="dish.id"
-    [complex]="dish.complex"
-    [name]="dish.name"
-    [half]="dish.half"
-    [type]="dish.type"
-    [todaymenu]="dish.todaymenu"
-    [price]="dish.price"
-    [weight]="dish.weight"
-    [img]="dish.img"
-    [info]="dish.info">
-  </app-admin-page>
+  [dishExisted]="dish"
+  ></app-admin-page>
 </ng-template>

@@ -11,16 +11,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
   styleUrls: ['./admin-page.component.scss']
 })
 export class AdminPageComponent implements OnInit {
-  @Input() complex;
-  @Input() name;
-  @Input() half;
-  @Input() type;
-  @Input() todaymenu;
-  @Input() price;
-  @Input() weight;
-  @Input() img;
-  @Input() info;
-  @Input() id;
+  @Input() dishExisted: Dish;
 
   public addDishForm: FormGroup;
   public defaultImage: string = 'assets/pictures/placeholder.jpg';
@@ -35,22 +26,15 @@ export class AdminPageComponent implements OnInit {
     price: 0,
     weight: 0,
     img: '',
-    info: ''
+    info: '',
+    orders: 0,
+    rating: 0
   };
   constructor(private _fbs: FirebaseService, private _formBuilder: FormBuilder) {
   }
 
   public ngOnInit(): void {
-    this.dish.id = this.id               || this.dish.id;
-    this.dish.complex = this.complex     || this.dish.complex;
-    this.dish.half = this.half           || this.dish.half;
-    this.dish.name = this.name           || this.dish.name;
-    this.dish.type = this.type           || this.dish.type;
-    this.dish.todaymenu = this.todaymenu || this.dish.todaymenu;
-    this.dish.price = this.price         || this.dish.price;
-    this.dish.weight = this.weight       || this.dish.weight;
-    this.dish.img = this.img             || this.dish.img;
-    this.dish.info = this.info           || this.dish.info;
+    this.dish = this.dishExisted || this.dish;
 
     this.addDishForm = new FormGroup({
       complex: new FormControl(this.dish.complex),
