@@ -1,0 +1,18 @@
+@import "./src/assets/scss/variables.scss";
+
+.article:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+.main-title {
+    color: $main-text-color-red;
+}
+.article-container {
+    color: $main-text-color;
+    background-color: $news-background-color;
+}
+.article-photo, .article-content {
+    margin: auto;
+}
+.article-photo img {
+    max-width: $news-img-max-width;
+}

@@ -1,0 +1,15 @@
+@import "./src/assets/scss/variables.scss";
+
+.news-title, .main-title {
+    color: $main-text-color-red;
+}
+.news-photo img {
+    max-width: $news-img-max-width;
+}
+.news {
+    color: $main-text-color;
+    background-color: $news-background-color;
+}
+.news-content, .news-photo {
+    margin: auto;
+}

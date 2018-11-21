@@ -19,7 +19,7 @@
  * To disable debug and info logs in production, add this snippet to your root component:
  * ```
  * export class AppComponent implements OnInit {
- *   ngOnInit() {
+ *   public ngOnInit() {
  *     if (environment.production) {
  *       Logger.enableProductionMode();
  *     }

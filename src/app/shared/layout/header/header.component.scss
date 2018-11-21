@@ -1,0 +1,74 @@
+@import "./src/assets/scss/variables.scss";
+@import "./src/assets/scss/fonts.scss";
+
+$logo-span-font-size: 31px;
+$logo-span-font-weight: 900;
+$logo-span-line-height: 1;
+$logo-p-font-size: 31px;
+$logo-p-font-weight: 500;
+$logo-p-line-height: 0.03;
+$media-container-padding-right: 5px;
+$media-container-padding-left: 5px;
+
+nav {
+    background: $header-bg !important;
+    font-family: $header-font-family;
+    .container {
+        margin-left: auto;
+        margin-right: auto;
+
+        .logout {
+            cursor: pointer;
+        }
+        a {
+            color: $main-text-color;
+            font-size: 18px;
+            .logo {
+                color: $main-text-color-red;
+                span {
+                    font-size: $logo-span-font-size;
+                    font-weight: $logo-span-font-weight;
+                    font-style: normal;
+                    font-stretch: normal;
+                    line-height: $logo-span-line-height;
+                    letter-spacing: normal;
+                }
+                p {
+                    padding: 0px 0px 5px;
+                    margin: 0;
+                    font-size: $logo-p-font-size;
+                    font-weight: $logo-p-font-weight;
+                    font-style: normal;
+                    font-stretch: normal;
+                    line-height: $logo-p-line-height;
+                    letter-spacing: normal;
+                }
+            }
+        }
+        i {
+            color: $main-text-color-red;
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .navbar-expand-lg {
+        .container {
+            padding-right: $media-container-padding-right !important;
+            padding-left: $media-container-padding-left !important;
+            margin-right: auto;
+            margin-left: auto;
+
+             .navbar-collapse {
+                .navbar-nav {
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+        }
+
+        #nav-container {
+            flex-wrap: wrap;
+        }
+    }
+}

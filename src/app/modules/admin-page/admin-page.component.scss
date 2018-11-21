@@ -1,0 +1,93 @@
+.image-example {
+    width: 200px;
+    height: 200px;
+}
+
+.jumbotron {
+    background: linear-gradient(16deg, #ffffff, #e69a7d, #ffffff);
+    background-size: 600% 600%;
+
+    -webkit-animation: AnimationName 9s ease infinite;
+    -moz-animation: AnimationName 9s ease infinite;
+    animation: AnimationName 9s ease infinite;
+
+    @-webkit-keyframes AnimationName {
+        0%{background-position:72% 0%}
+        50%{background-position:29% 100%}
+        100%{background-position:72% 0%}
+    }
+    @-moz-keyframes AnimationName {
+        0%{background-position:72% 0%}
+        50%{background-position:29% 100%}
+        100%{background-position:72% 0%}
+    }
+    @keyframes AnimationName {
+        0%{background-position:72% 0%}
+        50%{background-position:29% 100%}
+        100%{background-position:72% 0%}
+    }
+}
+
+.dish-input {
+    font: .9em/1.5em "handwriting", sans-serif;
+    padding: 0 10px;
+    margin: 0;
+    width: 100%;
+    background: none;
+    height: 2.5em;
+    /* for IE */
+    vertical-align: middle;
+    /* This is optional but it makes legacy IEs look better */
+
+    &:hover {
+        outline: none;
+        background: darken(#e69a7d, 20%);
+        color: #FFF;
+    }
+
+    &:focus {
+        outline: none;
+        background: darken(#e69a7d, 10%);
+        color: #FFF;
+        border-radius: 5px;
+    }
+}
+
+.dish-label {
+    font: .9em/1.5em "handwriting", sans-serif;
+    background: none;
+}
+
+.success-button {
+    padding: 5px;
+    background-color: #e69a7d;
+    border-color: darken(#e69a7d,30%);
+    font-family: sans-serif;
+    font-size:.6em;
+    font-weight: bold;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    -webkit-transform: rotate(-1.5deg);
+    -moz-transform: rotate(-1.5deg);
+    -ms-transform: rotate(-1.5deg);
+    -o-transform: rotate(-1.5deg);
+    transform: rotate(-1.5deg);
+
+    &:after {
+        content: " >>>";
+    }
+
+    &:hover {
+        outline: none;
+        background: darken(#e69a7d, 20%);
+        color: #FFF;
+    }
+
+    &:focus {
+        outline: none;
+        background: darken(#e69a7d, 20%);
+        color: #FFF;
+    }
+}

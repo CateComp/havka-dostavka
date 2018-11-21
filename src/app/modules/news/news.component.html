@@ -1,0 +1,18 @@
+<div class="container">
+  <h1 class="main-title text-center h4 m-4">Last news</h1>
+  
+  <div class="news row m-4 p-4" *ngFor="let news of currentNews">
+    
+    <div class="news-content col-sm-12 col-lg-6 text-center">
+      <h2 class="news-title h5">{{news.title}}</h2>
+      <p class="news-description">{{news.description}}</p>
+      <p class="text-right text-muted">{{news.time}}</p>
+    </div>
+
+    <div class="news-photo p-0 col-sm-12 col-lg-6 text-center">
+      <img src="{{news.photo}}" alt="news{{news.id}}">
+    </div>
+    
+    <hr>
+  </div>
+</div>
