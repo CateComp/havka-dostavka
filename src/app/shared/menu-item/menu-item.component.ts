@@ -5,7 +5,8 @@ import { FirebaseService } from 'app/core/services/firebase.service';
 import { NgbModalConfig, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { filterProp } from 'app/core/interfaces/fiter-properties';
 import { PROPERTIES } from 'app/core/app-config';
-import { AuthService } from 'app/core/services/auth.service'
+import { AuthService } from 'app/core/services/auth.service';
+// import { AdminPageComponent } from 'app/modules/admin-page/admin-page.component'
 
 @Component({
   selector: 'app-menu-item',
@@ -17,33 +18,47 @@ export class MenuItemComponent implements OnInit {
   @Input() dish: DishHome;
   public filterProp: filterProp[] = PROPERTIES;
   private newImage: boolean;
+  public halfPortion: boolean = false;
+  public halfPrice: number;
+  public realPrice: number;
+  public realName: string;
+  public realId: string;
+  public halfWeight: number;
 
-  
   constructor(private _fbs: FirebaseService,
     private modalService: NgbModal,
     private _cartService: CartService,
     public activeModal: NgbActiveModal,
     public user: AuthService,
-  ) {  }
-  
+  ) {
+
+    }
+
   public addToShoppingCart(): void {
+    if(this.dish.price == this.halfPrice) {
+      if(this.dish.id !== this.realId+'halfPortion'){
+        this.dish.name +=' половинка';
+        this.dish.id += 'halfPortion'
+      }
+    } else {
+      this.dish.id = this.realId;
+      this.dish.name = this.realName;
+    }
+    console.log(this.dish)
+
     this._cartService.addCartItem(this.dish);
   }
 
   public open(content) {
     this.modalService.open(content);
-    this.submitValidation();
-    console.log('This is ', this);
   }
 
   public addImage(event) {
     this.newImage = true;
     this.dish.img = event.target.files[0];
-    console.log('dish', this.dish.img);
   }
 
   public close(content) {
-    console.log('this', this);
     this.activeModal.close(content);
   }
 
@@ -60,24 +75,13 @@ export class MenuItemComponent implements OnInit {
     this._fbs.editDish(this.dish);
   }
 
-  private submitValidation() {
-    window.addEventListener('load', function() {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      const forms = document.getElementsByClassName('needs-validation');
-      // Loop over them and prevent submission
-      const validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    }, false);
-}
 
 public ngOnInit() {
+  this.realName = this.dish.name;
+  this.realId = this.dish.id;
+  this.realPrice = this.dish.price;
+  this.halfPrice = this.dish.price/2;
+  this.halfWeight = this.dish.weight/2;
 }
 
 

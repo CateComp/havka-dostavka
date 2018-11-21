@@ -52,9 +52,10 @@ export class FirebaseService {
     console.log('Adding the dishes...');
 
     this.afs.collection<Dish>('menu')
-      .add(dish)
-      .then((docRef) => console.log('Dish added with id: ', docRef.id))
-      .catch(error => console.log('Error adding the dish: ', error));
+    .doc(dish.id)
+    .set(dish)
+    .then(_ => console.log('Dish added with id: ', dish.id))
+    .catch(error => console.log('Error adding the dish: ', error));
   }
 
   public deleteDish(dish: Dish): void {
@@ -104,17 +105,20 @@ export class FirebaseService {
         })
       );
   }
+  
+  public addOrder(orderDetails: OrderDetails): Promise<firebase.firestore.DocumentReference> {
 
-  addOrder(orderDetails: OrderDetails): Promise<firebase.firestore.DocumentReference> {
     return this.afs.collection<OrderDetails>('orders').add(orderDetails);
   }
+  
   getCoordsFromFirebase(coordsUrl): Observable<MapCoords[]> {
     return this.afs.doc<MapCoords>(`tracking/${coordsUrl}`)
     .valueChanges()
     .pipe(
       map(data => {
         console.log(data.way)
-        const array = data.way
+        const array = data.way;
+        
         return [...array]
       })
     );

@@ -10,12 +10,25 @@
     </div>
   </div>
   <div class="card-body">
-    <h5 class="card-title text-center my-2">{{dish.name}}</h5>
-    <a *ngIf="user.isAdmin | async" (click)="open(editDish)" class="btn-warning edit__button position-absolute"><i class="fas fa-edit"></i><span class="edit-button-text">Додати товар</span></a>
-    <hr>
-    <div class="row d-flex text-center">
+    <h5 class="card-title text-center my-2">{{realName}}</h5>
+      <a *ngIf="user.isAdmin | async" (click)="open(editDish)" class="btn-warning edit__button position-absolute"><i class="fas fa-edit"></i><span class="edit-button-text">Додати товар</span></a>  
+      <hr>    
+  <div class="row d-flex text-center">
       <div class="col-6" id="menu-currency">
-        {{ dish.price | currency:'UAH ' }}
+        <ng-container *ngIf="dish.half; else halfPortion">
+          <select [(ngModel)]="dish.price">
+            <option [value]="realPrice">
+              {{ realPrice | currency:'UAH ' }}/{{ dish.weight }} гр.
+            </option>
+            <option [value]="halfPrice">
+              {{ halfPrice | currency:'UAH ' }}/{{ halfWeight }} гр.
+            </option>
+          </select>
+        </ng-container>
+        <ng-template #halfPortion>
+          {{ dish.price | currency:'UAH ' }}/{{ dish.weight }} гр.
+        </ng-template>
+
       </div>
       <div class="col-6 btn-container">
         <button type="button" class="btn" id="add-to-cart-btn" (click)="addToShoppingCart()">В корзину</button>
@@ -26,94 +39,7 @@
 
 <!-- Modal -->
 <ng-template #editDish let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.close('Ok click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form class="needs-validation">
-      <div class="form-row">
-        <div class="col-md-6 mb-3">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" id="name"  name="name" [(ngModel)]="dish.name" placeholder="Dish name" required>
-          <div class="invalid-feedback">
-            Please provide a valid dish name.
-          </div>
-          <div class="valid-feedback">
-              Looks good!
-          </div>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="col-md-6 mb-3">
-          <label for="price">Price</label>
-          <input type="text" class="form-control" id="price" name="price" [(ngModel)]="dish.price" required>
-          <div class="invalid-feedback">
-            Please provide a valid dish price.
-          </div>
-          <div class="valid-feedback">
-              Looks good!
-          </div>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="col-md-6 mb-3">
-          <label for="weight">Weight</label>
-          <input type="text" class="form-control" id="weight"  name="weight" [(ngModel)]="dish.weight" required>
-          <div class="invalid-feedback">
-            Please provide a valid dish weight.
-          </div>
-          <div class="valid-feedback">
-              Looks good!
-          </div>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="col-md-6 mb-3">
-          <label for="description">Description</label>
-          <input type="text" class="form-control" id="description"  name="description" [(ngModel)]="dish.info" required>
-          <div class="invalid-feedback">
-            Please provide a valid dish description.
-          </div>
-          <div class="valid-feedback">
-              Looks good!
-          </div>
-        </div>
-      </div>
-    
-      <div class="custom-control custom-checkbox mb-3">
-        <input type="checkbox" class="custom-control-input"  name="todaymenu" [(ngModel)]="dish.todaymenu" id="todayMenu">
-        <label class="custom-control-label" for="todayMenu">Is it todays menu?</label>
-      </div>
-    
-      <h3 class="title">Choose type</h3>
-      <ul class="form-group">
-        <li *ngFor="let type of filterProp">
-          <input type="radio" [(ngModel)]="dish.type" id="{{type.name}}" name="{{type.name}}" value="{{type.name}}">
-          <label for="{{type}}">{{type.name}}</label>
-        </li>
-      </ul>
-    
-      <div class="form-group">
-        <select class="custom-select">
-          <option value="">Will it be in complex menu</option>
-          <option value="bussiness1">bussiness1</option>
-          <option value="bussiness2">bussiness2</option>
-          <option value="bussiness3">bussiness3</option>
-        </select>
-        <div class="invalid-feedback">Example invalid custom select feedback</div>
-      </div>
-    
-      <div class="custom-file">
-        <input type="file" (change)="addImage($event)" class="custom-file-input" id="image" required>
-        <label class="custom-file-label" for="image">Choose image...</label>
-        <div class="invalid-feedback">Choose image for your dish</div>
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button class="btn btn-primary" (click)="saveEditDish()" type="submit">Submit form</button>
-  </div>
+  <app-admin-page
+  [dishExisted]="dish"
+  ></app-admin-page>
 </ng-template>
