@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container main-container" id="container-width">
   <div class="row d-flex justify-content-center main-menu-category">
     <div class="btn-group menu-all-dishes" role="group" aria-label="Basic example">
       <button type="button" class="btn btn-secondary" (click)="todayMenu()">Todays menu</button>
@@ -6,7 +6,7 @@
       <button type="button" class="btn btn-secondary" (click)="complexMenu()">Complex</button>
     </div>
   </div>
-  <div class="row" *ngIf="!isComplex">
+  <div class="row" id="container-dishes" *ngIf="!isComplex">
     <div class="menu-category col-xs-3 col-sm-2">
       <ul>
         <li *ngFor="let type of filterProp">
