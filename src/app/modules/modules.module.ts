@@ -21,6 +21,7 @@ import { LoginComponent } from './login/login.component';
 import { MenuPipe } from 'app/core/pipes/menu.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminPageComponent } from 'app/modules/admin-page/admin-page.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
@@ -28,6 +29,9 @@ import { AdminPageComponent } from 'app/modules/admin-page/admin-page.component'
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBMSQKIZ7cpNU3vL-jSiAMOL0K3In9A3dQ'
+    }),
     ReactiveFormsModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
   ],
