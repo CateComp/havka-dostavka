@@ -15,6 +15,7 @@ export const environment = {
   googleMaps: {
     apiKey: 'AIzaSyBMSQKIZ7cpNU3vL-jSiAMOL0K3In9A3dQ'
   }
+<<<<<<< HEAD
 };
 
 /*
@@ -25,3 +26,6 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+=======
+};
+>>>>>>> heroku-deploy

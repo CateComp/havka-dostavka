@@ -13,7 +13,9 @@ import { LocalStorageService } from 'app/core/services/local-storage.service'
 })
 export class CartComponent implements OnInit {
 
-  products: CartItem[];
+  public products: CartItem[];
+  public phone: string = '';
+  public address: string = '';
 
   constructor(
     private _cartService: CartService,
@@ -27,6 +29,7 @@ export class CartComponent implements OnInit {
   }
 
   public ngOnInit() {
+    this.products = this._cartService.getCartItems() || [];
   }
 
   public totalPriceOfProducts(): number {
@@ -73,7 +76,7 @@ export class CartComponent implements OnInit {
   }
 
   public completeOrder(): void {
-    this._cartService.completeOrder(this.products)
+    this._cartService.completeOrder(this.products, this.address, this.phone)
     .then(function() {
       alert('Замовлення прийнято!');
     })
@@ -90,6 +93,14 @@ export class CartComponent implements OnInit {
 
   public logInCart(): void {
     this._router.navigate(['/login']);
+  }
+
+  public isAddressValid(): boolean {
+    return this.address && this.address.length > 0;
+  }
+
+  public isPhoneValid(): boolean {
+    return this.phone && this.phone.length > 0;
   }
 
   public nrSelect: string;
