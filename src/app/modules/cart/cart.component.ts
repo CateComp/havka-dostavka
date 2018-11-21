@@ -2,17 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import { CartService, CartItem } from 'app/core/services/cart.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'app/core/services/auth.service';
+import { TrackingComponent } from 'app/modules/tracking/tracking.component';
+import { LocalStorageService } from 'app/core/services/local-storage.service'
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
+  providers:[ TrackingComponent ],
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
 
   products: CartItem[];
 
-  constructor(private _cartService: CartService, private _router: Router, public user: AuthService) { 
+  constructor(
+    private _cartService: CartService,
+    private _router: Router,
+    public user: AuthService,
+    public trackingComponent: TrackingComponent,
+    public ls: LocalStorageService,
+    ) { 
+
     this.products = _cartService.getCartItems() || [];
   }
 
@@ -82,4 +92,9 @@ export class CartComponent implements OnInit {
     this._router.navigate(['/login']);
   }
 
+  public nrSelect: string;
+  public startTracking() {
+    this.ls.save('way',this.nrSelect)
+    this.trackingComponent.startWay(this.nrSelect)
+  }
 }
