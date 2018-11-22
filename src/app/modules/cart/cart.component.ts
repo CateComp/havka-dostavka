@@ -82,7 +82,6 @@ export class CartComponent implements OnInit {
     .then(() => {
       this.startTracking();
       alert('Замовлення прийнято!');
-      this._router.navigate(['/tracking']);
     })
   }
 
@@ -108,7 +107,7 @@ export class CartComponent implements OnInit {
   }
 
   private startTracking() {
-    this.ls.save('way',this.address)
+    this.ls.save(this.user.afAuth.auth.currentUser.uid,this.address)
     this.trackingComponent.startWay(this.address)
   }
 }

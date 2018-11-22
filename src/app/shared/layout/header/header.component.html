@@ -42,7 +42,7 @@
             <a class="nav-link" routerLink="/login">Увійти</a>
           </li>
           <li *ngIf="user.authState | async" class="nav-item">
-            <a class="nav-link logout" (click)="user.logout()">Вийти</a>
+            <a class="nav-link logout" (click)="user.logout(); goHome()">Вийти</a>
           </li>
         </ul>
       </div>
