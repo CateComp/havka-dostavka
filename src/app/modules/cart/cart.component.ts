@@ -15,8 +15,10 @@ export class CartComponent implements OnInit {
 
   public products: CartItem[];
   public phone: string = '';
+
+  public isPhoneValid: boolean = false;
+  public isAddressValid: boolean = false;
   public address: string = '';
-  public nrSelect: string;
 
   constructor(
     private _cartService: CartService,
@@ -77,9 +79,11 @@ export class CartComponent implements OnInit {
 
   public completeOrder(): void {
     this._cartService.completeOrder(this.products, this.address, this.phone)
-    .then(function() {
+    .then(() => {
+      this.startTracking();
       alert('Замовлення прийнято!');
-    });
+      this._router.navigate(['/tracking']);
+    })
   }
 
   public cancelOrder(): void {
@@ -94,17 +98,17 @@ export class CartComponent implements OnInit {
   public logInCart(): void {
     this._router.navigate(['/login']);
   }
-
-  public isAddressValid(): boolean {
-    return this.address && this.address.length > 0;
+  
+  public onPhoneChanged(isPhoneValid) {
+    this.isPhoneValid = isPhoneValid;
   }
 
-  public isPhoneValid(): boolean {
-    return this.phone && this.phone.length > 0;
+  public onAddressChanged(isAddressValid) {
+    this.isAddressValid = isAddressValid;
   }
 
-  public startTracking() {
-    this.ls.save('way', this.nrSelect);
-    this.trackingComponent.startWay(this.nrSelect);
+  private startTracking() {
+    this.ls.save('way',this.address)
+    this.trackingComponent.startWay(this.address)
   }
 }
