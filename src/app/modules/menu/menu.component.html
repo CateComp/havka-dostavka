@@ -10,7 +10,7 @@
     <div class="menu-category col-xs-3 col-sm-2">
       <ul>
         <li *ngFor="let type of filterProp">
-          <label class="filter-cb-container">{{type.name}}
+          <label class="filter-cb-container">{{type.title}}
             <input type="checkbox" checked="checked" (change)="addType(type)" [(ngModel)]="type.isChecked" id="{{type.name}}" name="{{type.name}}" value="{{type.name}}">
             <span class="checkmark"></span>
           </label>

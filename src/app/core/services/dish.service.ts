@@ -8,22 +8,23 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class DishService {
+  private readonly DEFAULT_DISHES_COUNT = 3;
 
   constructor(private _firebase: FirebaseService) { }
 
-  getDishesSortedByRating(): Observable<Dish[]> {
+  public getDishesSortedByRating(): Observable<Dish[]> {
    return this._firebase.getItems()
             .pipe(map(data => data.sort((a, b) => a.rating - b.rating)))
             .pipe(map(data => data.reverse()))
-            .pipe(map(data => data.slice(0, 4)));
+            .pipe(map(data => data.slice(0, this.DEFAULT_DISHES_COUNT)));
   }
 
-  todaysMenu(): Observable<Dish[]> {
+  public todaysMenu(): Observable<Dish[]> {
    return this._firebase.getItems()
             .pipe(map((data: Dish[]) => data.filter((arr: Dish) => arr.todaymenu)));
   }
 
-  complexMenu() {
+  public complexMenu() {
    return this._firebase.getItems()
             .pipe(map((data: Dish[]) => {
               const bussiness1 = data.filter((arr: Dish) => arr.complex === 'bussiness1');
