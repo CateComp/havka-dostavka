@@ -11,7 +11,7 @@
   </div>
   <div class="card-body">
     <h5 class="card-title text-center my-2">{{realName}}</h5>
-    <a *ngIf="user.isAdmin | async" (click)="open(editDish)" class="btn-warning position-absolute"><i class="fas fa-edit"></i><span class="edit-button-text">Редагувати товар</span></a> 
+      <a *ngIf="user.isAdmin | async" (click)="open(editDish)" class="btn-warning edit__button"><i class="fas fa-edit"></i><span class="edit-button-text">Редагувати товар</span></a>  
       <hr>    
   <div class="row d-flex text-center">
       <div class="col-6" id="menu-currency">
