@@ -1,0 +1,126 @@
+@import "./src/assets/scss/variables.scss";
+
+$filter-cb-container-font-size: 23px;
+$filter-cb-container-padding-left: 37px;
+$filter-cb-container-margin-bottom: 11px;
+$input-height: 0;
+$input-width: 0;
+$input-opacity: 0;
+$checkmark-height: 26px;
+$checkmark-width: 26px;
+$checkmark-top: 0;
+$checkmark-left: 0;
+$border: 1px;
+$checkmark-after-width: 6px;
+$checkmark-after-height: 11px;
+$checkmark-after-top: 6px;
+$checkmark-after-left: 10px;
+$media-menu-category-margin-left: -25px;
+$media-menu-category-margin-top: 15px;
+$media-menu-category-margin-bottom: 20px;
+$media-menu-category-ul-margin-left: 7px;
+
+.row {
+  .menu-category {
+    margin-top: 10px;
+  }
+}
+
+ul {
+  list-style-type: none;
+
+  li {
+        
+    .filter-cb-container {
+      display: block;
+      position: relative;
+      font-size: $filter-cb-container-font-size;
+      user-select: none;
+      padding-left: $filter-cb-container-padding-left;
+      cursor: pointer;
+      margin-bottom: $filter-cb-container-margin-bottom;
+
+      &:hover input ~ .checkmark {
+        background-color: $soft-grey;
+      }
+
+      input {
+        position: absolute;
+        height: $input-height;
+        width: $input-width;
+        cursor: pointer;
+        opacity: $input-opacity;
+
+        &:checked ~ .checkmark {
+          background-color: $light-peachy;
+        }
+      }
+
+      .checkmark {
+        position: absolute;
+        background-color: $faintly-grey;
+        height: $checkmark-height;
+        width: $checkmark-width;
+        top: $checkmark-top;
+        left: $checkmark-left;
+      }
+
+      .checkmark:after {
+        transform: rotate(45deg);
+        border: $border solid $white;
+        width: $checkmark-after-width;
+        height: $checkmark-after-height;
+        border-width: 0 2px 2px 0;
+        top: $checkmark-after-top;
+        left: $checkmark-after-left;
+      }
+    }
+  }
+}
+
+.checkmark:after {
+  content: "";
+  display: none;
+  position: absolute;
+}
+
+.filter-cb-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+@media screen and (max-width: 1200px) {
+  .menu-category {
+    ul {
+      padding-left: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .menu-category {
+    ul {
+      padding-left: 0;
+      float: left;
+      margin-left: $media-menu-category-margin-left;
+      margin-top: $media-menu-category-margin-top;
+    }
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .container {
+    .main-menu-category {
+      margin-bottom: $media-menu-category-margin-bottom;
+    }
+  }
+
+  .menu-category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    ul {
+      margin-left: $media-menu-category-ul-margin-left;
+    }
+  }
+}

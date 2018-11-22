@@ -30,13 +30,40 @@
   </div>
   <hr>
   <div *ngIf="!(products.length === 0)" class="total-price" id="all-products-price">Загальна сума: {{ totalPriceOfProducts() }} грн </div>
+  <div class="contact-info">   
+    <div class="form-group">
+      <label for="custom-select">Please select your adress:</label>
+      <select [(ngModel)]='address' id="custom-select" class="custom-select" (ngModelChange)="onAddressChanged(!deliveryAddress.invalid)" #deliveryAddress="ngModel">
+        <option value="way1">Шевченка, 111A</option>
+        <option value="way2">Угорська, 14/Луганська, 16</option>
+        <option value="way3">Путрушевича, 3</option>
+        <option value="way4">О.Степанівни, 45</option>
+        <option value="way5">Федьковича, 60A</option>
+        <option value="way6">Наукова, 7A</option>
+        <option value="way7">В.Великого, 54</option>
+        <option value="way8">Садова, 2Д</option>
+        <option value="way9">Сахарова, 78</option>
+      </select>
+    </div>
+    <div *ngIf="!(products.length === 0)" class="phone">
+      <input type="tel" id="phoneNumber" name="phoneNumber" (ngModelChange)="onPhoneChanged(!phoneNumber.invalid)" [(ngModel)]="phone" #phoneNumber="ngModel" placeholder="Phone" required  pattern="^(0){1}[0-9]{9}$" />
+      <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="alert alert-danger">
+        <div *ngIf="phoneNumber.errors.required">
+          Phone is required.
+        </div>
+        <div *ngIf="phoneNumber.errors.pattern">
+          Phone must be in format: 0XXXXXXXXX
+        </div>        
+      </div>
+    </div>
+  </div>
   <div class="footer-container-cart">
     <div>
       <div *ngIf="!(user.authState | async)">
         <button *ngIf="!(products.length === 0)" class="log-in" (click)="logInCart()">Увійти</button>
       </div>
       <div *ngIf="user.authState | async as authState">
-        <button *ngIf="!(products.length === 0)" class="order" (click)="completeOrder()">Замовити</button>
+        <button *ngIf="!(products.length === 0)" class="order" (click)="completeOrder()" [disabled]="!isPhoneValid || !isAddressValid">Замовити</button>
       </div>
     </div>
     <button *ngIf="!(products.length === 0)" class="cancel" (click)="cancelOrder()">Скасувати замовлення</button>

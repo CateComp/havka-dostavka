@@ -17,15 +17,14 @@ import { DishService } from 'app/core/services/dish.service';
 // help modules
 import { AppRoutingModule } from 'app/core/app-routing/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { from } from 'rxjs';
 import { LoginComponent } from './login/login.component';
 import { MenuPipe } from 'app/core/pipes/menu.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminPageComponent } from 'app/modules/admin-page/admin-page.component';
 import { CarouselComponent } from './carousel/carousel.component';
-//
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
@@ -33,6 +32,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBMSQKIZ7cpNU3vL-jSiAMOL0K3In9A3dQ'
+    }),
     ReactiveFormsModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     NgbModule

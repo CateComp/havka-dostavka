@@ -12,6 +12,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FirebaseService } from 'app/core/services/firebase.service';
+// Imported Angular Google Maps
+import { AgmCoreModule } from '@agm/core';
 
 import { environment } from '../environments/environment';
 
@@ -25,6 +27,9 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBMSQKIZ7cpNU3vL-jSiAMOL0K3In9A3dQ'
+    }),
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]
