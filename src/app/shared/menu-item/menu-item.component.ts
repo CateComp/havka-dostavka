@@ -66,13 +66,17 @@ export class MenuItemComponent implements OnInit {
   public saveEditDish() {
     console.log('Edited', this.dish);
     if (this.newImage) {
-      this._fbs.uploadImage(this.dish);
+      this._fbs.uploadImage(this.dish, this.dish.img);
       this._fbs.downloadImage(this.dish);
     }
     this._fbs.editDish(this.dish);
   }
 
   public ngOnInit() {
+    if (this.dish) {
+      this.dish.half = Boolean(this.dish.half);
+    }
+
     this.realName = this.dish.name;
     this.realId = this.dish.id;
     this.realPrice = this.dish.price;

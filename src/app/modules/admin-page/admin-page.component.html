@@ -10,7 +10,6 @@
               formControlName="name"
               class="form-control dish-input"
               [(ngModel)]="dish.name"
-              (change)="enableImage()"
               [ngClass]="{ 'is-invalid': addDishForm.controls.name.invalid && addDishForm.controls.name.errors }" />
 
             <div *ngIf="addDishForm.controls.name.invalid && addDishForm.controls.name.errors" class="invalid-feedback">
@@ -114,13 +113,10 @@
             <input type="file"
               (change)="addImage($event)"
               class="custom-file-input dish-input"
-              id="img"
-              formControlName="img"
-              [ngClass]="{ 'is-invalid': addDishForm.controls.img.invalid && addDishForm.controls.img.errors}"
-              disabled>
+              id="img">
 
             <label class="custom-file-label dish-label" for="img">Ну вибери картинку для {{dish.name}}</label>
-            <div *ngIf="addDishForm.controls.img.invalid && addDishForm.controls.img.errors" class="invalid-feedback">
+            <!-- <div *ngIf="addDishForm.controls.img.invalid && addDishForm.controls.img.errors" class="invalid-feedback">
               <div *ngIf="addDishForm.controls.img.errors.required">
                 <div>Ну як ж без картинки і назва обов'язкова!</div>
                 <div class="text-center">
@@ -130,7 +126,7 @@
                   <i class="fas fa-arrow-down"></i>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="form-group pt-5">
             <div class="row">

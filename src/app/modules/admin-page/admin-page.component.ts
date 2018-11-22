@@ -25,7 +25,7 @@ export class AdminPageComponent implements OnInit {
     todaymenu: false,
     price: 0,
     weight: 0,
-    img: this.defaultImage,
+    img: '',
     info: '',
     orders: 0,
     rating: 0
@@ -34,9 +34,12 @@ export class AdminPageComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.dishExisted.half = Boolean(this.dishExisted.half);
-    this.dish = this.dishExisted || this.dish;
+    if (this.dishExisted) {
+      this.dishExisted.half = Boolean(this.dishExisted.half);
+    }
 
+    this.dish = this.dishExisted || this.dish;
+    console.log(this.dish)
     this.addDishForm = new FormGroup({
       complex: new FormControl(this.dish.complex),
       half: new FormControl (this.dish.half),
@@ -51,7 +54,7 @@ export class AdminPageComponent implements OnInit {
         Validators.required,
         Validators.pattern('^[1-9][0-9]{0,5}')
       ])),
-      img:  new FormControl(this.dish.img, Validators.required),
+      // img:  new FormControl(this.dish.img),
       info:  new FormControl(this.dish.info, Validators.required)
       });
   }
@@ -64,18 +67,21 @@ export class AdminPageComponent implements OnInit {
   }
 
   public addImage(event): void {
-    this.dish.img = event.target.files[0];
-    this._fbs.uploadImage(this.dish);
-    setTimeout(() => this._fbs.downloadImage(this.dish), 1000);
+    // this.dish.img = event.target.files[0];
+    const image = event.target.files[0];
+    this._fbs.uploadImage(this.dish, image).then( data => {
+      console.log('data', data)
+      return this._fbs.downloadImage(this.dish)})
+    // setTimeout(, 1000);
   }
 
-  public enableImage(): void {
-    if (this.dish.name !== '') {
-      this.addDishForm.controls.img.enable();
-    } else {
-      this.addDishForm.controls.img.disable();
-    }
-  }
+  // public enableImage(): void {
+  //   if (this.dish.name !== '') {
+  //     this.addDishForm.controls.img.enable();
+  //   } else {
+  //     this.addDishForm.controls.img.disable();
+  //   }
+  // }
 
   private submitDish(): void {
     console.log('Dish to process', this.dish);
