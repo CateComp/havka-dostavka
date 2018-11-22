@@ -40,12 +40,12 @@ export class FirebaseService {
     dish.img = `https://firebasestorage.googleapis.com/v0/b/havka-2726f.appspot.com/o/images-mocks%2F${dish.name}?alt=media`;
   }
 
-  public uploadImage(dish: Dish): void {
+  public uploadImage(dish: Dish, image): any {
     console.log('Upload image to storage...');
     const database = firebase.database();
     const storage = firebase.storage();
     const buildenavn = storage.ref('images-mocks/' + dish.name);
-    buildenavn.put(dish.img);
+    return buildenavn.put(image);
   }
 
   public addDish(dish: Dish): void {
