@@ -82,7 +82,10 @@ export class CartComponent implements OnInit {
     this._cartService.completeOrder(this.products, this.address, this.phone)
     .then(() => {
       this.startTracking();
-      this._router.navigate(['/tracking']);
+      alert('Замовлення прийнято!');
+      
+      this._cartService.clearCart();
+      this.products = [];
     })
   }
 
