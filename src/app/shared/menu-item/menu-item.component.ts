@@ -6,7 +6,6 @@ import { NgbModalConfig, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-boots
 import { filterProp } from 'app/core/interfaces/fiter-properties';
 import { PROPERTIES } from 'app/core/app-config';
 import { AuthService } from 'app/core/services/auth.service';
-// import { AdminPageComponent } from 'app/modules/admin-page/admin-page.component'
 
 @Component({
   selector: 'app-menu-item',
@@ -30,21 +29,19 @@ export class MenuItemComponent implements OnInit {
     private _cartService: CartService,
     public activeModal: NgbActiveModal,
     public user: AuthService,
-  ) {
-
-    }
+  ) { }
 
   public addToShoppingCart(): void {
-    if(this.dish.price == this.halfPrice) {
-      if(this.dish.id !== this.realId+'halfPortion'){
-        this.dish.name +=' половинка';
-        this.dish.id += 'halfPortion'
+    if (this.dish.price == this.halfPrice) {
+      if (this.dish.id !== this.realId + 'halfPortion') {
+        this.dish.name += ' половинка';
+        this.dish.id += 'halfPortion';
       }
     } else {
       this.dish.id = this.realId;
       this.dish.name = this.realName;
     }
-    console.log(this.dish)
+    console.log(this.dish);
 
     this._cartService.addCartItem(this.dish);
   }
@@ -75,14 +72,12 @@ export class MenuItemComponent implements OnInit {
     this._fbs.editDish(this.dish);
   }
 
-
-public ngOnInit() {
-  this.realName = this.dish.name;
-  this.realId = this.dish.id;
-  this.realPrice = this.dish.price;
-  this.halfPrice = this.dish.price/2;
-  this.halfWeight = this.dish.weight/2;
-}
-
+  public ngOnInit() {
+    this.realName = this.dish.name;
+    this.realId = this.dish.id;
+    this.realPrice = this.dish.price;
+    this.halfPrice = this.dish.price / 2;
+    this.halfWeight = this.dish.weight / 2;
+  }
 
 }

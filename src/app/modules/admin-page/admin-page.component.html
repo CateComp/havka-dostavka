@@ -92,7 +92,7 @@
                 [(ngModel)]="dish.type" />
             </div>
 
-            <div *ngIf="addDishForm.controls.type.invalid !== false && addDishForm.controls.type.errors !== false" class="invalid-feedback d-block">
+            <div *ngIf="addDishForm.controls.type.invalid !== false" class="invalid-feedback d-block">
               <div *ngIf="addDishForm.controls.type.errors.required">Тип обов'язковий</div>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { filterProp } from "app/core/interfaces/fiter-properties";
+import { filterProp } from 'app/core/interfaces/fiter-properties';
 
 export const PROPERTIES: filterProp[] = [
     { displayName: 'десерти', name: 'dessert', isChecked: false },
@@ -6,5 +6,5 @@ export const PROPERTIES: filterProp[] = [
     { displayName: 'другі страви', name: 'second', isChecked: false },
     { displayName: 'салати', name: 'salads', isChecked: false },
     { displayName: 'напої', name: 'drink', isChecked: false },
-    { displayName: 'піца', name: 'pizza', isChecked: false }
+    { displayName: 'піцца', name: 'pizza', isChecked: false }
   ];
