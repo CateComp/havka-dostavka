@@ -1,6 +1,6 @@
 <div *ngIf="user.authState | async as authState; else showLogin">
     <h1>Hello {{ authState.displayName }}!</h1>
-    <button (click)="user.logout()">Logout</button>
+    <button id="logout-btn" (click)="user.logout()">Logout</button>
 </div>
 <ng-template #showLogin>
   <button type="buton" class="btn btn-block" (click)="user.signInWithFacebook()">
