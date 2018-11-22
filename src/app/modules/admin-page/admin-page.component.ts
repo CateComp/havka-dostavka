@@ -14,7 +14,7 @@ export class AdminPageComponent implements OnInit {
   @Input() dishExisted: Dish;
 
   public addDishForm: FormGroup;
-  public defaultImage: string = 'assets/pictures/placeholder.jpg';
+  public defaultImage = 'assets/pictures/placeholder.jpg';
 
   public filterProp: filterProp[] = PROPERTIES;
   public dish: Dish = {
@@ -34,9 +34,7 @@ export class AdminPageComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.dishExisted.half === undefined ? this.dishExisted.half = false
-    : this.dishExisted.half = this.dishExisted.half;
-
+    this.dishExisted.half = Boolean(this.dishExisted.half);
     this.dish = this.dishExisted || this.dish;
 
     this.addDishForm = new FormGroup({
@@ -59,11 +57,9 @@ export class AdminPageComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    // stop here if form is invalid
     if (this.addDishForm.invalid) {
       return;
     }
-    console.log(this.addDishForm);
     this.submitDish();
   }
 

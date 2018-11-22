@@ -61,7 +61,7 @@
         <button *ngIf="!(products.length === 0)" class="log-in" (click)="logInCart()">Увійти</button>
       </div>
       <div *ngIf="user.authState | async as authState">
-        <button *ngIf="!(products.length === 0)" class="order" (click)="completeOrder();startTracking(value)" [disabled]="!isPhoneValid() || !isAddressValid()">Замовити</button>
+        <button *ngIf="!(products.length === 0)" class="order" (click)="completeOrder();startTracking()" [disabled]="!isPhoneValid() || !isAddressValid()">Замовити</button>
       </div>
     </div>
     <button *ngIf="!(products.length === 0)" class="cancel" (click)="cancelOrder()">Скасувати замовлення</button>
