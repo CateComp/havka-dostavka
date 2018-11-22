@@ -31,7 +31,7 @@
   <hr>
   <div *ngIf="!(products.length === 0)" class="total-price" id="all-products-price">Загальна сума: {{ totalPriceOfProducts() }} грн </div>
   <div class="contact-info">   
-    <div class="form-group">
+    <div *ngIf="!(products.length === 0)" class="form-group">
       <label for="custom-select">Please select your adress:</label>
       <select [(ngModel)]='address' id="custom-select" class="custom-select" (ngModelChange)="onAddressChanged(!deliveryAddress.invalid)" #deliveryAddress="ngModel">
         <option value="way1">Шевченка, 111A</option>
