@@ -1,5 +1,6 @@
 @import 'styles.scss';
 
+$opacity-cart: 0.5;
 $delete-button-z-index: 5;
 $delete-button-width: 25px;
 $delete-button-height: 25px;
@@ -10,13 +11,14 @@ $edit-button-text-font-size: 15px;
 $edit-button-text-margin-left: 7px;
 $hr-margin-left: -20px;
 $hr-margin-right: -20px;
-$hr-margin-top: 3em;
+$hr-margin-top: 1em;
 $menu-currency-margin-left: -5px;
 $add-to-cart-btn-font-size: 14px;
 $add-to-cart-btn-width: 101px;
 $add-to-cart-btn-height: 32px;
 $add-to-cart-btn-border-radius: 4px;
-$ingredients-list-font-size: 12px;
+$ingredients-list-font-size: 15px;
+$ingredients-list-padding: 0 5rem;
 $edit-btn-z-index: 5;
 $edit-btn-font-size: 18px;
 $media-image-container-menu-large-height: 240px;
@@ -35,7 +37,7 @@ $media-image-container-menu-small-width: 213px;
     }
 
     .menu-item__image {
-      opacity: $OpacityLarge;
+      opacity: $opacity-cart;
       transition: $TransitionMedium;  
     }
   }
@@ -137,7 +139,12 @@ $media-image-container-menu-small-width: 213px;
   font-size: $ingredients-list-font-size;
   transition: $TransitionMedium;
   padding: $PaddingX3;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  font-weight: 600;
   display: none !important;
+  margin-top: 45px;
 }
 
 .btn {
@@ -176,12 +183,6 @@ $media-image-container-menu-small-width: 213px;
       width: $media-image-container-menu-small-width;
     }
   }
-}
-
-.edit__button {
-  left: 0;
-  top: 0;
-  z-index: 5;
 }
 
 .star {
