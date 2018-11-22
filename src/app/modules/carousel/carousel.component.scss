@@ -1,37 +1,45 @@
 @import 'styles.scss';
+$li-circle-width-height: 12px;
 
-.slider-img {
-    max-width: 57%;
+.carousel-indicators li {
+    height: $li-circle-width-height;
+    width: $li-circle-width-height;
+    margin: 0 2px;
 }
 
-@media (max-width: 600px) {
-    .background-color {
-        display: none;
-    }
+.carousel-indicators .active {
+    background: $main-text-color-red;
 }
 
-.background-color {
-    background-color: $header-bg;
-    margin: 30px;
+.content-description {
+    color: $main-text-color;
+    font-size: 1.2vw;
+    padding: 0 10px;
 }
 
-// .carousel-item {
-//     display: block !important;
-//     visibility: hidden;
-//     opacity: 0;
-//     transition: visibility 0s, opacity 0.5s linear;
-// }
-// .carousel-item.active {
-//     visibility: visible;
-//     opacity: 1;
-// }
+.content-title {
+    color: $main-text-color-red;
+    font-size: 2vw;
+}
+
+.carousel-indicators {
+    padding-left: 10%;
+}
+
+.carousel-indicators li {
+    background: $header-bg;
+}
+
+.main-container {
+    margin: 2% 0;
+}
 
 .carousel-caption {
-    height: 40vw;
+    bottom: 37%;
+    color: $black;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-
     padding: 0 20px;
     bottom: 0;
     top: 0;
@@ -39,32 +47,53 @@
     left: 0;
 }
 
-.another-position {
+.reverse-position {
     flex-direction: row-reverse;
 }
 
-.content {
-    color: black;
+.carousel-img {
+    max-width: 45%;
 }
 
-.background-div {
+.carousel-control.left, .carousel-control.right {
+    background-image: none;
+}
+
+.carousel-control {
+    color: $main-text-color-red;
+}
+
+.background {
+    width: 100%;
     height: 40vw;
 }
 
-// .carousel-item {
-//     display: flex !important;
-//     opacity: 0;
-//     visibility: hidden;
-//     transition: opacity 1.2s ease-in-out, visibility 1.2s;
-//     z-index: -1;
-//     position: absolute;
-// }
+.carousel-control .glyphicon-chevron-right {
+    right: 0;
+}
 
-// .carousel-item .active{
-//     opacity: 1;
-//     visibility: visible;
-//     transition: opacity 1.2s ease-in-out, visibility 1.2s;
-//     z-index: 10;
-//     color: red;
-//     height: 100px !important; 
-// }
+.carousel-control .glyphicon-chevron-left {
+    left: 0;
+}
+
+@media (max-width: 576px) {
+    .main-container {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-caption {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .carousel-img {
+        max-width: 35%;
+    }
+    .small-srceen {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

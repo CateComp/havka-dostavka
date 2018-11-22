@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselInfoService } from 'app/core/services/carousel-info.service';
 import { Subscription } from 'rxjs';
 import { Dish } from 'app/core/interfaces/dish';
@@ -9,30 +9,34 @@ import { News } from 'app/core/interfaces/news';
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss'],
-  providers: [NgbCarouselConfig]
+  providers: []
 })
 
 export class CarouselComponent implements OnInit {
   public mostOrderedDish: any;
   public lastNews: any;
+  public mostOrderedDessert: any;
+  public mostOrderedPizza: any;
   private subscription: Subscription;
-  images = [1, 2, 3, 4].map(() => `https://picsum.photos/1100/500?random&t=${Math.random()}`);
 
-  constructor(config: NgbCarouselConfig, public carousel: CarouselInfoService) {
-    config.interval = 5000;
-    config.wrap = true;
-    config.keyboard = true;
-    config.pauseOnHover = false;
-  }
+  constructor(public carousel: CarouselInfoService) {}
 
   public ngOnInit() {
-    this.subscription = this.carousel.getMostOrderedDish()
+    this.subscription = this.carousel.getMostOrderedSalad()
       .subscribe((data: Dish[]) => {
         this.mostOrderedDish = data[0];
       });
     this.subscription = this.carousel.getLastNews()
       .subscribe((data: News[]) => {
         this.lastNews = data[0];
+      });
+    this.subscription = this.carousel.getMostOrderedDessert()
+      .subscribe((data: Dish[]) => {
+        this.mostOrderedDessert = data[0];
+      });
+    this.subscription = this.carousel.getMostOrderedPizza()
+      .subscribe((data: Dish[]) => {
+        this.mostOrderedPizza = data[0];
       });
   }
 

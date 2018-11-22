@@ -13,8 +13,9 @@ export class CarouselInfoService {
 
   constructor(private fb: FirebaseService) { }
 
-  getMostOrderedDish(): Observable<Dish[]> {
+  getMostOrderedSalad(): Observable<Dish[]> {
     return this.fb.getItems()
+             .pipe(map(data => data.filter(a => a.type === 'salads')))
              .pipe(map(data => data.sort((a, b) => a.orders - b.orders)))
              .pipe(map(data => data.reverse()))
              .pipe(map(data => data.slice(0, 1)));
@@ -23,6 +24,22 @@ export class CarouselInfoService {
   getLastNews(): Observable<News[]> {
     return this.fb.getNews()
              .pipe(map(data => data.sort((a, b) => a.id - b.id)))
+             .pipe(map(data => data.reverse()))
+             .pipe(map(data => data.slice(0, 1)));
+  }
+
+  getMostOrderedDessert(): Observable<Dish[]> {
+    return this.fb.getItems()
+             .pipe(map(data => data.filter(a => a.type === 'dessert')))
+             .pipe(map(data => data.sort((a, b) => a.orders - b.orders)))
+             .pipe(map(data => data.reverse()))
+             .pipe(map(data => data.slice(0, 1)));
+  }
+
+  getMostOrderedPizza(): Observable<Dish[]> {
+    return this.fb.getItems()
+             .pipe(map(data => data.filter(a => a.type === 'pizza')))
+             .pipe(map(data => data.sort((a, b) => a.orders - b.orders)))
              .pipe(map(data => data.reverse()))
              .pipe(map(data => data.slice(0, 1)));
   }
