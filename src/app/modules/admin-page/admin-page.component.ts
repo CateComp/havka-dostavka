@@ -14,7 +14,7 @@ export class AdminPageComponent implements OnInit {
   @Input() dishExisted: Dish;
 
   public addDishForm: FormGroup;
-  public defaultImage: string = 'assets/pictures/placeholder.jpg';
+  public defaultImage = 'assets/pictures/placeholder.jpg';
 
   public filterProp: filterProp[] = PROPERTIES;
   public dish: Dish = {
@@ -25,7 +25,7 @@ export class AdminPageComponent implements OnInit {
     todaymenu: false,
     price: 0,
     weight: 0,
-    img: '',
+    img: this.defaultImage,
     info: '',
     orders: 0,
     rating: 0
@@ -34,6 +34,7 @@ export class AdminPageComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.dishExisted.half = Boolean(this.dishExisted.half);
     this.dish = this.dishExisted || this.dish;
 
     this.addDishForm = new FormGroup({
@@ -56,11 +57,9 @@ export class AdminPageComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    // stop here if form is invalid
     if (this.addDishForm.invalid) {
       return;
     }
-    console.log(this.addDishForm);
     this.submitDish();
   }
 
@@ -71,7 +70,7 @@ export class AdminPageComponent implements OnInit {
   }
 
   public enableImage(): void {
-    if(this.dish.name !== '') {
+    if (this.dish.name !== '') {
       this.addDishForm.controls.img.enable();
     } else {
       this.addDishForm.controls.img.disable();
@@ -80,8 +79,8 @@ export class AdminPageComponent implements OnInit {
 
   private submitDish(): void {
     console.log('Dish to process', this.dish);
-    if(this.dish.id !== undefined) {
-      this._fbs.editDish(this.dish)
+    if (this.dish.id !== undefined) {
+      this._fbs.editDish(this.dish);
     } else {
       this.dish.id = this.dish.name + '' + Math.floor(Math.random() * Math.floor(1000));
       this._fbs.addDish(this.dish);
