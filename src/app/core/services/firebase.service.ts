@@ -36,7 +36,7 @@ export class FirebaseService {
   }
 
   public downloadImage(dish: Dish): void {
-    // console.log('Download image from storage...', dish.img);
+    console.log('Download image from storage...', dish.img);
     dish.img = `https://firebasestorage.googleapis.com/v0/b/havka-2726f.appspot.com/o/images-mocks%2F${dish.name}?alt=media`;
   }
 
