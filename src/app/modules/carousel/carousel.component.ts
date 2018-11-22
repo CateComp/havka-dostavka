@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselInfoService } from 'app/core/services/carousel-info.service';
 import { Subscription } from 'rxjs';
 import { Dish } from 'app/core/interfaces/dish';
@@ -9,7 +8,6 @@ import { News } from 'app/core/interfaces/news';
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss'],
-  providers: []
 })
 
 export class CarouselComponent implements OnInit {
