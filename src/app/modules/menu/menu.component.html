@@ -1,20 +1,19 @@
 <div class="container main-container" id="container-width">
-  <div class="row d-flex justify-content-center main-menu-category">
+  <div class="row main-menu-category">
     <div class="btn-group menu-all-dishes" role="group" aria-label="Basic example">
-      <button type="button" class="btn btn-secondary" (click)="todayMenu()">Todays menu</button>
-      <button type="button" class="btn btn-secondary" (click)="allDishes()">All dishes</button>
-      <button type="button" class="btn btn-secondary" (click)="complexMenu()">Complex</button>
+      <button type="button" class="btn btn-secondary" (click)="todayMenu()">Меню на сьогодні</button>
+      <button type="button" class="btn btn-secondary" (click)="allDishes()">Всі страви</button>
+      <button type="button" class="btn btn-secondary" (click)="complexMenu()">Комплексне меню</button>
     </div>
   </div>
   <div class="row" id="container-dishes" *ngIf="!isComplex">
     <div class="menu-category col-xs-3 col-sm-2">
       <ul>
         <li *ngFor="let type of filterProp">
-          <label class="filter-cb-container">{{type.title}}
+          <label class="filter-cb-container">{{type.displayName}}
             <input type="checkbox" checked="checked" (change)="addType(type)" [(ngModel)]="type.isChecked" id="{{type.name}}" name="{{type.name}}" value="{{type.name}}">
             <span class="checkmark"></span>
           </label>
-          <!-- <input type="checkbox" (change)="addType(type.isChecked ? type : type)" [(ngModel)]="type.isChecked" id="{{type.name}}" name="{{type.name}}" value="{{type.name}}"><label for="{{type}}">{{type.name}}</label> -->
         </li>
       </ul>
     </div>

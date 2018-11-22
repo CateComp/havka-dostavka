@@ -1,10 +1,10 @@
 import { filterProp } from 'app/core/interfaces/fiter-properties';
 
 export const PROPERTIES: filterProp[] = [
-    { name: 'dessert', isChecked: false, title: 'Десерти' },
-    { name: 'first', isChecked: false, title: 'Перші страви' },
-    { name: 'second', isChecked: false, title: 'Другі страви' },
-    { name: 'salads', isChecked: false, title: 'Салати' },
-    { name: 'drink', isChecked: false, title: 'Напої' },
-    { name: 'pizza', isChecked: false, title: 'Піцца' }
+    { displayName: 'десерти', name: 'dessert', isChecked: false },
+    { displayName: 'перші страви', name: 'first', isChecked: false },
+    { displayName: 'другі страви', name: 'second', isChecked: false },
+    { displayName: 'салати', name: 'salads', isChecked: false },
+    { displayName: 'напої', name: 'drink', isChecked: false },
+    { displayName: 'піцца', name: 'pizza', isChecked: false }
   ];
