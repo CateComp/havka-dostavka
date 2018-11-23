@@ -2,14 +2,11 @@
 
 $border: 1px;
 
-#logout-btn {
-  background-color: $faintly-grey;
-  outline: none;
-  border: $border solid $soft-grey;
-  border-radius: 5px;
-  box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.1);
-  font-size: 17px;
-  padding-left: 8px;
-  padding-right: 8px;
-  margin-top: 10px;
+.btn {
+  background: $main-text-color-red;
+  margin: 20px;
+  width: 25vw;
+  opacity: 0.8;
+  color: snow;
+  
 }
