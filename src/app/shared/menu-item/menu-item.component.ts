@@ -34,7 +34,7 @@ export class MenuItemComponent implements OnInit {
   public addToShoppingCart(): void {
     if (this.dish.price == this.halfPrice) {
       if (this.dish.id !== this.realId + 'halfPortion') {
-        this.dish.name += ' половинка';
+        this.dish.name += ' - половина порції';
         this.dish.id += 'halfPortion';
       }
     } else {

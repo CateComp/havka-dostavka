@@ -40,7 +40,7 @@
 
             <div *ngIf="addDishForm.controls.price.invalid && addDishForm.controls.price.errors" class="invalid-feedback">
                 <div *ngIf="addDishForm.controls.price.errors.required">Ціна обов'язкова!</div>
-                <div *ngIf="addDishForm.controls.price.errors.pattern">Ціна повинна бути записана в форматі $.$$!</div>
+                <div *ngIf="addDishForm.controls.price.errors.pattern">Ціна повинна бути записана в форматі $.$$, не більше 4-х символів до та 2-х після крапки!</div>
                 <div *ngIf="addDishForm.controls.price.errors.pattern.actualValue === 0">Не може бути 0!</div>
             </div>
           </div>
@@ -55,6 +55,8 @@
 
             <div *ngIf="addDishForm.controls.weight.invalid && addDishForm.controls.weight.errors" class="invalid-feedback">
                 <div *ngIf="addDishForm.controls.weight.errors.required">Вага обо'вязкова!</div>
+                <div *ngIf="addDishForm.controls.price.errors.pattern">вага мати від 1 до 6 символів!</div>
+                <div *ngIf="addDishForm.controls.weight.errors.pattern.actualValue === 0">Не може бути 0!</div>
             </div>
           </div>
 
@@ -89,7 +91,7 @@
                   [(ngModel)]="dish.type" />
                 
                   <label for="{{type.name}}" class="input__label">
-                    <span></span>{{type.title}}</label>
+                    <span></span>{{type.displayName}}</label>
                 </div>
             </div>
 

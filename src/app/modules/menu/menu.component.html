@@ -22,8 +22,17 @@
     </div>
   </div>
   <div class="container" *ngIf="isComplex">
-    <div class="row" *ngFor="let comp of complex" >
-      <app-menu-wrapper [dishes]="comp"></app-menu-wrapper>
+    <div class="row mb-5 " *ngFor="let comp of comle; let i = index" >
+      <div class="complex-wrapper add__title text-center">{{ comp.menuName }}</div>
+      <app-menu-wrapper [dishes]="comp.bussiness"></app-menu-wrapper>
+        <div class="row complex-wrapper">
+          <span>
+            {{ comp.totalPrice*0.8 | currency:'Загальна ціна за комплекс :' }}
+          </span>
+          <div class="btn-container complex-wrapper">
+            <button type="button" class="btn main-menu ml-2" (click)="addToShoppingCart(comle[i])">В корзину</button>
+          </div>
+        </div>
     </div>
   </div>
 </div>
