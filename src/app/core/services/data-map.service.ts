@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from 'app/core/services/local-storage.service';
-import { MapCoords } from 'app/core/interfaces/map-coords';
 import { FirebaseService } from 'app/core/services/firebase.service';
 import { Observable } from 'rxjs';
 
@@ -32,7 +31,7 @@ export class DataMapService {
             } else {
               observer.complete();
             }
-          }, 1000)
+          }, 10000)
         })
     })
   }

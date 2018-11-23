@@ -10,7 +10,7 @@ import { OrderDetails } from 'app/core/interfaces/order-details';
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
 import 'firebase/database';
-import { FormArray } from '@angular/forms';
+import { AdminsUids } from '../interfaces/adminsUids';
 
 @Injectable({
   providedIn: 'root'
@@ -116,10 +116,18 @@ export class FirebaseService {
     .valueChanges()
     .pipe(
       map(data => {
-        console.log(data.way)
         const array = data.way;
-        
         return [...array]
+      })
+    );
+  }
+  getAdminsUids(): Observable<AdminsUids[]> {
+    return this.afs.doc<AdminsUids>('users/2cpwAPoZQEXzTja7u5vH')
+    .valueChanges()
+    .pipe(
+      map(data => {
+        const array = data.admins;
+        return array
       })
     );
   }

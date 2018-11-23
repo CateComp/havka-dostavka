@@ -41,8 +41,8 @@
           <li data-toggle="collapse" data-target=".navbar-collapse" *ngIf="!(user.authState | async)" class="nav-item">
             <a class="nav-link" routerLink="/login">Увійти</a>
           </li>
-          <li *ngIf="user.authState | async" class="nav-item" data-toggle="collapse" data-target=".navbar-collapse">
-            <a class="nav-link logout" (click)="user.logout(); goHome()">Вийти</a>
+          <li *ngIf="user.authState | async" class="nav-item">
+            <a class="nav-link logout" (click)="goHome()">Вийти</a>
           </li>
         </ul>
       </div>
