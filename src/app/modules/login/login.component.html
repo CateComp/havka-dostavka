@@ -1,14 +1,16 @@
-<div *ngIf="user.authState | async as authState; else showLogin">
-    <h1>Hello {{ authState.displayName }}!</h1>
-    <button id="logout-btn" (click)="user.logout()">Logout</button>
+<div *ngIf="user.authState | async as authState; else showLogin" class=" d-flex flex-column justify-content-center align-items-center">
+  <h1>Hello {{ authState.displayName }}!</h1>
+  <button class="btn" (click)="user.logout()">Вийти</button>
 </div>
 <ng-template #showLogin>
-  <button type="buton" class="btn btn-block" (click)="user.signInWithFacebook()">
-    <i class="fa fa-facebook" aria-hidden="true"></i> 
-    Login with Facebook
-  </button>
-  <button type="button" class="btn btn-block" (click)="user.signInWithGoogle()">
-    <i class="fa fa-google" aria-hidden="true"></i>
-    Login with Google
-  </button>
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <button type="buton" class="btn" (click)="user.signInWithFacebook()">
+      <i class="fab fa-facebook"></i>
+      Увійти за допомогою Facebook
+    </button>
+    <button type="button" class="btn" (click)="user.signInWithGoogle()">
+      <i class="fab fa-google"></i>
+      Увійти за допомогою Google
+    </button>
+  </div>
 </ng-template>

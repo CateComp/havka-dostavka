@@ -39,7 +39,6 @@ export class AuthService {
   public getAdminsUids() {
     this.fb.getAdminsUids()
     .subscribe((data) => {
-      console.log(data)
       this.admins = data
       this.isAdmin = this.afAuth.authState.pipe(
         map(authState => {
