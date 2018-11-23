@@ -1,5 +1,5 @@
 <div *ngIf="user.authState | async as authState; else showLogin" class=" d-flex flex-column justify-content-center align-items-center">
-  <h1>Hello {{ authState.displayName }}!</h1>
+  <h1>Привіт {{ authState.displayName }}!</h1>
   <button class="btn" (click)="user.logout()">Вийти</button>
 </div>
 <ng-template #showLogin>
