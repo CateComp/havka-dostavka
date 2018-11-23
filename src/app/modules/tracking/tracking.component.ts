@@ -31,17 +31,14 @@ export class TrackingComponent implements OnInit {
   public coordsUrl: string;
   public polyline: any[];
   public startWay(coordsUrl) {
-    console.log('hello')
     this.dataMap.getPoints(coordsUrl)
       .subscribe((data) => {
         this.polyline = data
-        console.log(this.polyline[this.polyline.length - 1].lat)
         this.deliveryPlaceLat = this.polyline[this.polyline.length - 1].lat;
         this.deliveryPlaceLng = this.polyline[this.polyline.length - 1].lng;
       })
-    this.dataMap.getCurrentPoint(1000, coordsUrl)
+    this.dataMap.getCurrentPoint(10000, coordsUrl)
       .subscribe((data) => {
-        console.log(data)
         this.lat = data.lat
         this.lng = data.lng
       })

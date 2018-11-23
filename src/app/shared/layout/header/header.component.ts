@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'app/core/services/auth.service';
 import { Router } from '@angular/router';
+import { window } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -16,6 +17,8 @@ export class HeaderComponent implements OnInit {
   public ngOnInit() {
   }
   public goHome() {
-    this.router.navigate(['/home'])
+    this.user.logout()
+    location.reload()
+    this.router.navigate(["/home"]);
   }
 }
