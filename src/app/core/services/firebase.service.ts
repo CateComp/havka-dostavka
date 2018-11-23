@@ -10,7 +10,7 @@ import { OrderDetails } from 'app/core/interfaces/order-details';
 import * as firebase from 'firebase/app';
 import 'firebase/storage';
 import 'firebase/database';
-import { FormArray } from '@angular/forms';
+import { AdminsUids } from '../interfaces/adminsUids';
 
 @Injectable({
   providedIn: 'root'
@@ -40,12 +40,12 @@ export class FirebaseService {
     dish.img = `https://firebasestorage.googleapis.com/v0/b/havka-2726f.appspot.com/o/images-mocks%2F${dish.name}?alt=media`;
   }
 
-  public uploadImage(dish: Dish): void {
+  public uploadImage(dish: Dish, image): any {
     console.log('Upload image to storage...');
     const database = firebase.database();
     const storage = firebase.storage();
     const buildenavn = storage.ref('images-mocks/' + dish.name);
-    buildenavn.put(dish.img);
+    return buildenavn.put(image);
   }
 
   public addDish(dish: Dish): void {
@@ -116,10 +116,18 @@ export class FirebaseService {
     .valueChanges()
     .pipe(
       map(data => {
-        console.log(data.way)
         const array = data.way;
-        
         return [...array]
+      })
+    );
+  }
+  getAdminsUids(): Observable<AdminsUids[]> {
+    return this.afs.doc<AdminsUids>('users/2cpwAPoZQEXzTja7u5vH')
+    .valueChanges()
+    .pipe(
+      map(data => {
+        const array = data.admins;
+        return array
       })
     );
   }

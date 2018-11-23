@@ -13,7 +13,12 @@ import { LocalStorageService } from 'app/core/services/local-storage.service'
 })
 export class CartComponent implements OnInit {
 
-  products: CartItem[];
+  public products: CartItem[];
+  public phone: string = '';
+  public address: string;
+
+  public isPhoneValid: boolean = false;
+  public isAddressValid: boolean = false;
 
   constructor(
     private _cartService: CartService,
@@ -27,6 +32,7 @@ export class CartComponent implements OnInit {
   }
 
   public ngOnInit() {
+    this.products = this._cartService.getCartItems() || [];
   }
 
   public totalPriceOfProducts(): number {
@@ -73,9 +79,12 @@ export class CartComponent implements OnInit {
   }
 
   public completeOrder(): void {
-    this._cartService.completeOrder(this.products)
-    .then(function() {
-      alert('Замовлення прийнято!');
+    this._cartService.completeOrder(this.products, this.address, this.phone)
+    .then(() => {
+      this.startTracking();
+      alert('Замовлення прийнято!');    
+      this._cartService.clearCart();
+      this.products = [];
     })
   }
 
@@ -91,10 +100,17 @@ export class CartComponent implements OnInit {
   public logInCart(): void {
     this._router.navigate(['/login']);
   }
+  
+  public onPhoneChanged(isPhoneValid) {
+    this.isPhoneValid = isPhoneValid;
+  }
 
-  public nrSelect: string;
-  public startTracking() {
-    this.ls.save('way',this.nrSelect)
-    this.trackingComponent.startWay(this.nrSelect)
+  public onAddressChanged(isAddressValid) {
+    this.isAddressValid = isAddressValid;
+  }
+
+  private startTracking() {
+    this.ls.save(this.user.afAuth.auth.currentUser.uid,this.address)
+    this.trackingComponent.startWay(this.address)
   }
 }

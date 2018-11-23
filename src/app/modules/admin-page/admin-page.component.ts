@@ -14,7 +14,7 @@ export class AdminPageComponent implements OnInit {
   @Input() dishExisted: Dish;
 
   public addDishForm: FormGroup;
-  public defaultImage: string = 'assets/pictures/placeholder.jpg';
+  public defaultImage = 'assets/pictures/placeholder.jpg';
 
   public filterProp: filterProp[] = PROPERTIES;
   public dish: Dish = {
@@ -30,12 +30,14 @@ export class AdminPageComponent implements OnInit {
     orders: 0,
     rating: 0
   };
-  constructor(private _fbs: FirebaseService, private _formBuilder: FormBuilder) {
-  }
+  constructor(private _fbs: FirebaseService) { }
 
   public ngOnInit(): void {
-    this.dish = this.dishExisted || this.dish;
+    if (this.dishExisted) {
+      this.dishExisted.half = Boolean(this.dishExisted.half);
+    }
 
+    this.dish = this.dishExisted || this.dish;
     this.addDishForm = new FormGroup({
       complex: new FormControl(this.dish.complex),
       half: new FormControl (this.dish.half),
@@ -50,38 +52,29 @@ export class AdminPageComponent implements OnInit {
         Validators.required,
         Validators.pattern('^[1-9][0-9]{0,5}')
       ])),
-      img:  new FormControl(this.dish.img, Validators.required),
       info:  new FormControl(this.dish.info, Validators.required)
       });
   }
 
   public onSubmit(): void {
-    // stop here if form is invalid
     if (this.addDishForm.invalid) {
       return;
     }
-    console.log(this.addDishForm);
     this.submitDish();
   }
 
-  public addImage(event): void {
-    this.dish.img = event.target.files[0];
-    this._fbs.uploadImage(this.dish);
-    setTimeout(() => this._fbs.downloadImage(this.dish), 1000);
-  }
+  public triggerImage() {
+    document.getElementById('img').click();
+   }
 
-  public enableImage(): void {
-    if(this.dish.name !== '') {
-      this.addDishForm.controls.img.enable();
-    } else {
-      this.addDishForm.controls.img.disable();
-    }
+  public addImage(event): void {
+    const image = event.target.files[0];
+    this._fbs.uploadImage(this.dish, image).then( data => this._fbs.downloadImage(this.dish));
   }
 
   private submitDish(): void {
-    console.log('Dish to process', this.dish);
-    if(this.dish.id !== undefined) {
-      this._fbs.editDish(this.dish)
+    if (this.dish.id !== undefined) {
+      this._fbs.editDish(this.dish);
     } else {
       this.dish.id = this.dish.name + '' + Math.floor(Math.random() * Math.floor(1000));
       this._fbs.addDish(this.dish);

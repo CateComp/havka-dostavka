@@ -3,7 +3,7 @@ export interface Dish {
     half?: boolean;
     id?: string;
     info: string;
-    img: string;
+    img?: string;
     name: string;
     orders?: number;
     price: number;

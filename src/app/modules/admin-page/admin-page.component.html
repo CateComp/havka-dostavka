@@ -1,16 +1,15 @@
-<div class="jumbotron">
-  <div class="container">
+<div class="jumbotron px-0">
+  <div class="container px-0">
     <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <h3>Ухти нова страва!</h3>
-        <form  [formGroup]="addDishForm" (ngSubmit)="onSubmit()">
+      <div class="col-md-10 offset-md-1">
+        <h3 class="add__title text-center">Ухти нова страва!</h3>
+        <form  [formGroup]="addDishForm">
           <div class="form-group">
-            <label>Назва</label>
+            <label class="input__label">Назва</label>
             <input type="text"
               formControlName="name"
               class="form-control dish-input"
               [(ngModel)]="dish.name"
-              (change)="enableImage()"
               [ngClass]="{ 'is-invalid': addDishForm.controls.name.invalid && addDishForm.controls.name.errors }" />
 
             <div *ngIf="addDishForm.controls.name.invalid && addDishForm.controls.name.errors" class="invalid-feedback">
@@ -19,7 +18,7 @@
           </div>
 
           <div class="form-group">
-            <label>Опис</label>
+            <label class="input__label">Опис</label>
             <input type="text"
               formControlName="info"
               class="form-control dish-input"
@@ -32,7 +31,7 @@
           </div>
 
           <div class="form-group">
-            <label>Ціна</label>
+            <label class="input__label">Ціна</label>
             <input type="text"
             formControlName="price"
             class="form-control dish-input"
@@ -41,13 +40,13 @@
 
             <div *ngIf="addDishForm.controls.price.invalid && addDishForm.controls.price.errors" class="invalid-feedback">
                 <div *ngIf="addDishForm.controls.price.errors.required">Ціна обов'язкова!</div>
-                <div *ngIf="addDishForm.controls.price.errors.pattern">Ціна повинна бути записана в форматі $.$$!</div>
+                <div *ngIf="addDishForm.controls.price.errors.pattern">Ціна повинна бути записана в форматі $.$$, не більше 4-х символів до та 2-х після крапки!</div>
                 <div *ngIf="addDishForm.controls.price.errors.pattern.actualValue === 0">Не може бути 0!</div>
             </div>
           </div>
 
           <div class="form-group">
-            <label>Вага гр.</label>
+            <label class="input__label">Вага гр.</label>
             <input type="text"
               formControlName="weight"
               class="form-control dish-input"
@@ -56,43 +55,47 @@
 
             <div *ngIf="addDishForm.controls.weight.invalid && addDishForm.controls.weight.errors" class="invalid-feedback">
                 <div *ngIf="addDishForm.controls.weight.errors.required">Вага обо'вязкова!</div>
+                <div *ngIf="addDishForm.controls.price.errors.pattern">вага мати від 1 до 6 символів!</div>
+                <div *ngIf="addDishForm.controls.weight.errors.pattern.actualValue === 0">Не може бути 0!</div>
             </div>
           </div>
 
-          <div class="form-row align-items-center mb-3">
-            <label for="todayMenu" class="mb-0">О, а буде воно сьогодні?</label>
-
+          <div class="form-group offset-1 mb-3">
             <input id="todayMenu"
               type="checkbox"
               formControlName="todaymenu"
               class="input-group-prepend"
               [(ngModel)]="dish.todaymenu" />
+
+            <label for="todayMenu" class="mb-0 input__label"><span></span>О, а буде воно сьогодні?</label>
           </div>
 
-          <div class="form-row align-items-center mb-3">
-            <label for="halfPortion" class="mb-0">Шеф а пів порції можна?</label>
-
+          <div class="form-group offset-1 mb-3">
             <input id="halfPortion"
               type="checkbox"
               formControlName="half"
               class="input-group-prepend"
               [(ngModel)]="dish.half" />
 
+            <label for="halfPortion" class="mb-0 input__label"><span></span>Шеф а пів порції можна?</label>
           </div>
 
-          <div class="form-row mb-3">
-            <div class="d-flex align-items-center mr-2" *ngFor="let type of filterProp">
-              <label for="{{type.name}}" class="mb-0">{{type.name}}</label>
-
-              <input id="{{type.name}}"
-                value="{{type.name}}"
-                type="radio"
-                formControlName="type"
-                class="input-group-prepend"
-                [(ngModel)]="dish.type" />
+          <div class="form-group mb-3 offset-1">
+            <div class="row">
+              <div class="col-4" *ngFor="let type of filterProp">
+                <input id="{{type.name}}"
+                  value="{{type.name}}"
+                  type="radio"
+                  formControlName="type"
+                  class="input-group-prepend"
+                  [(ngModel)]="dish.type" />
+                
+                  <label for="{{type.name}}" class="input__label">
+                    <span></span>{{type.displayName}}</label>
+                </div>
             </div>
 
-            <div *ngIf="addDishForm.controls.type.invalid !== false && addDishForm.controls.type.errors !== false" class="invalid-feedback d-block">
+            <div *ngIf="addDishForm.controls.type.invalid !== false" class="invalid-feedback d-block">
               <div *ngIf="addDishForm.controls.type.errors.required">Тип обов'язковий</div>
             </div>
           </div>
@@ -103,40 +106,27 @@
               [(ngModel)]="dish.complex"
               [ngClass]="{ 'is-invalid': addDishForm.controls.complex.invalid && addDishForm.controls.complex.errors}">
 
-                <option value="">Буде ця смакота в комплексі, ммм?</option>
-                <option value="bussiness1">bussiness1</option>
-                <option value="bussiness2">bussiness2</option>
-                <option value="bussiness3">bussiness3</option>
+                <option value="" class="complex__option">Буде ця смакота в комплексі, ммм?</option>
+                <option value="bussiness1"
+                class="complex__option">Комплекс 1</option>
+                <option value="bussiness2"
+                class="complex__option">Комплекс 2</option>
+                <option value="bussiness3"
+                class="complex__option">Комплекс 3</option>
             </select>
           </div>
-
-          <div class="custom-file dish-input mb-3">
+          <div class="d-flex flex-column align-items-center justify-content-center">
             <input type="file"
               (change)="addImage($event)"
-              class="custom-file-input dish-input"
-              id="img"
-              formControlName="img"
-              [ngClass]="{ 'is-invalid': addDishForm.controls.img.invalid && addDishForm.controls.img.errors}"
-              disabled>
-
-            <label class="custom-file-label dish-label" for="img">Ну вибери картинку для {{dish.name}}</label>
-            <div *ngIf="addDishForm.controls.img.invalid && addDishForm.controls.img.errors" class="invalid-feedback">
-              <div *ngIf="addDishForm.controls.img.errors.required">
-                <div>Ну як ж без картинки і назва обов'язкова!</div>
-                <div class="text-center">
-                  Тут вот буде красота!
-                </div>
-                <div class="text-center">
-                  <i class="fas fa-arrow-down"></i>
-                </div>
-              </div>
-            </div>
+              class="dish-image"
+              id="img">
+              <button class="main-menu" (click)="triggerImage()">Ну вибери картинку</button>
           </div>
           <div class="form-group pt-5">
             <div class="row">
               <div class="col d-flex flex-column align-items-center justify-content-center">
                 <img [src]="dish.img || defaultImage" class="m-3 image-example" alt="Choose the image">
-                <button class="btn btn-primary success-button">Додати</button>
+                <button class="main-menu" (click)="onSubmit()">Додати</button>
               </div>
             </div>
           </div>

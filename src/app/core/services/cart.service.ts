@@ -57,19 +57,19 @@ export class CartService {
       this._localStorage.save('cartItems', items);
   }
 
-  public completeOrder(items: CartItem[]): Promise<any> {
+  public completeOrder(items: CartItem[], address: string, phone: string): Promise<any> {
     let promise = new Promise((resolve, reject) => {
         this._afAuth.idToken.subscribe(userId => {
             const products = items.map((item) => { return { productId: item.productId, quantity: item.productQuantity } });
-            const orderDetails = { userId: userId, products }
+            const orderDetails = { userId: userId, address, phone, products }
 
             this._firebase.addOrder(orderDetails)
             .then(function() {
-              resolve();
+              resolve();  
             });
         })
     });
-
+    
     return promise;
   }
 }
